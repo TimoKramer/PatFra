@@ -1,4 +1,4 @@
-package com.paperboyclone.game;
+package com.paperboyclone;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
