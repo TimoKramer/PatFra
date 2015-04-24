@@ -1,8 +1,10 @@
-# Pflichtenheft
+# Pflichtenheft 
+## Projekt PaperboyClone im Fach "Pattern and Frameworks" an der FH Brandenburg
+## der Studenten Martin Freudenberg und Timo Kramer
 
-## Beschreibung des Produkts
+### Beschreibung des Produkts
 
-### Funktionalität
+#### Funktionalität
 
  * Zeitungsjungen auf Fahrrad steuern
  * Hindernissen ausweichen
@@ -14,19 +16,19 @@
  * Einstellungsmöglichkeiten für Lautstärke, Auflösung, Schwierigkeitsgrad
  * Navigation durch Menus
 
-### Gestaltung
+#### Gestaltung
 
 * Im Stil 80er Jahre Computerspiele
 * 2D Grafiken
 * Sprite Sheet Animationen
 
-### Bedienung
+#### Bedienung
 
 * per Tastatur
 * Bewegungstasten für links, rechts, beschleunigen
 * Tasten um Zeitung nach links oder rechts zu werfen
 
-### Elemente
+#### Elemente
 
 * Gezielte Anwendung von Entwurfsmustern
 * Graphische Benutzeroberfläche
@@ -34,20 +36,20 @@
 * Datenbankanbindung zur Speicherung von Daten [JDBC]
 * Parallel agierende Objekte [Threads]
 
-### Programmiersprache
+#### Programmiersprache
 
 Das Spiel wird in Java mit dem Framework libgdx programmiert.
 
-## Arbeitspakete
+### Arbeitspakete
 
-###1 – 05. Mai 2015
+####1 – 05. Mai 2015
 * Level erzeugen -> Martin
 * Level aktualisieren -> Martin
 * Level anzeigen -> Martin
 * Laden von Assets -> Martin
 * Startmenü -> Martin
 
-###2 – 19. Mai 2015
+####2 – 19. Mai 2015
 * Zeitung nach rechts werfen -> Martin
 * Zeitung nach links werfen -> Martin
 * Geschwindigkeit erhöhen -> Timo
@@ -55,7 +57,7 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 * Geschwindigkeit verringern -> Timo
 * Nach links lenken -> Timo
 
-###3 – 2. Juni 2015
+####3 – 2. Juni 2015
 * Animation der Charakter-Figur
 * Treffer in Nicht-Abonnenten-Briefkasten
 * Zeitungen auffüllen
@@ -64,7 +66,7 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 * Treffer in Abonnenten-Briefkasten
 * Gegen Hindernis fahren	
 
-###4 – 16. Juni 2015
+####4 – 16. Juni 2015
 * Schwierigkeitsgrad auswählen
 * erfolgreiche Registrierung
 * Netzwerk-Menü
@@ -74,7 +76,7 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 * Highscore-Liste
 
 
-###5 – 30. Juni 2015
+####5 – 30. Juni 2015
 * Options-Menü – Controller-Steuerung
 * Options-Menü – Tastenbelegung
 * Options-Menü – Lautstärke
