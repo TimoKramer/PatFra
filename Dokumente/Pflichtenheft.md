@@ -68,11 +68,9 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 
 ####Nr.4 – 16. Juni 2015
 * Schwierigkeitsgrad auswählen
-* erfolgreiche Registrierung
 * Netzwerk-Menü
 * Speichern der Optionen
 * Options-Menü
-* Login
 * Highscore-Liste
 
 
