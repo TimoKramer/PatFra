@@ -1,4 +1,4 @@
-# Pflichtenheft 
+# Pflichtenheft - PaperboyClone
 ## Projekt PaperboyClone im Fach "Pattern and Frameworks" an der FH Brandenburg der Studenten Martin Freudenberg und Timo Kramer
 
 ### Beschreibung des Produkts
