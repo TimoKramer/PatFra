@@ -58,32 +58,32 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 * Nach links lenken -> Timo
 
 ####Nr.3 – 2. Juni 2015
-* Animation der Charakter-Figur ('soll'-Anforderung)
-* Treffer in Nicht-Abonnenten-Briefkasten
-* Zeitungen auffüllen
-* Zeitungen leer
-* Ziel erreicht
-* Treffer in Abonnenten-Briefkasten
-* Gegen Hindernis fahren	
+* Animation der Charakter-Figur ('soll'-Anforderung) -> Martin
+* Treffer in Nicht-Abonnenten-Briefkasten -> Martin
+* Zeitungen auffüllen -> Timo
+* Zeitungen leer -> Timo
+* Ziel erreicht -> Timo
+* Treffer in Abonnenten-Briefkasten -> Martin
+* Gegen Hindernis fahren -> Martin
 
 ####Nr.4 – 16. Juni 2015
-* Schwierigkeitsgrad auswählen
-* Netzwerk-Menü
-* Speichern der Optionen
-* Options-Menü
-* Highscore-Liste
-
+* Schwierigkeitsgrad auswählen -> Martin
+* Netzwerk-Menü -> Timo
+* Speichern der Optionen -> Martin
+* Options-Menü -> Martin
+* Highscore-Liste -> Timo
+* Levelgrafiken ('soll'-Anforderung) -> Timo
 
 ####Nr.5 – 30. Juni 2015
-* Options-Menü – Controller-Steuerung ('kann'-Anforderung)
-* Options-Menü – Tastenbelegung ('soll'-Anforderung)
-* Options-Menü – Lautstärke
-* Options-Menü – Auflösung
-* Backgroundmusic ('soll'-Anforderung)
-* Netzwerkspiel läuft ('kann'-Anforderung)
-* Netzwerkspiel startet ('kann'-Anforderung)
-* Netzwerkspiel auswählen und aktivieren ('kann'-Anforderung)
-* Treffer-Sound ('soll'-Anforderung)
-* Sturz-Sound ('soll'-Anforderung)
-* Wurf-Sound ('soll'-Anforderung)
-* Atmo-Sounds ('soll'-Anforderung)
+* Options-Menü – Controller-Steuerung ('kann'-Anforderung) -> Martin
+* Options-Menü – Tastenbelegung ('soll'-Anforderung) -> Martin
+* Options-Menü – Lautstärke -> Martin
+* Options-Menü – Auflösung -> Martin
+* Backgroundmusic ('soll'-Anforderung) -> Timo
+* Netzwerkspiel läuft ('kann'-Anforderung) -> Timo
+* Netzwerkspiel startet ('kann'-Anforderung) -> Timo
+* Netzwerkspiel auswählen und aktivieren ('kann'-Anforderung) -> Timo
+* Treffer-Sound ('soll'-Anforderung) -> Timo
+* Sturz-Sound ('soll'-Anforderung) -> Timo
+* Wurf-Sound ('soll'-Anforderung) -> Timo
+* Atmo-Sounds ('soll'-Anforderung) -> Timo
