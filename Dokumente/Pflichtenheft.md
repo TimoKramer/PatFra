@@ -58,7 +58,7 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 * Nach links lenken -> Timo
 
 ####Nr.3 – 2. Juni 2015
-* Animation der Charakter-Figur
+* Animation der Charakter-Figur ('soll'-Anforderung)
 * Treffer in Nicht-Abonnenten-Briefkasten
 * Zeitungen auffüllen
 * Zeitungen leer
@@ -68,24 +68,22 @@ Das Spiel wird in Java mit dem Framework libgdx programmiert.
 
 ####Nr.4 – 16. Juni 2015
 * Schwierigkeitsgrad auswählen
-* erfolgreiche Registrierung
 * Netzwerk-Menü
 * Speichern der Optionen
 * Options-Menü
-* Login
 * Highscore-Liste
 
 
 ####Nr.5 – 30. Juni 2015
-* Options-Menü – Controller-Steuerung
-* Options-Menü – Tastenbelegung
+* Options-Menü – Controller-Steuerung ('kann'-Anforderung)
+* Options-Menü – Tastenbelegung ('soll'-Anforderung)
 * Options-Menü – Lautstärke
 * Options-Menü – Auflösung
-* Backgroundmusic
-* Netzwerkspiel läuft
-* Netzwerkspiel startet
-* Netzwerkspiel
-* Treffer-Sound
-* Sturz-Sound
-* Wurf-Sound
-* Atmo-Sounds
+* Backgroundmusic ('soll'-Anforderung)
+* Netzwerkspiel läuft ('kann'-Anforderung)
+* Netzwerkspiel startet ('kann'-Anforderung)
+* Netzwerkspiel auswählen und aktivieren ('kann'-Anforderung)
+* Treffer-Sound ('soll'-Anforderung)
+* Sturz-Sound ('soll'-Anforderung)
+* Wurf-Sound ('soll'-Anforderung)
+* Atmo-Sounds ('soll'-Anforderung)
