@@ -6,24 +6,34 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Vector2;
 
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
 
 	BitmapFont font;
-	Sound sound;
 	boolean movingRight;
 	boolean movingLeft;
 	boolean movingUp;
 	boolean movingDown;
 	
+	private OrthographicCamera camera;
+	private BackgroundManager background;
+	
+	
 	public GameScreen(PaperboyClone app) {
 		super(app);
 		
-		sound = Assets.getSound("testsound1.wav");
-		sound.play();
+
 		font = new BitmapFont();
+		//Groesse der Kamera noch unklar
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.position.set(1000, Gdx.graphics.getHeight()/2f,0);
+		camera.update();
+		
+		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
 	}
 	
@@ -40,10 +50,18 @@ public class GameScreen extends BasicScreen{
 		if(movingUp) {
 			movingUp();
 		}
+		
+		//nur zu test zwecken
+	    camera.translate(0,300 * delta,0);
+	    //System.out.println("cam: "+camera.position.x +" | "+ camera.position.y);
+	    camera.update();
+	    App.batch.setProjectionMatrix(camera.combined);
+	    background.update(camera);
+	       
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		App.batch.begin();
-		font.draw(App.batch,"GameScreen",Gdx.graphics.getWidth()/2 ,Gdx.graphics.getHeight()/2);
+		background.draw(App.batch);
 		App.batch.end();
 	}
 

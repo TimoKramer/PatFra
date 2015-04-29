@@ -15,6 +15,7 @@ public class LoadingScreen extends BasicScreen{
 		
 		// Alle benoetigten Assets  in die Warteschlange des AssetManagers einreihen
 		Assets.addTexture("badlogic.jpg");
+		Assets.addTexture("background.png");
 		Assets.addTexture("error.jpg");
 		Assets.addSound("testsound1.wav");
 		//hier weitere Assets die im Spiel gebraucht werden hinzufuegen
