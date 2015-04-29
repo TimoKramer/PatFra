@@ -38,6 +38,21 @@ public class GameScreen extends BasicScreen{
 	}
 	
 	public void render(float delta) {
+	
+	    
+	    update(delta);
+	       
+		Gdx.gl.glClearColor(0, 0, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		App.batch.begin();
+		draw();
+		App.batch.end();
+	}
+	
+	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
+	private void update(float delta){
+		
 		if(movingRight) {
 			movingRight();
 		}
@@ -57,12 +72,12 @@ public class GameScreen extends BasicScreen{
 	    camera.update();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
-	       
-		Gdx.gl.glClearColor(0, 0, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		App.batch.begin();
+	}
+	
+	//alles was angezeigt werden muss
+	private void draw(){
+		
 		background.draw(App.batch);
-		App.batch.end();
 	}
 
 	public boolean keyDown(int keycode) {
@@ -108,11 +123,11 @@ public class GameScreen extends BasicScreen{
 	}
 	
 	protected void movingLeft() {
-		System.out.println("moving left");		
+		System.out.println("moving left");
 	}
 	
 	protected void movingRight() {
-		System.out.println("moving right");		
+		System.out.println("moving right");	
 	}
 	
 	protected void movingUp() {
