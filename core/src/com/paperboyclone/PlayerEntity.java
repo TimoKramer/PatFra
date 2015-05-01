@@ -6,16 +6,28 @@ import com.badlogic.gdx.math.Vector2;
 
 public class PlayerEntity extends BasicGameEntity {
 	
+	//private Vector2 velocity;
+	//private float speed;
+	
 	public PlayerEntity(Vector2 position, Texture texture){
-		this.position = position;
-		this.sprite = new Sprite(texture);
+		super(position, texture);
+		
 	}
 	
 	public PlayerEntity(){
-		position = new Vector2(0,0);
-		sprite = new Sprite();
+		super();
+		
 	}
-
+	
+	/*
+	 * public void update(float delta){
+	 * 
+	 * 		this.position.x += velocity.x * delta;
+	 * 		this.position.y += velocity.y * delta;
+	 * }
+	 * 
+	 * 
+	 */
 	
 	public void throwLeft() {
 		PaperEntity paper = new PaperEntity(this.position, Assets.getTexture("yellowCircle.png"));
@@ -26,4 +38,25 @@ public class PlayerEntity extends BasicGameEntity {
 		PaperEntity paper = new PaperEntity(this.position, Assets.getTexture("yellowCircle.png"));
 	}
 	
+	
+	/*
+	 * 
+	 * public void moveRight(){
+	 * 		velocity.x = speed;
+	 *  }
+	 *  
+	 *  public void moveLeft(){
+	 *  	velocity.x = -speed;
+	 *  }
+	 * 
+	 * public void moveStraight(){
+	 * 		velocity.x = 0;
+	 *      velocity.y = speed;
+	 * }
+	 * 
+	 * public void accelerate(float delta){
+	 * 		speed limitieren if(speed<MaxSpeed)...
+	 * 		speed+= [Beschleunigung] * delta;
+	 * }
+	 */
 }

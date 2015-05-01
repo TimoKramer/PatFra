@@ -78,6 +78,10 @@ public class GameScreen extends BasicScreen{
 		
 		//nur zu test zwecken
 	    camera.translate(0, actualSpeed, 0);
+	    //player.update(delta);
+	    
+	    //Kamera auf Spieler-Position setzen
+	    
 	    //System.out.println("cam: "+camera.position.x +" | "+ camera.position.y);
 	    camera.update();
 	    App.batch.setProjectionMatrix(camera.combined);
@@ -96,6 +100,7 @@ public class GameScreen extends BasicScreen{
 		if(keycode==Input.Keys.LEFT) {
 			pressingLeft();
 			pressingLeft = true;
+			//player.moveLeft();
 		}
 		if(keycode==Input.Keys.RIGHT) {
 			pressingRight();
@@ -121,6 +126,7 @@ public class GameScreen extends BasicScreen{
 	public boolean keyUp(int keycode) {
 		if(keycode==Input.Keys.LEFT) {
 			pressingLeft = false;
+			//player.moveStraight();
 		}
 		if(keycode==Input.Keys.RIGHT) {
 			pressingRight = false;
