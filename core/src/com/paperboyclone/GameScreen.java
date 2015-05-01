@@ -7,31 +7,40 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
 
 	BitmapFont font;
-	boolean movingRight;
-	boolean movingLeft;
-	boolean movingUp;
-	boolean movingDown;
+	boolean pressingRight;
+	boolean pressingLeft;
+	boolean pressingUp;
+	boolean pressingDown;
 	
+	private PlayerEntity player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
+	private float speed;
 	
 	
 	public GameScreen(PaperboyClone app) {
 		super(app);
 		
-
 		font = new BitmapFont();
 		//Groesse der Kamera noch unklar
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera.position.set(1000, Gdx.graphics.getHeight()/2f,0);
+		camera.position.set(1000, Gdx.graphics.getHeight(),0);
 		camera.update();
+		
+		player = new PlayerEntity(
+				new Vector2(1000, Gdx.graphics.getHeight()),
+				Assets.getTexture("redCircle.png")
+				);
+		speed = 200f;
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
@@ -39,9 +48,8 @@ public class GameScreen extends BasicScreen{
 	
 	public void render(float delta) {
 	
-	    
 	    update(delta);
-	       
+	    
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -53,93 +61,110 @@ public class GameScreen extends BasicScreen{
 	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
 	private void update(float delta){
 		
-		if(movingRight) {
-			movingRight();
+		if(pressingRight) {
+			pressingRight();
 		}
-		if(movingLeft) {
-			movingLeft();
+		if(pressingLeft) {
+			pressingLeft();
 		}
-		if(movingDown) {
-			movingDown();
+		if(pressingDown) {
+			pressingDown();
 		}
-		if(movingUp) {
-			movingUp();
+		if(pressingUp) {
+			pressingUp();
 		}
 		
+		float actualSpeed = speed * delta;
+		
 		//nur zu test zwecken
-	    camera.translate(0,300 * delta,0);
+	    camera.translate(0, actualSpeed, 0);
 	    //System.out.println("cam: "+camera.position.x +" | "+ camera.position.y);
 	    camera.update();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
+	    player.setPosition(player.getPosition().x, camera.position.y-300);
 	}
 	
 	//alles was angezeigt werden muss
 	private void draw(){
-		
 		background.draw(App.batch);
+		player.drawSprite(App.batch);
+		
 	}
 
 	public boolean keyDown(int keycode) {
 		if(keycode==Input.Keys.LEFT) {
-			movingLeft();
-			movingLeft = true;
+			pressingLeft();
+			pressingLeft = true;
 		}
 		if(keycode==Input.Keys.RIGHT) {
-			movingRight();
-			movingRight = true;
+			pressingRight();
+			pressingRight = true;
 		}
 		if(keycode==Input.Keys.UP) {
-			movingUp();
-			movingUp = true;
+			pressingUp();
+			pressingUp = true;
 		}
 		if(keycode==Input.Keys.DOWN) {
-			movingDown();
-			movingDown = true;
+			pressingDown();
+			pressingDown = true;
 		}
 		if(keycode==Input.Keys.X) {
-			System.out.println("throwing right");
+			throwingRight();
 		}
 		if(keycode==Input.Keys.Y) {
-			System.out.println("throwing left");
+			throwingLeft();
 		}
 		return false;
 	}
 	
 	public boolean keyUp(int keycode) {
 		if(keycode==Input.Keys.LEFT) {
-			movingLeft = false;
+			pressingLeft = false;
 		}
 		if(keycode==Input.Keys.RIGHT) {
-			movingRight = false;
+			pressingRight = false;
 		}
 		if(keycode==Input.Keys.UP) {
-			movingUp = false;
+			pressingUp = false;
 		}
 		if(keycode==Input.Keys.DOWN) {
-			movingDown = false;
+			pressingDown = false;
 		}
 		return false;
 	}
 	
-	protected void movingLeft() {
-		System.out.println("moving left");
+	private void pressingLeft() {
+		player.setPosition(new Vector2(player.getPosition().x-1, player.getPosition().y));
 	}
 	
-	protected void movingRight() {
-		System.out.println("moving right");	
+	private void pressingRight() {
+		player.setPosition(new Vector2(player.getPosition().x+1, player.getPosition().y));
 	}
 	
-	protected void movingUp() {
-		System.out.println("moving Up");
+	private void pressingUp() {
+		System.out.println("speeding Up: " + speed);
+		if(speed < 500) {
+			speed += 4;
+		}
 	}
 	
-	protected void movingDown() {
-		System.out.println("moving Down");
+	private void pressingDown() {
+		System.out.println("breaking: " + speed);
+		if(speed > 100) {
+			speed -= 4;
+		}
+	}
+	
+	private void throwingLeft() {
+		player.throwLeft();
+	}
+
+	private void throwingRight() {
+		player.throwRight();		
 	}
 	
 	public void dispose(){
-		
 		
 	}
 }

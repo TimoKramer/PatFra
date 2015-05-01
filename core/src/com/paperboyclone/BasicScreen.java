@@ -13,6 +13,7 @@ public abstract class BasicScreen implements Screen, InputProcessor {
 		App = app;
 		Gdx.input.setInputProcessor(this);
 	}
+	
 	@Override
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub

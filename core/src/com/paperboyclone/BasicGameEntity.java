@@ -18,10 +18,9 @@ public class BasicGameEntity {
 	
 	
 	public BasicGameEntity(Vector2 position, Texture texture){
-		position = new Vector2(position);
-		sprite = new Sprite(texture);
+		this.position = position;
+		this.sprite = new Sprite(texture);
 	}
-	
 	
 	public BasicGameEntity(){
 		position = new Vector2(0,0);
@@ -31,7 +30,6 @@ public class BasicGameEntity {
 	public void setTexture(Texture texture){
 		sprite.setTexture(texture);		
 	}
-	
 	
 	public void setPosition(float x, float y){
 		position.x = x;
@@ -45,9 +43,10 @@ public class BasicGameEntity {
 	public Vector2 getPosition(){
 		return position;		
 	}
+	
 	public void drawSprite(Batch batch){
-			sprite.setPosition(position.x, position.y);
-			sprite.draw(batch);
+		sprite.setPosition(position.x, position.y);
+		sprite.draw(batch);
 	}
 	
 	
