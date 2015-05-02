@@ -20,6 +20,8 @@ public class LoadingScreen extends BasicScreen{
 		Assets.addSound("testsound1.wav");
 		Assets.addTexture("redCircle.png");
 		Assets.addTexture("yellowCircle.png");
+		Assets.addTexture("house_1.png");
+		Assets.addTexture("mailbox_empty.png");
 		//hier weitere Assets die im Spiel gebraucht werden hinzufuegen
 	}
 	

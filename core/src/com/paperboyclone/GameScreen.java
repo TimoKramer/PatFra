@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
@@ -24,6 +25,7 @@ public class GameScreen extends BasicScreen{
 	private PlayerEntity player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
+	private Array<House> Houses;
 	private float speed;
 	
 	
@@ -44,6 +46,8 @@ public class GameScreen extends BasicScreen{
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
+		Houses = new Array<House>(LevelGenerator.generateHouses());
+	
 	}
 	
 	public void render(float delta) {
@@ -93,6 +97,11 @@ public class GameScreen extends BasicScreen{
 	private void draw(){
 		background.draw(App.batch);
 		player.drawSprite(App.batch);
+		
+		for(House h : Houses){
+			//todo: nur rendern was auf dem screen zu sehen ist
+			h.draw(App.batch);
+		}
 		
 	}
 

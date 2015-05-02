@@ -50,5 +50,10 @@ public class BasicGameEntity {
 	}
 	
 	
+	public Sprite getSprite(){
+		return sprite;
+		
+	}
+	
 	
 }
