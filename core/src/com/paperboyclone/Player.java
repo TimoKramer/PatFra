@@ -7,10 +7,11 @@ import com.badlogic.gdx.math.Vector2;
 public class Player extends BasicGameEntity {
 
 	private Vector2 velocity = new Vector2(0f, 300f);
-	//private float speed;
+
 
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
+
 	}
 
 	public Player(){
@@ -32,29 +33,29 @@ public class Player extends BasicGameEntity {
 	}
 
 	public void moveRight(){
-		velocity.x += 10f;
+		velocity.x = 100f;
 	}
 
 	public void moveLeft(){
-		velocity.x -= 10f;
+		velocity.x = -100f;
 	}
 
 	public void moveStraight(){
 		velocity.x = 0;
-		velocity.y = 300;
+		//velocity.y = 300;
 	}
 
 	public void moveFaster(float delta){
 		//	 		speed limitieren if(speed<MaxSpeed)...
 		//	 		speed+= [Beschleunigung] * delta;
 		if(velocity.y < 500) {
-			velocity.y += 10f;
+			velocity.y += 300f * delta;
 		}
 	}
 
 	public void moveSlower(float delta) {
 		if(velocity.y > 100) {
-			velocity.y -= 10f;
+			velocity.y -= 300f * delta;
 		}
 	}
 
