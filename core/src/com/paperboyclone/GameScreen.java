@@ -1,15 +1,10 @@
 package com.paperboyclone;
 
-import javax.print.DocFlavor.INPUT_STREAM;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
@@ -17,17 +12,10 @@ import com.badlogic.gdx.utils.Array;
 public class GameScreen extends BasicScreen{
 
 	BitmapFont font;
-	boolean pressingRight;
-	boolean pressingLeft;
-	boolean pressingUp;
-	boolean pressingDown;
-	
-	private PlayerEntity player;
+	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
-	private Array<House> Houses;
-	private float speed;
-	
+	private Array<House> Houses;	
 	
 	public GameScreen(PaperboyClone app) {
 		super(app);
@@ -38,11 +26,10 @@ public class GameScreen extends BasicScreen{
 		camera.position.set(1000, Gdx.graphics.getHeight(),0);
 		camera.update();
 		
-		player = new PlayerEntity(
+		player = new Player(
 				new Vector2(1000, Gdx.graphics.getHeight()),
 				Assets.getTexture("redCircle.png")
 				);
-		speed = 200f;
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
@@ -65,24 +52,10 @@ public class GameScreen extends BasicScreen{
 	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
 	private void update(float delta){
 		
-		if(pressingRight) {
-			pressingRight();
-		}
-		if(pressingLeft) {
-			pressingLeft();
-		}
-		if(pressingDown) {
-			pressingDown();
-		}
-		if(pressingUp) {
-			pressingUp();
-		}
-		
-		float actualSpeed = speed * delta;
-		
+		checkForPlayerMovement(delta);
 		//nur zu test zwecken
-	    camera.translate(0, actualSpeed, 0);
-	    //player.update(delta);
+	    camera.translate(0, 300f*delta, 0);
+	    player.update(delta);
 	    
 	    //Kamera auf Spieler-Position setzen
 	    
@@ -90,7 +63,6 @@ public class GameScreen extends BasicScreen{
 	    camera.update();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
-	    player.setPosition(player.getPosition().x, camera.position.y-300);
 	}
 	
 	//alles was angezeigt werden muss
@@ -102,83 +74,27 @@ public class GameScreen extends BasicScreen{
 			//todo: nur rendern was auf dem screen zu sehen ist
 			h.draw(App.batch);
 		}
-		
 	}
 
-	public boolean keyDown(int keycode) {
-		if(keycode==Input.Keys.LEFT) {
-			pressingLeft();
-			pressingLeft = true;
-			//player.moveLeft();
+	private void checkForPlayerMovement(float delta) {
+		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+			
+			player.moveRight();
 		}
-		if(keycode==Input.Keys.RIGHT) {
-			pressingRight();
-			pressingRight = true;
+		else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+			player.moveLeft();
 		}
-		if(keycode==Input.Keys.UP) {
-			pressingUp();
-			pressingUp = true;
+		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+			player.moveSlower(delta);
 		}
-		if(keycode==Input.Keys.DOWN) {
-			pressingDown();
-			pressingDown = true;
+		else if(Gdx.input.isKeyPressed(Keys.UP)) {
+			player.moveFaster(delta);
 		}
-		if(keycode==Input.Keys.X) {
-			throwingRight();
-		}
-		if(keycode==Input.Keys.Y) {
-			throwingLeft();
-		}
-		return false;
-	}
-	
-	public boolean keyUp(int keycode) {
-		if(keycode==Input.Keys.LEFT) {
-			pressingLeft = false;
-			//player.moveStraight();
-		}
-		if(keycode==Input.Keys.RIGHT) {
-			pressingRight = false;
-		}
-		if(keycode==Input.Keys.UP) {
-			pressingUp = false;
-		}
-		if(keycode==Input.Keys.DOWN) {
-			pressingDown = false;
-		}
-		return false;
-	}
-	
-	private void pressingLeft() {
-		player.setPosition(new Vector2(player.getPosition().x-1, player.getPosition().y));
-	}
-	
-	private void pressingRight() {
-		player.setPosition(new Vector2(player.getPosition().x+1, player.getPosition().y));
-	}
-	
-	private void pressingUp() {
-		System.out.println("speeding Up: " + speed);
-		if(speed < 500) {
-			speed += 4;
+		else {
+			player.moveStraight();
 		}
 	}
-	
-	private void pressingDown() {
-		System.out.println("breaking: " + speed);
-		if(speed > 100) {
-			speed -= 4;
-		}
-	}
-	
-	private void throwingLeft() {
-		player.throwLeft();
-	}
-
-	private void throwingRight() {
-		player.throwRight();		
-	}
-	
+			
 	public void dispose(){
 		
 	}
