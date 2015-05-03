@@ -79,10 +79,10 @@ public class GameScreen extends BasicScreen{
 	private void checkForPlayerMovement(float delta) {
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
 			
-			player.moveRight();
+			player.moveRight(delta);
 		}
 		else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			player.moveLeft();
+			player.moveLeft(delta);
 		}
 		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
 			player.moveSlower(delta);
