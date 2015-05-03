@@ -32,12 +32,12 @@ public class Player extends BasicGameEntity {
 		Paper paper = new Paper(this.position, false);
 	}
 
-	public void moveRight(float delta){
-		velocity.x += 300f * delta;
+	public void moveRight(){
+		velocity.x = 100f;
 	}
 
-	public void moveLeft(float delta){
-		velocity.x -= 300f * delta;
+	public void moveLeft(){
+		velocity.x = -100f;
 	}
 
 	public void moveStraight(){
