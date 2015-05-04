@@ -22,6 +22,9 @@ public class LoadingScreen extends BasicScreen{
 		Assets.addTexture("yellowCircle.png");
 		Assets.addTexture("house_1.png");
 		Assets.addTexture("mailbox_empty.png");
+		Assets.addTexture("obstacleT_1.png");
+		Assets.addTexture("obstacleT_2.png");
+		Assets.addTexture("obstacleT_3.png");
 		//hier weitere Assets die im Spiel gebraucht werden hinzufuegen
 	}
 	
