@@ -54,7 +54,6 @@ public class LevelGenerator {
 		//rechte Seite
 		for(int i = 0 ; i<MaxHouses/2; i++){
 			
-			//todo: zufalls hausgrafik
 			houseSprite = "house_"+MathUtils.random(1,4)+".png"; 
 			House h = new House(new Vector2(x, y), Assets.getTexture(houseSprite), Assets.getTexture("mailbox_empty.png"));
 			Houses.add(h);
@@ -66,7 +65,6 @@ public class LevelGenerator {
 		//linke seite
 		for(int i = 0 ; i<MaxHouses/2; i++){
 				
-				//todo: zufalls hausgrafik
 			    houseSprite = "house_"+MathUtils.random(1,4)+".png"; 
 				House h = new House(new Vector2(x, y), Assets.getTexture(houseSprite), Assets.getTexture("mailbox_empty.png"));
 				h.flipRight();

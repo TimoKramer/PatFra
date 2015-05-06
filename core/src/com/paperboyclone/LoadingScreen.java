@@ -48,7 +48,7 @@ public class LoadingScreen extends BasicScreen{
 		else{
 			//Laden beendet -> wechsel zum Game Screen
 			App.setScreen(new GameScreen(App));
-		
+			dispose();
 		}
 	
 		
