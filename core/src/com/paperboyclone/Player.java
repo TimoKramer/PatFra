@@ -21,7 +21,7 @@ public class Player extends BasicGameEntity {
 	public void update(float delta){
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
-		System.out.println("Geschwindigkeitsvektor: " + velocity.toString());
+		//System.out.println("Geschwindigkeitsvektor: " + velocity.toString());
 	}
 
 	public void throwLeft() {
