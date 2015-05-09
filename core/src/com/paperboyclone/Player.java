@@ -1,5 +1,7 @@
 package com.paperboyclone;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -46,8 +48,6 @@ public class Player extends BasicGameEntity {
 	}
 
 	public void moveFaster(float delta){
-		//	 		speed limitieren if(speed<MaxSpeed)...
-		//	 		speed+= [Beschleunigung] * delta;
 		if(velocity.y < 500) {
 			velocity.y += 300f * delta;
 		}
@@ -58,5 +58,25 @@ public class Player extends BasicGameEntity {
 			velocity.y -= 300f * delta;
 		}
 	}
+	
+	public void checkForMovement(float delta) {
+		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+			
+			moveRight();
+		}
+		else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+			moveLeft();
+		}
+		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+			moveSlower(delta);
+		}
+		else if(Gdx.input.isKeyPressed(Keys.UP)) {
+			moveFaster(delta);
+		}
+		else {
+			moveStraight();
+		}
+	}
+
 
 }

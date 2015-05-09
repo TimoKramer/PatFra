@@ -65,7 +65,7 @@ public class GameScreen extends BasicScreen{
 	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
 	private void update(float delta){
 		
-		checkForPlayerMovement(delta);
+		player.checkForMovement(delta);
 		checkForNextObstacleSpawn();
 	 
 	    player.update(delta);
@@ -107,24 +107,6 @@ public class GameScreen extends BasicScreen{
 		//todo: obstacles ausserhalb des screen loeschen
 	}
 	
-	private void checkForPlayerMovement(float delta) {
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			
-			player.moveRight(delta);
-		}
-		else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			player.moveLeft(delta);
-		}
-		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-			player.moveSlower(delta);
-		}
-		else if(Gdx.input.isKeyPressed(Keys.UP)) {
-			player.moveFaster(delta);
-		}
-		else {
-			player.moveStraight();
-		}
-	}
 			
 	public void dispose(){
 		
