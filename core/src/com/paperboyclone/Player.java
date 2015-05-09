@@ -6,11 +6,12 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Player extends BasicGameEntity {
 
-	private Vector2 velocity = new Vector2(0f, 300f);
+	private Vector2 velocity; 
 
 
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
+		velocity = new Vector2(0f, 300f);
 
 	}
 
@@ -25,11 +26,13 @@ public class Player extends BasicGameEntity {
 	}
 
 	public void throwLeft() {
-		Paper paper = new Paper(this.position, true);
+		
+		gameworld.add(new Paper(this.position, true));
 	}
 
 	public void throwRight() {
-		Paper paper = new Paper(this.position, false);
+
+		gameworld.add(new Paper(this.position, false));
 	}
 
 	public void moveRight(){

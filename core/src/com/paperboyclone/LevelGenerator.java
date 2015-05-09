@@ -110,7 +110,7 @@ public class LevelGenerator {
 	}
 	
 	
-	public static BasicGameEntity createRandomObstacle(float positionY){
+	public static Obstacle createRandomObstacle(float positionY){
 		
 		
 		ObstacleTypes randomType = ObstacleTypes.getRandomType();
@@ -120,17 +120,17 @@ public class LevelGenerator {
 			
 			case OB_1:
 				
-				return new BasicGameEntity(position, Assets.getTexture("obstacleT_1.png"));
+				return new Obstacle(position, Assets.getTexture("obstacleT_1.png"));
 				
 			case OB_2:
 				
-				return new BasicGameEntity(position,  Assets.getTexture("obstacleT_2.png"));
+				return new Obstacle(position,  Assets.getTexture("obstacleT_2.png"));
 
 			case OB_3:
-				return new BasicGameEntity(position,  Assets.getTexture("obstacleT_3.png"));
+				return new Obstacle(position,  Assets.getTexture("obstacleT_3.png"));
 
 			default:
-				return new BasicGameEntity();
+				return new Obstacle();
 
 		
 		}

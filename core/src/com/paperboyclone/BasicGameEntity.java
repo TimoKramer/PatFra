@@ -3,10 +3,11 @@ package com.paperboyclone;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-public class BasicGameEntity {
+public class BasicGameEntity implements IBasicGameEntity{
 
 	//Position des Objekts in der Welt
 	protected Vector2 position;
@@ -16,15 +17,21 @@ public class BasicGameEntity {
 	//Kollisions Rechteck, erstmal unwichtig
 	protected Rectangle BoundingBox;
 	
+	protected GameWorld gameworld;
 	
 	public BasicGameEntity(Vector2 position, Texture texture){
-		this.position = position;
+		this.position = new Vector2(position);
 		this.sprite = new Sprite(texture);
+		gameworld = null;
 	}
 	
 	public BasicGameEntity(){
-		position = new Vector2(0,0);
+		position = new Vector2(0f,0f);
 		sprite = new Sprite();
+	}
+	
+	public void setGameWorld(GameWorld gameworld){
+		this.gameworld = gameworld;
 	}
 	
 	public void setTexture(Texture texture){
@@ -37,11 +44,11 @@ public class BasicGameEntity {
 	}
 	
 	public void setPosition(Vector2 Position){
-		position = Position;
+		position = new Vector2(Position);
 	}
 	
 	public Vector2 getPosition(){
-		return position;		
+		return new Vector2(position);		
 	}
 	
 	public void drawSprite(Batch batch){
@@ -54,6 +61,19 @@ public class BasicGameEntity {
 		return sprite;
 		
 	}
+
+	
+	public void update(float delta) {
+		
+		
+	}
+
+	public void draw(SpriteBatch batch) {
+		drawSprite(batch);
+		
+	}
+
+
 	
 	
 }

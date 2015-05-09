@@ -18,11 +18,11 @@ public class GameScreen extends BasicScreen{
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
-	private Array<House> Houses;
 	
-	private Array<BasicGameEntity>Obstacles;
 	private long lastSpawnTime;
 	private long currentSpawnDelay;
+	
+	private GameWorld gameworld;
 	
 	public GameScreen(PaperboyClone app) {
 		super(app);
@@ -39,13 +39,17 @@ public class GameScreen extends BasicScreen{
 				);
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-		
-		Houses = new Array<House>(LevelGenerator.generateHouses());
-		
-		Obstacles = new Array<BasicGameEntity>();
+
 		lastSpawnTime = TimeUtils.millis();
 		currentSpawnDelay = (1 + MathUtils.random(0,1))* 1000;
 		
+		gameworld = new GameWorld();
+		for(House h : LevelGenerator.generateHouses()){
+			gameworld.add(h);
+		}
+		gameworld.add(player);
+		
+				
 	
 	}
 	
@@ -68,7 +72,7 @@ public class GameScreen extends BasicScreen{
 		checkForPlayerMovement(delta);
 		checkForNextObstacleSpawn();
 	 
-	    player.update(delta);
+	    gameworld.update(delta);
 	    //Kamera auf Spieler-Position setzen
 	    camera.position.set(player.getPosition().x,player.getPosition().y+300,0);
 		
@@ -80,17 +84,10 @@ public class GameScreen extends BasicScreen{
 	
 	//alles was angezeigt werden muss
 	private void draw(){
+		
 		background.draw(App.batch);
-		player.drawSprite(App.batch);
+		gameworld.draw(App.batch, camera);
 		
-		for(House h : Houses){
-			//todo: nur rendern was auf dem screen zu sehen ist
-			h.draw(App.batch);
-		}
-		
-		for(BasicGameEntity e : Obstacles){
-			e.drawSprite(App.batch);
-		}
 	}
 
 	
@@ -99,8 +96,8 @@ public class GameScreen extends BasicScreen{
 		long currentTime = TimeUtils.millis();
 		if(lastSpawnTime + currentSpawnDelay <= currentTime){
 			
-			BasicGameEntity e = LevelGenerator.createRandomObstacle(camera.position.y + camera.viewportHeight/2);
-			Obstacles.add(e);
+			Obstacle e = LevelGenerator.createRandomObstacle(camera.position.y + camera.viewportHeight/2);
+			gameworld.add(e);
 			lastSpawnTime = currentTime;
 			currentSpawnDelay = (1 + MathUtils.random(0,2))* 1000;
 		}
@@ -123,6 +120,13 @@ public class GameScreen extends BasicScreen{
 		}
 		else {
 			player.moveStraight();
+		}
+		
+		if(Gdx.input.isKeyPressed(Keys.Y)){
+			player.throwLeft();
+		}
+		else if(Gdx.input.isKeyPressed(Keys.X)){
+			player.throwRight();
 		}
 	}
 			
