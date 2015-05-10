@@ -19,6 +19,7 @@ public class GameWorld {
 		 Objects.put(Paper.class, new Array<IBasicGameEntity>());
 		 Objects.put(Obstacle.class, new Array<IBasicGameEntity>());
 		 Objects.put(House.class, new Array<IBasicGameEntity>());
+		 Objects.put(PaperPile.class, new Array<IBasicGameEntity>());
 		 
 		 Tasks = new Array<ITask>();
 		
@@ -75,6 +76,10 @@ public class GameWorld {
 	
 	public void add(Paper paper){
 		add(paper,Paper.class);
+	}
+	
+	public void add(PaperPile paperPile) {
+		add(paperPile, PaperPile.class);
 	}
 	
 	//getObjects(House.class) ...

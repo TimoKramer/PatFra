@@ -1,15 +1,10 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
 
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
@@ -45,10 +40,12 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(player);
 		gameworld.add(new CollisionTask<Player, Obstacle>(Player.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Player, House>(Player.class, House.class));
+		gameworld.add(new CollisionTask<Player, PaperPile>(Player.class, PaperPile.class));
 		gameworld.add(new CollisionTask<Paper, Obstacle>(Paper.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Paper, House>(Paper.class, House.class));
 		//todo: Mailbox CollisionChecks 
 		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
+		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
 
 	}
 	

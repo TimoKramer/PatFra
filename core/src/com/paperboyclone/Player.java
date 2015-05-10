@@ -3,7 +3,6 @@ package com.paperboyclone;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player extends BasicGameEntity {
@@ -46,11 +45,11 @@ public class Player extends BasicGameEntity {
 	}
 
 	public void moveRight(){
-		velocity.x = 100f;
+		velocity.x = 200f;
 	}
 
 	public void moveLeft(){
-		velocity.x = -100f;
+		velocity.x = -200f;
 	}
 
 	public void moveStraight(){
@@ -105,6 +104,9 @@ public class Player extends BasicGameEntity {
 			
 			System.out.println("Player: collision with obstacle");
 			
+		}
+		if(Type == PaperPile.class) {
+			System.out.println("Player: collision with paperpile");
 		}
 	
 		

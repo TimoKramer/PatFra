@@ -50,6 +50,6 @@ public abstract class SpawnTask implements ITask{
 		
 	}
 	
-	protected abstract void  spawn(GameWorld gamewworld);
+	protected abstract void spawn(GameWorld gamewworld);
 	
 }

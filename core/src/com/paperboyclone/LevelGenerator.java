@@ -14,6 +14,7 @@ public class LevelGenerator {
 	private static final float SubscriberRate = 0.66f;
 
 	private static ObjectMap<ObstacleTypes, Array<Float>> ObstacleSpawnLocations;
+	private static Array<Float> PaperPileSpawnLocations = new Array<Float>();
 	
 	
 	static {
@@ -40,7 +41,11 @@ public class LevelGenerator {
 				1224f,
 				730f	
 		});
-
+		//Moegliche Positionen an denen Zeitungsstapel erstellt werden koennen
+		PaperPileSpawnLocations.addAll(new Float[] {
+				615f,
+				1350f
+		});
 		
 	}
 	
@@ -133,9 +138,13 @@ public class LevelGenerator {
 				return new Obstacle();
 
 		
-		}
+		}	
+	}
 	
+	public static PaperPile createRandomPaperPile(float positionY) {
 		
-		
+		Vector2 position = new Vector2(PaperPileSpawnLocations.random(), positionY);
+		System.out.println("Creating PaperPile at " + position.toString());
+		return new PaperPile(position);
 	}
 }

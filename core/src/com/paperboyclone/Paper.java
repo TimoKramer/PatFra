@@ -1,9 +1,5 @@
 package com.paperboyclone;
 
-import sun.font.TextRecord;
-
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 public class Paper extends BasicGameEntity {
@@ -25,11 +21,6 @@ public class Paper extends BasicGameEntity {
 		}
 	}
 	
-	public Paper(Vector2 position, Texture texture){
-		super(position, texture);
-	}
-	
-	
 	public void update(float delta){
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
@@ -37,6 +28,7 @@ public class Paper extends BasicGameEntity {
 	
 	public Paper(){
 		super();
+		this.isThrownLeft = true;
 	}
 	
 }

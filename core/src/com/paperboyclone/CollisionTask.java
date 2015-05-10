@@ -1,9 +1,9 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.utils.Array;
+
 //kollisions check zwischen zwei Objekten
 public class CollisionTask<T, K> implements ITask{
-
 	
 	private java.lang.Class<T>a;
 	private java.lang.Class<K>b;
