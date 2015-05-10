@@ -97,6 +97,19 @@ public class Player extends BasicGameEntity {
 			isThrown = false;
 		}
 	}
+	
+	
+	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
+		
+		if(Type == Obstacle.class){
+			
+			System.out.println("Player: collision with obstacle");
+			
+		}
+	
+		
+	}
+
 
 
 }
