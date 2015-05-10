@@ -18,10 +18,10 @@ public class Paper extends BasicGameEntity {
 		this.velocity = new Vector2(0f,0f);
 		
 		if(this.isThrownLeft){
-			velocity.x = -500f;
+			this.velocity = new Vector2(-500f, 500f); 
 		}
 		else{
-			velocity.x = 500f;
+			this.velocity = new Vector2(500f, 500f);
 		}
 	}
 	
@@ -32,8 +32,7 @@ public class Paper extends BasicGameEntity {
 	
 	public void update(float delta){
 		this.position.x += velocity.x * delta;
-		//this.position.y += velocity.y * delta;
-		//System.out.println("Geschwindigkeitsvektor: " + velocity.toString());
+		this.position.y += velocity.y * delta;
 	}
 	
 	public Paper(){

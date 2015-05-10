@@ -8,7 +8,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Player extends BasicGameEntity {
 
-	private Vector2 velocity; 
+	private Vector2 velocity;
+	private boolean isThrown;
 
 
 	public Player(Vector2 position, Texture texture){
@@ -26,17 +27,22 @@ public class Player extends BasicGameEntity {
 		checkForMovement(delta);
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
-		//System.out.println("Geschwindigkeitsvektor: " + velocity.toString());
 	}
 
 	public void throwLeft() {
 		
-		gameworld.add(new Paper(this.position, true));
+		gameworld.add(new Paper(new Vector2(
+				this.position.x,
+				this.position.y + this.sprite.getHeight()/2),
+				true));
 	}
 
 	public void throwRight() {
 
-		gameworld.add(new Paper(this.position, false));
+		gameworld.add(new Paper(new Vector2(
+				this.position.x + this.sprite.getWidth(),
+				this.position.y + this.sprite.getHeight()/2),
+				false));
 	}
 
 	public void moveRight(){
@@ -78,15 +84,17 @@ public class Player extends BasicGameEntity {
 		else if(Gdx.input.isKeyPressed(Keys.UP)) {
 			moveFaster(delta);
 		}
-		else {
-			moveStraight();
-		}
-		
-		if(Gdx.input.isKeyPressed(Keys.Y)){
-			throwLeft();
+		else if(Gdx.input.isKeyPressed(Keys.Y)){
+			if(!isThrown) throwLeft();
+			isThrown = true;
 		}
 		else if(Gdx.input.isKeyPressed(Keys.X)){
-			throwRight();
+			if(!isThrown) throwRight();
+			isThrown = true;
+		}
+		else {
+			moveStraight();
+			isThrown = false;
 		}
 	}
 
