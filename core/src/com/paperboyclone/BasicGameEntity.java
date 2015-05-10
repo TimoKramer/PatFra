@@ -14,14 +14,15 @@ public class BasicGameEntity implements IBasicGameEntity{
 	//Darstellung des Objekts
 	protected Sprite sprite;
 	
-	//Kollisions Rechteck, erstmal unwichtig
-	protected Rectangle BoundingBox;
+	//Kollisions Rechteck
+	protected Rectangle boundingBox;
 	
 	protected GameWorld gameworld;
 	
 	public BasicGameEntity(Vector2 position, Texture texture){
 		this.position = new Vector2(position);
 		this.sprite = new Sprite(texture);
+		boundingBox = new Rectangle(0,0,sprite.getWidth(),sprite.getHeight());
 		gameworld = null;
 	}
 	
@@ -71,6 +72,23 @@ public class BasicGameEntity implements IBasicGameEntity{
 	public void draw(SpriteBatch batch) {
 		drawSprite(batch);
 		
+	}
+
+
+
+	@Override
+	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void setBoundingBox(Rectangle newBoundingBox){
+		boundingBox = new Rectangle(newBoundingBox);
+	}
+
+	public Rectangle getBoundingBox() {
+		
+		return new Rectangle(position.x + boundingBox.x,position.y + boundingBox.y, boundingBox.width, boundingBox.height);
 	}
 
 

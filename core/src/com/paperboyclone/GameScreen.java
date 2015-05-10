@@ -19,10 +19,8 @@ public class GameScreen extends BasicScreen{
 	private OrthographicCamera camera;
 	private BackgroundManager background;
 	
-	private long lastSpawnTime;
-	private long currentSpawnDelay;
-	
 	private GameWorld gameworld;
+	CollisionTask<Player, Obstacle> t;
 	
 	public GameScreen(PaperboyClone app) {
 		super(app);
@@ -39,18 +37,19 @@ public class GameScreen extends BasicScreen{
 				);
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-
-		lastSpawnTime = TimeUtils.millis();
-		currentSpawnDelay = (1 + MathUtils.random(0,1))* 1000;
 		
 		gameworld = new GameWorld();
 		for(House h : LevelGenerator.generateHouses()){
 			gameworld.add(h);
 		}
 		gameworld.add(player);
-		
-				
-	
+		gameworld.add(new CollisionTask<Player, Obstacle>(Player.class, Obstacle.class));
+		gameworld.add(new CollisionTask<Player, House>(Player.class, House.class));
+		gameworld.add(new CollisionTask<Paper, Obstacle>(Paper.class, Obstacle.class));
+		gameworld.add(new CollisionTask<Paper, House>(Paper.class, House.class));
+		//todo: Mailbox CollisionChecks 
+		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
+
 	}
 	
 	public void render(float delta) {
@@ -69,9 +68,6 @@ public class GameScreen extends BasicScreen{
 	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
 	private void update(float delta){
 		
-		
-		checkForNextObstacleSpawn();
-	 
 	    gameworld.update(delta);
 	    //Kamera auf Spieler-Position setzen
 	    camera.position.set(player.getPosition().x,player.getPosition().y+300,0);
@@ -89,21 +85,6 @@ public class GameScreen extends BasicScreen{
 		gameworld.draw(App.batch, camera);
 		
 	}
-
-	
-	private void checkForNextObstacleSpawn(){
-		
-		long currentTime = TimeUtils.millis();
-		if(lastSpawnTime + currentSpawnDelay <= currentTime){
-			
-			Obstacle e = LevelGenerator.createRandomObstacle(camera.position.y + camera.viewportHeight/2);
-			gameworld.add(e);
-			lastSpawnTime = currentTime;
-			currentSpawnDelay = (1 + MathUtils.random(0,2))* 1000;
-		}
-		//todo: obstacles ausserhalb des screen loeschen
-	}
-	
 
 			
 	public void dispose(){

@@ -1,11 +1,15 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 public interface IBasicGameEntity {
 		
 	
 	public void update(float delta);
 	public void draw(SpriteBatch batch);
+	public Rectangle getBoundingBox();
 	public void setGameWorld(GameWorld gameworld);
+	public <T> void onCollision(IBasicGameEntity collidedObject, java.lang.Class<T> Type);
+	
 }

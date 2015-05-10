@@ -11,14 +11,16 @@ import com.badlogic.gdx.utils.ObjectMap;
 public class GameWorld {
 
 	private ObjectMap<Class<?>, Array<IBasicGameEntity>> Objects;
-	
+	private Array<ITask>Tasks;
 	
 	public GameWorld(){
 		 Objects = new ObjectMap<Class<?>, Array<IBasicGameEntity>>();
-		 Objects.put(Player.class, new Array<IBasicGameEntity>());
+		 Objects.put(Player.class, new Array<IBasicGameEntity>(1));
 		 Objects.put(Paper.class, new Array<IBasicGameEntity>());
 		 Objects.put(Obstacle.class, new Array<IBasicGameEntity>());
 		 Objects.put(House.class, new Array<IBasicGameEntity>());
+		 
+		 Tasks = new Array<ITask>();
 		
 	}
 	
@@ -26,6 +28,10 @@ public class GameWorld {
 	
 	public void update(float delta){
 		
+		
+		for(ITask t : Tasks){
+			t.doTask(this);
+		}
 		
 		for(Array<IBasicGameEntity> a : Objects.values()){
 			
@@ -75,5 +81,9 @@ public class GameWorld {
 	public <T> Array<IBasicGameEntity>getAll(java.lang.Class<T> type){
 		return Objects.get(type);
 				
+	}
+	
+	public void add(ITask task){
+		Tasks.add(task);
 	}
 }
