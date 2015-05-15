@@ -6,16 +6,18 @@ import com.badlogic.gdx.math.Vector2;
 public class Mailbox extends BasicGameEntity{
 	
 	private boolean full;
+	private boolean subscriber;
 	
 	public Mailbox(Vector2 position,Texture texture){
 		super(position,texture);
 		full = false;
-		
+		subscriber = false;
 	}
+	
 	public Mailbox(){
 		super();
 		full = false;
-		
+		subscriber = false;
 	}
 	
 	public boolean isFull(){
@@ -28,4 +30,12 @@ public class Mailbox extends BasicGameEntity{
 		//todo texture aendern -> mailbox_full.png
 	}
 	
+	public void subscribe(){
+		subscriber = true;
+	}
+	
+	public boolean isSubscriber(){
+		return subscriber;
+	}
+
 }

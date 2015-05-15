@@ -22,24 +22,28 @@ public class Paper extends BasicGameEntity {
 		playerStatsListener = new PlayerStatsListener();
 	}
 	
-	public void update(float delta){
-		this.position.x += velocity.x * delta;
-		this.position.y += velocity.y * delta;
-	}
-	
 	public Paper(){
 		super();
 		this.isThrownLeft = true;
 	}
 	
-	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
+	public void update(float delta){
+		this.position.x += velocity.x * delta;
+		this.position.y += velocity.y * delta;
+	}
 		
+	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Mailbox.class){
-			playerStatsListener.hitSubscriberMailbox();
-			
+			Mailbox mailbox = (Mailbox) convertInstanceOfObject(collidedObject, Type);
+			if(mailbox.isSubscriber()) {
+				playerStatsListener.hitSubscriberMailbox();		
+			} 
 		}
 		if(Type == House.class) {
-			playerStatsListener.hitSubscriberHouse();
+			House house = (House) convertInstanceOfObject(collidedObject, Type);
+			if(house.isSubscriber()) {
+				playerStatsListener.hitSubscriberHouse();
+			}
 		}
 	
 		

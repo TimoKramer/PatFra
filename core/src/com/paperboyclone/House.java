@@ -27,6 +27,7 @@ public class House extends BasicGameEntity{
 	
 	public void subscribe(){
 		subscriber = true;
+		mailbox.subscribe();
 		mailbox.setTexture(Assets.getTexture("mailbox_empty_subscriber.png"));
 	}
 	

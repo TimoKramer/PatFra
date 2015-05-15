@@ -108,7 +108,6 @@ public class Player extends BasicGameEntity {
 		if(Type == PaperPile.class) {
 			playerStatsListener.pickupPaperPile();
 		}
-	
 		
 	}
 
