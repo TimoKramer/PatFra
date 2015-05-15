@@ -11,5 +11,6 @@ public interface IBasicGameEntity {
 	public Rectangle getBoundingBox();
 	public void setGameWorld(GameWorld gameworld);
 	public <T> void onCollision(IBasicGameEntity collidedObject, java.lang.Class<T> Type);
+	public <T> void notColliding(IBasicGameEntity collidedObject, java.lang.Class<T> Type);
 	
 }

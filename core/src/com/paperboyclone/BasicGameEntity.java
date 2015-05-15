@@ -82,6 +82,12 @@ public class BasicGameEntity implements IBasicGameEntity{
 		
 	}
 	
+	@Override
+	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void setBoundingBox(Rectangle newBoundingBox){
 		boundingBox = new Rectangle(newBoundingBox);
 	}
@@ -98,7 +104,5 @@ public class BasicGameEntity implements IBasicGameEntity{
 			return null;
 		}
 	}
-
-	
 	
 }

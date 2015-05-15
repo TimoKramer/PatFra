@@ -9,6 +9,10 @@ public class PlayerStatsListener {
 	public void crashWithObstacle() {
 		playerStats.liveDown(1);
 	}
+	
+	public void crashWithHouse() {
+		playerStats.liveDown(1);
+	}
 
 	public void hitSubscriberMailbox() {
 		playerStats.scoreUp(100);

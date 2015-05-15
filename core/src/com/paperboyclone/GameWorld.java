@@ -65,6 +65,10 @@ public class GameWorld {
 		add(house,House.class);
 	}
 	
+	public void add(Mailbox mailbox) {
+		add(mailbox, Mailbox.class);
+	}
+	
 	public void add(Obstacle obstacle){
 		add(obstacle,Obstacle.class);
 	}

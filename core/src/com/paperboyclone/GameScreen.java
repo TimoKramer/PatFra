@@ -46,6 +46,7 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new CollisionTask<Player, PaperPile>(Player.class, PaperPile.class));
 		gameworld.add(new CollisionTask<Paper, Obstacle>(Paper.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Paper, House>(Paper.class, House.class));
+		gameworld.add(new CollisionTask<Paper, Mailbox>(Paper.class, Mailbox.class));
 		//todo: Mailbox CollisionChecks 
 		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));

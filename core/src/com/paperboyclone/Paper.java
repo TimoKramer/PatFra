@@ -7,6 +7,8 @@ public class Paper extends BasicGameEntity {
 	private PlayerStatsListener playerStatsListener;
 	private boolean isThrownLeft;
 	private Vector2 velocity;
+	private boolean isCollidingWithMailbox;
+	private boolean isCollidingWithHouse;
 	
 	public Paper(Vector2 position, boolean isThrownLeft) {
 		super(position, Assets.getTexture("yellowCircle.png"));
@@ -35,19 +37,32 @@ public class Paper extends BasicGameEntity {
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Mailbox.class){
 			Mailbox mailbox = (Mailbox) convertInstanceOfObject(collidedObject, Type);
-			if(mailbox.isSubscriber()) {
-				playerStatsListener.hitSubscriberMailbox();		
-			} 
+			if(!this.isCollidingWithMailbox) {
+				if(mailbox.isSubscriber()) {
+					playerStatsListener.hitSubscriberMailbox();		
+				} 
+			}
+			isCollidingWithMailbox = true;
 		}
 		if(Type == House.class) {
 			House house = (House) convertInstanceOfObject(collidedObject, Type);
-			if(house.isSubscriber()) {
-				playerStatsListener.hitSubscriberHouse();
+			if(!this.isCollidingWithHouse) {
+				if(house.isSubscriber()) {
+					playerStatsListener.hitSubscriberHouse();
+				}
 			}
+			isCollidingWithHouse = true;
 		}
-	
-		
+		// TODO: destroy Paper-Object
 	}
 
-	
+	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
+		if(Type == Mailbox.class) {
+			this.isCollidingWithMailbox = false;
+		}
+		if(Type == House.class) {
+			this.isCollidingWithHouse = false;
+		}
+	}
+
 }

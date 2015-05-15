@@ -98,19 +98,5 @@ public class Player extends BasicGameEntity {
 			isThrown = false;
 		}
 	}
-	
-	
-	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
-		
-		if(Type == Obstacle.class){
-			playerStatsListener.crashWithObstacle();
-		}
-		if(Type == PaperPile.class) {
-			playerStatsListener.pickupPaperPile();
-		}
-		
-	}
-
-
 
 }

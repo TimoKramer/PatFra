@@ -9,6 +9,7 @@ public class CollisionTask<T, K> implements ITask{
 	private java.lang.Class<K>b;
 	
 	public CollisionTask(java.lang.Class<T> typeA, java.lang.Class<K> typeB){
+		
 		a = typeA;
 		b = typeB;
 	}
@@ -24,12 +25,13 @@ public class CollisionTask<T, K> implements ITask{
 			for(IBasicGameEntity ob2 : objectsB){
 
 				if(ob1.getBoundingBox().overlaps(ob2.getBoundingBox())){
-					ob1.onCollision(ob2,b);
-					ob2.onCollision(ob1,a);
+					ob1.onCollision(ob2, b);
+					ob2.onCollision(ob1, a);
+				} else {
+					ob1.notColliding(ob2, b);
+					ob2.notColliding(ob1, a);
 				}
-				
 			}
-			
 		}
 	}
 	

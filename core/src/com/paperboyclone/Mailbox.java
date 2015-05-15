@@ -7,6 +7,8 @@ public class Mailbox extends BasicGameEntity{
 	
 	private boolean full;
 	private boolean subscriber;
+	private boolean isCollidingWithPlayer;
+	private PlayerStatsListener playerStatsListener;
 	
 	public Mailbox(Vector2 position,Texture texture){
 		super(position,texture);
@@ -36,6 +38,21 @@ public class Mailbox extends BasicGameEntity{
 	
 	public boolean isSubscriber(){
 		return subscriber;
+	}
+	
+	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
+		if(Type == Player.class){
+			if(!this.isCollidingWithPlayer) {
+				playerStatsListener.crashWithHouse();
+			}
+			this.isCollidingWithPlayer = true;
+		}
+	}
+
+	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
+		if(Type == Player.class) {
+			this.isCollidingWithPlayer = false;
+		}
 	}
 
 }
