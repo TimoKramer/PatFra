@@ -147,4 +147,5 @@ public class LevelGenerator {
 		System.out.println("Creating PaperPile at " + position.toString());
 		return new PaperPile(position);
 	}
+	
 }

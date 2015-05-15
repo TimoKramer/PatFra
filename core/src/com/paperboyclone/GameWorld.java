@@ -1,7 +1,5 @@
 package com.paperboyclone;
 
-
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
@@ -20,6 +18,7 @@ public class GameWorld {
 		 Objects.put(Obstacle.class, new Array<IBasicGameEntity>());
 		 Objects.put(House.class, new Array<IBasicGameEntity>());
 		 Objects.put(PaperPile.class, new Array<IBasicGameEntity>());
+		 Objects.put(Mailbox.class, new Array<IBasicGameEntity>());
 		 
 		 Tasks = new Array<ITask>();
 		

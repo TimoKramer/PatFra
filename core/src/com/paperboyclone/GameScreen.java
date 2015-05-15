@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 public class GameScreen extends BasicScreen{
 
 	BitmapFont font;
+	PlayerStats stats;
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
@@ -17,10 +18,12 @@ public class GameScreen extends BasicScreen{
 	private GameWorld gameworld;
 	CollisionTask<Player, Obstacle> t;
 	
+	
 	public GameScreen(PaperboyClone app) {
 		super(app);
 		
 		font = new BitmapFont();
+		stats = PlayerStats.getInstance();
 		//Groesse der Kamera noch unklar
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.position.set(1000, Gdx.graphics.getHeight(),0);
@@ -46,13 +49,11 @@ public class GameScreen extends BasicScreen{
 		//todo: Mailbox CollisionChecks 
 		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
-
 	}
 	
 	public void render(float delta) {
 	
 	    update(delta);
-	    
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
@@ -66,6 +67,7 @@ public class GameScreen extends BasicScreen{
 	private void update(float delta){
 		
 	    gameworld.update(delta);
+	    //stats.update();
 	    //Kamera auf Spieler-Position setzen
 	    camera.position.set(player.getPosition().x,player.getPosition().y+300,0);
 		
@@ -80,7 +82,7 @@ public class GameScreen extends BasicScreen{
 		
 		background.draw(App.batch);
 		gameworld.draw(App.batch, camera);
-		
+		stats.draw(App.batch, camera);
 	}
 
 			

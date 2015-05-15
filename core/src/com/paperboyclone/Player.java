@@ -9,18 +9,18 @@ public class Player extends BasicGameEntity {
 
 	private Vector2 velocity;
 	private boolean isThrown;
-
-
+	private PlayerStatsListener playerStatsListener;
+	
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
 		velocity = new Vector2(0f, 300f);
-
+		playerStatsListener = new PlayerStatsListener();
 	}
 
 	public Player(){
 		super();
 	}
-
+	
 	public void update(float delta){
 		
 		checkForMovement(delta);
@@ -34,6 +34,7 @@ public class Player extends BasicGameEntity {
 				this.position.x,
 				this.position.y + this.sprite.getHeight()/2),
 				true));
+		playerStatsListener.throwPaper();
 	}
 
 	public void throwRight() {
@@ -42,6 +43,7 @@ public class Player extends BasicGameEntity {
 				this.position.x + this.sprite.getWidth(),
 				this.position.y + this.sprite.getHeight()/2),
 				false));
+		playerStatsListener.throwPaper();
 	}
 
 	public void moveRight(){
@@ -101,12 +103,10 @@ public class Player extends BasicGameEntity {
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		
 		if(Type == Obstacle.class){
-			
-			System.out.println("Player: collision with obstacle");
-			
+			playerStatsListener.crashWithObstacle();
 		}
 		if(Type == PaperPile.class) {
-			System.out.println("Player: collision with paperpile");
+			playerStatsListener.pickupPaperPile();
 		}
 	
 		
