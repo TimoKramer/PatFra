@@ -67,7 +67,7 @@ public class GameScreen extends BasicScreen{
 	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
 	private void update(float delta){
 		
-	    gameworld.update(delta);
+	    gameworld.update(delta, camera);
 	    //stats.update();
 	    //Kamera auf Spieler-Position setzen
 	    camera.position.set(player.getPosition().x,player.getPosition().y+300,0);

@@ -28,7 +28,7 @@ public class GameWorld {
 	
 
 	
-	public void update(float delta){
+	public void update(float delta, OrthographicCamera camera){
 		
 		
 		for(ITask t : Tasks){
@@ -42,6 +42,21 @@ public class GameWorld {
 			}
 		}
 		
+		cleanUp(camera);
+	}
+	
+	private void cleanUp(OrthographicCamera camera){
+		//falls Objekt aus Bild raus (Auswertung ueber obere Kante des Objekts und untere Kante der Kamera) -> Objekt loeschen 
+		float camY = camera.position.y - camera.viewportHeight/2;
+		for(Array<IBasicGameEntity> a : Objects.values()){
+			
+			for(IBasicGameEntity i : a){
+				float pY = i.getBoundingBox().y + i.getBoundingBox().height;
+				if(pY < camY){
+					erase(i,i.getClass());
+				}
+			}
+		}
 		
 	}
 	
