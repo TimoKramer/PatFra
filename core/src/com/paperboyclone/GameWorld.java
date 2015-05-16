@@ -1,6 +1,7 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
@@ -10,6 +11,7 @@ public class GameWorld {
 
 	private ObjectMap<Class<?>, Array<IBasicGameEntity>> Objects;
 	private Array<ITask>Tasks;
+	private BitmapFont font;
 	
 	public GameWorld(){
 		 Objects = new ObjectMap<Class<?>, Array<IBasicGameEntity>>();
@@ -21,7 +23,7 @@ public class GameWorld {
 		 Objects.put(Mailbox.class, new Array<IBasicGameEntity>());
 		 
 		 Tasks = new Array<ITask>();
-		
+		 font = new BitmapFont();
 	}
 	
 
@@ -53,6 +55,26 @@ public class GameWorld {
 				}
 		}
 	
+		
+	}
+	
+	public void drawWorldInfos(SpriteBatch batch, OrthographicCamera camera){
+		
+		float x = camera.position.x + (float) (camera.viewportWidth * 0.8f) /2;
+		float y = camera.position.y + (float) (camera.viewportHeight * 0.95f) /2;
+		
+	
+		font.draw(batch, "Houses: " +Objects.get(House.class).size, x, y);
+		y-=20;
+		font.draw(batch, "Obstacles: " +Objects.get(Obstacle.class).size, x, y);
+		y-=20;
+		font.draw(batch, "Papers: " +Objects.get(Paper.class).size, x, y);
+		y-=20;
+		font.draw(batch, "Paper Piles: " +Objects.get(PaperPile.class).size, x, y);
+		y-=20;
+		font.draw(batch, "Mailboxes: " +Objects.get(Mailbox.class).size, x, y);
+		
+		
 		
 	}
 	
@@ -89,6 +111,15 @@ public class GameWorld {
 	public <T> Array<IBasicGameEntity>getAll(java.lang.Class<T> type){
 		return Objects.get(type);
 				
+	}
+	
+	public <T> void erase(IBasicGameEntity e, java.lang.Class<T> type){
+		if(Objects.get(type).removeValue(e, false)){
+			System.out.println("GameWorld: Object removed!");
+		}
+		else{
+			System.out.println("GameWorld: removing failed \nCould not find the object");
+		}
 	}
 	
 	public void add(ITask task){

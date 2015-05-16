@@ -28,7 +28,9 @@ public class PaperPile extends BasicGameEntity {
 				playerStatsListener.pickupPaperPile();
 			}
 			this.isCollidingWithPlayer = true;
+			gameworld.erase(this, PaperPile.class);
 		}
+		
 	}
 
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {

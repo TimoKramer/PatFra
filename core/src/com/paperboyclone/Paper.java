@@ -43,6 +43,7 @@ public class Paper extends BasicGameEntity {
 				} 
 			}
 			isCollidingWithMailbox = true;
+			
 		}
 		if(Type == House.class) {
 			House house = (House) convertInstanceOfObject(collidedObject, Type);
@@ -54,6 +55,7 @@ public class Paper extends BasicGameEntity {
 			isCollidingWithHouse = true;
 		}
 		// TODO: destroy Paper-Object
+		gameworld.erase(this,Paper.class);
 	}
 
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {

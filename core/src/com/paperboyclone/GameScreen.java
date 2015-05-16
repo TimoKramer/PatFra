@@ -83,6 +83,7 @@ public class GameScreen extends BasicScreen{
 		
 		background.draw(App.batch);
 		gameworld.draw(App.batch, camera);
+		gameworld.drawWorldInfos(App.batch, camera);
 		stats.draw(App.batch, camera);
 	}
 
