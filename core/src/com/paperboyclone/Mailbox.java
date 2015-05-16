@@ -34,6 +34,7 @@ public class Mailbox extends BasicGameEntity{
 	
 	public void subscribe(){
 		subscriber = true;
+		setTexture(Assets.getTexture("mailbox_empty_subscriber.png"));
 	}
 	
 	public boolean isSubscriber(){

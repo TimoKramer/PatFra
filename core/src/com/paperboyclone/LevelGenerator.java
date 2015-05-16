@@ -49,19 +49,27 @@ public class LevelGenerator {
 		
 	}
 	
-	static public Array<House> generateHouses(){
+	static public ObjectMap<Class<?>, Array<IBasicGameEntity>> generateHousesAndMailboxes(){
 		
 		float y = 800;
 		float x = 1500;
 		String houseSprite;
 		
-		Array<House> Houses = new Array<House>();
+		ObjectMap<Class<?>, Array<IBasicGameEntity>> obj = new ObjectMap<Class<?>, Array<IBasicGameEntity>> ();
+		obj.put(House.class, new Array<IBasicGameEntity>());
+		obj.put(Mailbox.class, new Array<IBasicGameEntity>());
+		
+	
 		//rechte Seite
 		for(int i = 0 ; i<MaxHouses/2; i++){
 			
 			houseSprite = "house_"+MathUtils.random(1,4)+".png"; 
 			House h = new House(new Vector2(x, y), Assets.getTexture(houseSprite), Assets.getTexture("mailbox_empty.png"));
-			Houses.add(h);
+			obj.get(House.class).add(h);
+			
+			Mailbox m = new Mailbox(new Vector2(), Assets.getTexture("mailbox_empty.png"));
+			m.setPosition(h.position.x - m.getSprite().getWidth() - 20 , h.position.y + h.getSprite().getHeight() - m.getSprite().getHeight());
+			obj.get(Mailbox.class).add(m);
 			y+= h.getSprite().getHeight() + MathUtils.random(HouseMinSpace, HouseMaxSpace);
 		}
 		
@@ -73,7 +81,12 @@ public class LevelGenerator {
 			    houseSprite = "house_"+MathUtils.random(1,4)+".png"; 
 				House h = new House(new Vector2(x, y), Assets.getTexture(houseSprite), Assets.getTexture("mailbox_empty.png"));
 				h.flipRight();
-				Houses.add(h);
+				obj.get(House.class).add(h);
+				
+				Mailbox m = new Mailbox(new Vector2(), Assets.getTexture("mailbox_empty.png"));
+				m.setPosition(h.position.x + h.getSprite().getWidth() + 20, h.getPosition().y + h.getSprite().getHeight() - m.getSprite().getHeight());
+				m.getSprite().flip(true, false);
+				obj.get(Mailbox.class).add(m);
 			
 				y+= h.getSprite().getHeight() + MathUtils.random(HouseMinSpace, HouseMaxSpace);
 		}
@@ -83,7 +96,7 @@ public class LevelGenerator {
 		int subscribers = MathUtils.ceil((MaxHouses * SubscriberRate));
 		if(subscribers > MaxHouses){
 			System.out.println("LevelGenerator: Error, more subscriber than houses set");
-			return Houses;
+			return obj;
 		}
 		
 		int subscriberCounter = subscribers;
@@ -91,7 +104,7 @@ public class LevelGenerator {
 		while(subscriberCounter != 0){
 			
 			//zufaelliges Haus auswaehlen
-			House aHouse = Houses.random();
+			House aHouse = (House) obj.get(House.class).random();
 			//falls noch kein Abonnent -> zum Abonnenten machen
 			if(!aHouse.isSubscriber()){
 				aHouse.subscribe();
@@ -106,12 +119,19 @@ public class LevelGenerator {
 			}
 		}
 		
+		//Mailboxes mit House Subscriber synchronisieren
+		for(int i = 0; i<obj.get(House.class).size; i++){
+			if(((House) obj.get(House.class).get(i)).isSubscriber()){
+				((Mailbox) obj.get(Mailbox.class).get(i)).subscribe();
+			}
+		}
+		
 		String s = "LevelGenerator: Created %d Houses.\n";
-		System.out.printf(s,Houses.size);
+		System.out.printf(s,obj.get(House.class).size);
 		s = "LevelGenerator: Created %d subscribers in %d atempts.\n";
 		System.out.printf(s,subscribers, atempts);
 		
-		return Houses;
+		return obj;
 	}
 	
 	

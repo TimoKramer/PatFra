@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ObjectMap;
 
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
@@ -37,9 +39,15 @@ public class GameScreen extends BasicScreen{
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
 		gameworld = new GameWorld();
-		for(House h : LevelGenerator.generateHouses()){
-			gameworld.add(h);
+		
+		ObjectMap<Class<?>, Array<IBasicGameEntity>> HandM = LevelGenerator.generateHousesAndMailboxes();
+		for(IBasicGameEntity h: HandM.get(House.class)){
+			gameworld.add((House)h);
 		}
+		for(IBasicGameEntity m: HandM.get(Mailbox.class)){
+			gameworld.add((Mailbox)m);
+		}
+	
 		gameworld.add(player);
 		gameworld.add(new CollisionTask<Player, Obstacle>(Player.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Player, House>(Player.class, House.class));
