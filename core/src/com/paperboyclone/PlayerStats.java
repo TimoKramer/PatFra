@@ -11,6 +11,7 @@ public class PlayerStats {
 	private int papers;
 	private int lives;
 	BitmapFont HUDFont;
+	private boolean isPaperAvailable;
 	
 	private static final class InstanceHolder {
 		static final PlayerStats INSTANCE = new PlayerStats(0,  10, 5);
@@ -21,6 +22,7 @@ public class PlayerStats {
 		this.score = score;
 		this.papers = papers;
 		this.lives = lives;
+		this.isPaperAvailable = true;
 	}
 
 	public static synchronized PlayerStats getInstance() {
@@ -36,10 +38,16 @@ public class PlayerStats {
 	
 	public void paperUp(int paperCount) {
 		this.papers += paperCount;
+		this.isPaperAvailable = true;
 	}
 	
 	public void paperDown(int paperCount) {
-		this.papers -= paperCount;
+		if(this.isPaperAvailable) {
+			this.papers -= paperCount;
+		} 
+		if(this.papers == 0) {
+			this.isPaperAvailable = false;
+		}
 	}
 	
 	public void scoreUp(int scoreCount) {
@@ -50,4 +58,7 @@ public class PlayerStats {
 		this.lives -= liveCount;
 	}
 	
+	public boolean isPaperAvailable() {
+		return isPaperAvailable;
+	}
 }

@@ -29,21 +29,23 @@ public class Player extends BasicGameEntity {
 	}
 
 	public void throwLeft() {
-		
-		gameworld.add(new Paper(new Vector2(
+		if(playerStatsListener.isPaperAvailable()) {
+			gameworld.add(new Paper(new Vector2(
 				this.position.x,
 				this.position.y + this.sprite.getHeight()/2),
 				true));
-		playerStatsListener.throwPaper();
+			playerStatsListener.throwPaper();
+		}
 	}
 
 	public void throwRight() {
-
-		gameworld.add(new Paper(new Vector2(
-				this.position.x + this.sprite.getWidth(),
-				this.position.y + this.sprite.getHeight()/2),
-				false));
-		playerStatsListener.throwPaper();
+		if(playerStatsListener.isPaperAvailable()) {	
+			gameworld.add(new Paper(new Vector2(
+					this.position.x + this.sprite.getWidth(),
+					this.position.y + this.sprite.getHeight()/2),
+					false));
+			playerStatsListener.throwPaper();
+		}
 	}
 
 	public void moveRight(){

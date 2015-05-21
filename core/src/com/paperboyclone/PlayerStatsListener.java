@@ -29,4 +29,8 @@ public class PlayerStatsListener {
 	public void throwPaper() {
 		playerStats.paperDown(1);
 	}
+	
+	public boolean isPaperAvailable() {
+		return playerStats.isPaperAvailable();
+	}
 }
