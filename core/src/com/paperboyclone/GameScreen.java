@@ -16,6 +16,7 @@ public class GameScreen extends BasicScreen{
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
+	private MusicPlayer musicPlayer;
 	
 	private GameWorld gameworld;
 	CollisionTask<Player, Obstacle> t;
@@ -37,7 +38,7 @@ public class GameScreen extends BasicScreen{
 				);
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-		
+		musicPlayer = new MusicPlayer();
 		gameworld = new GameWorld();
 		
 		ObjectMap<Class<?>, Array<IBasicGameEntity>> HandM = LevelGenerator.generateHousesAndMailboxes();
@@ -55,9 +56,10 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new CollisionTask<Paper, Obstacle>(Paper.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Paper, House>(Paper.class, House.class));
 		gameworld.add(new CollisionTask<Paper, Mailbox>(Paper.class, Mailbox.class));
-		//todo: Mailbox CollisionChecks 
 		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
+		
+		musicPlayer.run();
 	}
 	
 	public void render(float delta) {
@@ -97,6 +99,6 @@ public class GameScreen extends BasicScreen{
 
 			
 	public void dispose(){
-		
+		musicPlayer.stop();
 	}
 }
