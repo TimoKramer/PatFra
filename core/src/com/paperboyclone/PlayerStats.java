@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.TimeUtils;
 
 public class PlayerStats {
 
@@ -60,5 +62,24 @@ public class PlayerStats {
 	
 	public boolean isPaperAvailable() {
 		return isPaperAvailable;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public HighScore getHighScore() {
+		int newScore = this.score; 
+		HighScore highScore = new HighScore();
+		highScore.setName("Player");
+		highScore.setTime(TimeUtils.millis()/1000L);
+		highScore.setScore(this.score);
+		
+		HighScore hs = new HighScore("Player2", TimeUtils.millis()/1000L, 666666666);
+		
+		Json json = new Json();
+		System.out.println(json.toJson(highScore));
+		System.out.println(json.toJson(hs));
+		return highScore;
 	}
 }

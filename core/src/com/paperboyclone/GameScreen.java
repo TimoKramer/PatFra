@@ -3,6 +3,7 @@ package com.paperboyclone;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -17,7 +18,7 @@ public class GameScreen extends BasicScreen{
 	private OrthographicCamera camera;
 	private BackgroundManager background;
 	private MusicPlayer musicPlayer;
-	
+	private long startTime;
 	private GameWorld gameworld;
 	CollisionTask<Player, Obstacle> t;
 	
@@ -59,6 +60,7 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
 		
+		startTime = System.currentTimeMillis();
 		musicPlayer.run();
 	}
 	
@@ -86,6 +88,11 @@ public class GameScreen extends BasicScreen{
 	    camera.update();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
+	    // Hier wird die Dauer des Spiels in Sekunden festgelegt
+	    if((System.currentTimeMillis() - startTime) / 1000 >= 2) {
+	    	App.setScreen(new HighScoreScreen(App, PlayerStats.getInstance().getHighScore()));
+	    	dispose();
+	    }
 	}
 	
 	//alles was angezeigt werden muss
@@ -100,5 +107,6 @@ public class GameScreen extends BasicScreen{
 			
 	public void dispose(){
 		musicPlayer.stop();
+		
 	}
 }
