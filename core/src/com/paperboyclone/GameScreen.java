@@ -34,7 +34,7 @@ public class GameScreen extends BasicScreen{
 		
 		player = new Player(
 				new Vector2(1000, Gdx.graphics.getHeight()),
-				Assets.getTexture("redCircle.png")
+				Assets.getTexture("Test_Character.png")
 				);
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));

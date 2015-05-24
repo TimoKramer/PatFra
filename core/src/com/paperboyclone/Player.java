@@ -3,6 +3,8 @@ package com.paperboyclone;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Player extends BasicGameEntity {
@@ -10,19 +12,35 @@ public class Player extends BasicGameEntity {
 	private Vector2 velocity;
 	private boolean isThrown;
 	private PlayerStatsListener playerStatsListener;
+	private AnimationManager animations;
 	
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
 		velocity = new Vector2(0f, 300f);
 		playerStatsListener = new PlayerStatsListener();
+		
+		animations = new AnimationManager();
+		animations.add("DRIVE_STRAIGHT", new SpriteSheetAnimation(new Rectangle(0,144,32,48),10f,4));
+		animations.add("DRIVE_LEFT", new SpriteSheetAnimation(new Rectangle(0,48,32,48),10f,4));
+		animations.add("DRIVE_RIGHT", new SpriteSheetAnimation(new Rectangle(0,94,32,48),10f,4));
+		animations.changeTo("DRIVE_STRAIGHT");
+		
+		Rectangle r = animations.getAnimationRegion();
+		setBoundingBox(new Rectangle(0,0,r.width, r.height));
+
 	}
 
 	public Player(){
 		super();
 	}
 	
+	public void draw(SpriteBatch batch){
+		Rectangle r = animations.getAnimationRegion();
+		batch.draw(sprite.getTexture(), position.x, position.y, r.width, r.height, (int)r.x, (int)r.y, (int)r.width, (int)r.height, false, false);			
+	}
+	
 	public void update(float delta){
-		
+		animations.updateCurrentAnimation(delta);
 		checkForMovement(delta);
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
@@ -32,7 +50,7 @@ public class Player extends BasicGameEntity {
 		if(playerStatsListener.isPaperAvailable()) {
 			gameworld.add(new Paper(new Vector2(
 				this.position.x,
-				this.position.y + this.sprite.getHeight()/2),
+				this.position.y + this.boundingBox.getHeight()/2),
 				true));
 			playerStatsListener.throwPaper();
 		}
@@ -41,8 +59,8 @@ public class Player extends BasicGameEntity {
 	public void throwRight() {
 		if(playerStatsListener.isPaperAvailable()) {	
 			gameworld.add(new Paper(new Vector2(
-					this.position.x + this.sprite.getWidth(),
-					this.position.y + this.sprite.getHeight()/2),
+					this.position.x + this.boundingBox.getWidth(),
+					this.position.y + this.boundingBox.getHeight()/2),
 					false));
 			playerStatsListener.throwPaper();
 		}
@@ -75,13 +93,15 @@ public class Player extends BasicGameEntity {
 	
 	public void checkForMovement(float delta) {
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			
+			animations.changeTo("DRIVE_RIGHT");
 			moveRight();
 		}
 		else if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+			animations.changeTo("DRIVE_LEFT");
 			moveLeft();
 		}
 		else if(Gdx.input.isKeyPressed(Keys.DOWN)) {
+			//TODO: Animationsspeed den Player Speed anpassen
 			moveSlower(delta);
 		}
 		else if(Gdx.input.isKeyPressed(Keys.UP)) {
@@ -96,6 +116,7 @@ public class Player extends BasicGameEntity {
 			isThrown = true;
 		}
 		else {
+			animations.changeTo("DRIVE_STRAIGHT");
 			moveStraight();
 			isThrown = false;
 		}
