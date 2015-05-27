@@ -33,6 +33,11 @@ public class LoadingScreen extends BasicScreen{
 		Assets.addTexture("Test_Character.png");
 		Assets.addMusic("8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3");
 		//hier weitere Assets die im Spiel gebraucht werden hinzufuegen
+		
+		if (!Gdx.files.external("PaperboyCloneHighScore.json").exists()) {
+			Gdx.files.external("PaperboyCloneHighScore.json").writeString("[]", false);
+		}
+		
 	}
 	
 	

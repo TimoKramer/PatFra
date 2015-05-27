@@ -1,5 +1,7 @@
 package com.paperboyclone;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -12,12 +14,14 @@ public class HighScoreScreen extends BasicScreen{
 	BitmapFont font;
 	String string;
 	FileHandle handle;
+	ArrayList<HighScore> highscoreList;
 	
 	public HighScoreScreen(PaperboyClone app) {
 		
 		super(app);
 		int highscore = HighScoreHandler.getInstance().getHighScore();
 		HighScoreHandler.getInstance().writeScore(highscore);
+		highscoreList = HighScoreHandler.getInstance().getHighscoreList();
 		
 		
 		font = new BitmapFont();
@@ -32,6 +36,10 @@ public class HighScoreScreen extends BasicScreen{
 		
 		font.setColor(Color.WHITE);
 		font.draw(App.batch, "Game Over!", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		font.draw(App.batch, String.valueOf(highscore), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		for (HighScore hs : this.highscoreList) {
+			font.draw(App.batch, String.valueOf(hs.score), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		}
 		
 		App.batch.end();
 		

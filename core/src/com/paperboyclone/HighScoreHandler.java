@@ -1,5 +1,7 @@
 package com.paperboyclone;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
@@ -8,6 +10,8 @@ import com.badlogic.gdx.utils.Json;
 public class HighScoreHandler {
 
 	private FileHandle handle;
+	private Json json = new Json();
+	protected ArrayList<HighScore> highscoreList = new ArrayList<HighScore>();
 	
 	private static final class InstanceHolder {
 		static final HighScoreHandler INSTANCE = new HighScoreHandler();
@@ -15,27 +19,41 @@ public class HighScoreHandler {
 	
 	private HighScoreHandler() {
 		handle = Gdx.files.external("PaperboyCloneHighScore.json");
-		if(!Gdx.files.external("PaperboyCloneHighScore.json").exists()) {
-			System.err.println("json existiert nicht in "+ System.getProperty("user.home") +"/ !");
-		}		
+		readFile();
 	}
 	
 	public static synchronized HighScoreHandler getInstance() {
 		return InstanceHolder.INSTANCE;
 	}
 
+	@SuppressWarnings("unchecked")
+	public void readFile() {
+		this.highscoreList = json.fromJson(ArrayList.class, handle);
+		System.out.println(json.prettyPrint(handle.readString()));
+	}
+	
+	public void initializeFile() {
+		handle.writeString("[]", false);
+	}
+	
+	public void writeFile() {
+		// http://badlogicgames.com/forum/viewtopic.php?t=15719&p=67947
+		json.setUsePrototypes(false);
+		json.toJson(highscoreList, handle);
+	}
+	
 	public void writeScore(int highScore) {
 		HighScore newHighScore = new HighScore("Player", System.currentTimeMillis(), highScore);
-		Json json = new Json();
-		json.setUsePrototypes(false);
-		System.out.println("Name: " + newHighScore.name);
-		System.out.println("HighScore: " + newHighScore.score);
-		System.out.println("Time: " + newHighScore.time);
-		this.handle.writeString(json.toJson(newHighScore), true);
+		this.highscoreList.add(newHighScore);
+		writeFile();
 	}
 	
 	public int getHighScore() {
 		return PlayerStats.getInstance().getScore();
+	}
+	
+	public ArrayList<HighScore> getHighscoreList() {
+		return highscoreList;
 	}
 }
 
@@ -49,6 +67,12 @@ class HighScore {
 		this.name = name;
 		this.time = time;
 		this.score = score;
+	}
+	
+	public HighScore() {
+		this.name = "StandardPlayer";
+		this.time = System.currentTimeMillis();
+		this.score = 0;
 	}
 	
 	public void setName(String name) {
