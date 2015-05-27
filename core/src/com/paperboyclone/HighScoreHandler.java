@@ -27,10 +27,10 @@ public class HighScoreHandler {
 	public void writeScore(int highScore) {
 		HighScore newHighScore = new HighScore("Player", System.currentTimeMillis(), highScore);
 		Json json = new Json();
+		json.setUsePrototypes(false);
 		System.out.println("Name: " + newHighScore.name);
 		System.out.println("HighScore: " + newHighScore.score);
 		System.out.println("Time: " + newHighScore.time);
-		System.out.println(json.prettyPrint(newHighScore));
 		this.handle.writeString(json.toJson(newHighScore), true);
 	}
 	
@@ -51,12 +51,6 @@ class HighScore {
 		this.score = score;
 	}
 	
-	public HighScore() {
-		this.name = "Player";
-		this.time = 0L;
-		this.score = 0;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
