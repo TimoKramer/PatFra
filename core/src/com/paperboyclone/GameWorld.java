@@ -129,10 +129,7 @@ public class GameWorld {
 	}
 	
 	public <T> void erase(IBasicGameEntity e, java.lang.Class<T> type){
-		if(Objects.get(type).removeValue(e, false)){
-			//System.out.println("GameWorld: Object removed!");
-		}
-		else{
+		if(!Objects.get(type).removeValue(e, false)){
 			System.out.println("GameWorld: removing failed \nCould not find the object");
 		}
 	}

@@ -22,6 +22,8 @@ public class Paper extends BasicGameEntity {
 			this.velocity = new Vector2(500f, 500f);
 		}
 		playerStatsListener = new PlayerStatsListener();
+		
+		this.isCollidingWithHouse = false;
 	}
 	
 	public Paper(){
@@ -43,7 +45,7 @@ public class Paper extends BasicGameEntity {
 				} 
 			}
 			isCollidingWithMailbox = true;
-			
+			gameworld.erase(this,Paper.class);
 		}
 		if(Type == House.class) {
 			House house = (House) convertInstanceOfObject(collidedObject, Type);
@@ -54,8 +56,10 @@ public class Paper extends BasicGameEntity {
 			}
 			isCollidingWithHouse = true;
 		}
-		// TODO: destroy Paper-Object
-		gameworld.erase(this,Paper.class);
+		//bei kollision paper anhalten
+		velocity.x = 0;
+		velocity.y = 0;
+		
 	}
 
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
@@ -63,7 +67,7 @@ public class Paper extends BasicGameEntity {
 			this.isCollidingWithMailbox = false;
 		}
 		if(Type == House.class) {
-			this.isCollidingWithHouse = false;
+			//this.isCollidingWithHouse = false;
 		}
 	}
 
