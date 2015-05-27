@@ -8,16 +8,16 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class HighScoreScreen extends BasicScreen{
 	
-	String highScore;
+	int highscore;
 	BitmapFont font;
 	String string;
 	FileHandle handle;
 	
-	public HighScoreScreen(PaperboyClone app, HighScore highScore) {
+	public HighScoreScreen(PaperboyClone app) {
 		
 		super(app);
-		
-		HighScoreHandler.getInstance().writeScore(highScore);
+		int highscore = HighScoreHandler.getInstance().getHighScore();
+		HighScoreHandler.getInstance().writeScore(highscore);
 		
 		
 		font = new BitmapFont();

@@ -90,7 +90,7 @@ public class GameScreen extends BasicScreen{
 	    background.update(camera);
 	    // Hier wird die Dauer des Spiels in Sekunden festgelegt
 	    if((System.currentTimeMillis() - startTime) / 1000 >= 2) {
-	    	App.setScreen(new HighScoreScreen(App, PlayerStats.getInstance().getHighScore()));
+	    	App.setScreen(new HighScoreScreen(App));
 	    	dispose();
 	    }
 	}
