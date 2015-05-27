@@ -88,7 +88,7 @@ public class GameScreen extends BasicScreen{
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
 	    // Hier wird die Dauer des Spiels in Sekunden festgelegt
-	    if((System.currentTimeMillis() - startTime) / 1000 >= 2) {
+	    if((System.currentTimeMillis() - startTime) / 1000 >= 60) {
 	    	App.setScreen(new HighScoreScreen(App));
 	    	dispose();
 	    }
