@@ -89,8 +89,10 @@ public class GameWorld {
 		y-=20;
 		font.draw(batch, "Mailboxes: " +Objects.get(Mailbox.class).size, x, y);
 		
-		
-		
+	}
+	
+	public int getRemainingHouses() {
+		return Objects.get(House.class).size;
 	}
 	
 	private <T> void add(IBasicGameEntity e, java.lang.Class<T> type){

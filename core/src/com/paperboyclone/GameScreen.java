@@ -17,7 +17,7 @@ public class GameScreen extends BasicScreen{
 	private OrthographicCamera camera;
 	private BackgroundManager background;
 	private MusicPlayer musicPlayer;
-	private long startTime;
+	//private long startTime;
 	private GameWorld gameworld;
 	CollisionTask<Player, Obstacle> t;
 	
@@ -59,7 +59,7 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
 		
-		startTime = System.currentTimeMillis();
+		//startTime = System.currentTimeMillis();
 		musicPlayer.run();
 	}
 	
@@ -79,19 +79,23 @@ public class GameScreen extends BasicScreen{
 	private void update(float delta){
 		
 	    gameworld.update(delta, camera);
-	    //stats.update();
 	    //Kamera auf Spieler-Position setzen
 	    camera.position.set(player.getPosition().x,player.getPosition().y+300,0);
 		
 	    //System.out.println("cam: "+camera.position.x +" | "+ camera.position.y);
 	    camera.update();
+	    musicPlayer.checkMusicButton();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
 	    // Hier wird die Dauer des Spiels in Sekunden festgelegt
-	    if((System.currentTimeMillis() - startTime) / 1000 >= 60) {
+	    //if((System.currentTimeMillis() - startTime) / 1000 >= 60) {
+	    //	App.setScreen(new HighScoreScreen(App));
+	    //	dispose();
+	    //}
+	    if (gameworld.getRemainingHouses() == 0) {
 	    	App.setScreen(new HighScoreScreen(App));
-	    	dispose();
-	    }
+			dispose();
+		}
 	}
 	
 	//alles was angezeigt werden muss
