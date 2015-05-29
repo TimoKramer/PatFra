@@ -19,9 +19,7 @@ public class MainScreen extends BasicScreen {
 	public MainScreen(PaperboyClone app){
 		super(app);
 		
-		
 		font = new BitmapFont();
-		
 		selection = 0;
 		MenuItems = new String[3];
 		MenuItems[0] = "Spiel starten";

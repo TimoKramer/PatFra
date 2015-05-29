@@ -29,9 +29,8 @@ public class HighScoreHandler {
 	@SuppressWarnings("unchecked")
 	public void readFile() {
 		this.highscoreList = json.fromJson(ArrayList.class, handle);
-		System.out.println(json.prettyPrint(handle.readString()));
 	}
-	
+		
 	public void initializeFile() {
 		handle.writeString("[]", false);
 	}
@@ -54,6 +53,10 @@ public class HighScoreHandler {
 	
 	public ArrayList<HighScore> getHighscoreList() {
 		return highscoreList;
+	}
+	
+	public String getHighScoreList() {
+		return json.prettyPrint(handle.readString());
 	}
 }
 
