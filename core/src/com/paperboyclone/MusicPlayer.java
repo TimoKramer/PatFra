@@ -8,23 +8,35 @@ import com.badlogic.gdx.audio.Music;
 public class MusicPlayer implements Runnable {
 
 	BackgroundMusic bgmusic = new BackgroundMusic();
-	public boolean isPlaying = true;
+	private boolean isPlaying = true;
+	private boolean isPressed;
 
 	@Override
 	public void run() {
-		bgmusic.playMusic();
+		bgmusic.startPlayingMusic();
+	}
+	
+	public void start() {
+		isPlaying = true;
+		bgmusic.startPlayingMusic();
 	}
 
 	public void stop() {
+		isPlaying = false;
 		bgmusic.stopPlayingMusic();
 		bgmusic.interrupt();
 	}
 	
 	public void checkMusicButton() {
+		
 		if(Gdx.input.isKeyPressed(Keys.S) && isPlaying) {
-			stop();
+			if(!isPressed) stop();
+			isPressed = true;
 		} else if (Gdx.input.isKeyPressed(Keys.S) && !isPlaying) {
-			run();
+			if(!isPressed) start();
+			isPressed = true;
+		} else {
+			isPressed = false;
 		}
 	}
 
@@ -37,6 +49,11 @@ class BackgroundMusic extends Thread {
 
 	public void playMusic() {
 		music.setVolume(0.5f);
+		music.play();
+	}
+	
+	public void startPlayingMusic() {
+		music.setVolume(0.3f);
 		music.play();
 	}
 	
