@@ -10,16 +10,16 @@ public class Paper extends BasicGameEntity {
 	private boolean isCollidingWithMailbox;
 	private boolean isCollidingWithHouse;
 	
-	public Paper(Vector2 position, boolean isThrownLeft) {
+	public Paper(Vector2 position, Vector2 velocity, boolean isThrownLeft) {
 		super(position, Assets.getTexture("yellowCircle.png"));
 		this.isThrownLeft = isThrownLeft;
-		this.velocity = new Vector2(0f,0f);
+		//this.velocity = velocity;
 		
 		if(this.isThrownLeft){
-			this.velocity = new Vector2(-500f, 500f); 
+			this.velocity = new Vector2(-500f, velocity.y + 200); 
 		}
 		else{
-			this.velocity = new Vector2(500f, 500f);
+			this.velocity = new Vector2(500f, velocity.y + 200);
 		}
 		playerStatsListener = new PlayerStatsListener();
 		

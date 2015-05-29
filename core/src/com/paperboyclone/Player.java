@@ -51,6 +51,7 @@ public class Player extends BasicGameEntity {
 			gameworld.add(new Paper(new Vector2(
 				this.position.x,
 				this.position.y + this.boundingBox.getHeight()/2),
+				this.velocity,
 				true));
 			playerStatsListener.throwPaper();
 		}
@@ -61,6 +62,7 @@ public class Player extends BasicGameEntity {
 			gameworld.add(new Paper(new Vector2(
 					this.position.x + this.boundingBox.getWidth(),
 					this.position.y + this.boundingBox.getHeight()/2),
+					this.velocity,
 					false));
 			playerStatsListener.throwPaper();
 		}
@@ -76,6 +78,7 @@ public class Player extends BasicGameEntity {
 
 	public void moveStraight(){
 		velocity.x = 0;
+		// TODO: get back to normal speed 
 		//velocity.y = 300;
 	}
 
