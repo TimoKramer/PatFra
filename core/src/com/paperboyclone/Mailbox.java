@@ -2,6 +2,7 @@ package com.paperboyclone;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Mailbox extends BasicGameEntity{
@@ -15,6 +16,8 @@ public class Mailbox extends BasicGameEntity{
 		super(position,texture);
 		full = false;
 		subscriber = false;
+		setBoundingBox(new Rectangle(0,sprite.getHeight()-30,sprite.getWidth(),30));
+		playerStatsListener = new PlayerStatsListener();
 	}
 	
 	public Mailbox(){
