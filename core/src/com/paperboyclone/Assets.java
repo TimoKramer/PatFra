@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class  Assets {
 
@@ -13,6 +14,7 @@ public class  Assets {
 	private static final String TexurePath = "data/textures/";
 	private static final String SoundPath = "data/sounds/";
 	private static final String MusicPath = "data/music/";
+	private static final String SkinPath = "data/skins/";
 	
 	
 	static{
@@ -46,6 +48,10 @@ public class  Assets {
 		manager.load(filename, Music.class);
 	}
 	
+	public static void addSkin(String filename) {
+		filename = SkinPath+filename;
+		manager.load(filename, Skin.class);
+	}
 	
 	
 	private static <T> T getAsset(String path, java.lang.Class<T> type) {
@@ -75,6 +81,11 @@ public class  Assets {
 				System.out.printf(errormessage, "Music", path);
 				return manager.get(MusicPath+"testsound1.wav", type);
 				
+			}
+			else if(type == Skin.class){
+				
+				System.out.printf(errormessage, "Skin", path);
+				return manager.get(SkinPath+"uiskin.json", type);
 			}
 			else{
 				System.out.println("AssetManager: file type not supported");
@@ -108,6 +119,12 @@ public class  Assets {
 		filename = MusicPath+filename;
 		return getAsset(filename, Music.class);
 	
+	}
+	
+	public static Skin getSkin(String filename){
+		
+		filename = SkinPath+filename;
+		return getAsset(filename, Skin.class);
 	}
 	
 	
