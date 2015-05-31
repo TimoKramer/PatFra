@@ -1,6 +1,7 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 
 public class Mailbox extends BasicGameEntity{
@@ -30,6 +31,15 @@ public class Mailbox extends BasicGameEntity{
 	public void setFull(){
 		full = true;
 		//todo texture aendern -> mailbox_full.png
+		if(isSubscriber()){
+			sprite = new Sprite(Assets.getTexture("mailbox_full_subscriber.png"));
+		}
+		else{
+			sprite = new Sprite(Assets.getTexture("mailbox_full.png"));
+		}
+		if(position.x < 1000){
+			sprite.flip(true, false);
+		}
 	}
 	
 	public void subscribe(){

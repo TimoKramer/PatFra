@@ -44,6 +44,7 @@ public class Player extends BasicGameEntity {
 		checkForMovement(delta);
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
+		
 	}
 
 	public void throwLeft() {

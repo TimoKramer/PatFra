@@ -14,7 +14,7 @@ public class PlayerStats {
 	private boolean isPaperAvailable;
 	
 	private static final class InstanceHolder {
-		static final PlayerStats INSTANCE = new PlayerStats(0,  10, 5);
+		static final PlayerStats INSTANCE = new PlayerStats(0,  30, 5);
 	}
 		
 	private PlayerStats(int score, int papers, int lives) {
