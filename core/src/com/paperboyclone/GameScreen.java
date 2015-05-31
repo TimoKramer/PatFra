@@ -53,6 +53,7 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new CollisionTask<Player, Obstacle>(Player.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Player, House>(Player.class, House.class));
 		gameworld.add(new CollisionTask<Player, PaperPile>(Player.class, PaperPile.class));
+		gameworld.add(new CollisionTask<Player, Mailbox>(Player.class, Mailbox.class));
 		gameworld.add(new CollisionTask<Paper, Obstacle>(Paper.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Paper, House>(Paper.class, House.class));
 		gameworld.add(new CollisionTask<Paper, Mailbox>(Paper.class, Mailbox.class));
@@ -71,7 +72,7 @@ public class GameScreen extends BasicScreen{
 		
 		App.batch.begin();
 		draw();
-		font.draw(App.batch,player.getPosition().toString(), player.getPosition().x , player.getPosition().y);
+		//font.draw(App.batch,player.getPosition().toString(), player.getPosition().x , player.getPosition().y);
 		App.batch.end();
 	}
 	

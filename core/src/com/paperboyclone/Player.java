@@ -125,5 +125,12 @@ public class Player extends BasicGameEntity {
 			isThrown = false;
 		}
 	}
+	
+	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
+			if(Type != PaperPile.class){
+				setPosition(1000,position.y);
+			}
+			
+	}
 
 }

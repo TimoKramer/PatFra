@@ -76,7 +76,7 @@ public class Paper extends BasicGameEntity {
 		//bei kollision paper anhalten
 		velocity.x = 0;
 		velocity.y = 0;
-		angleSpeed= 0;
+		angleSpeed = 0;
 	}
 
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
