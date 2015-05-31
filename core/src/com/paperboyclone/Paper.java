@@ -10,8 +10,11 @@ public class Paper extends BasicGameEntity {
 	private boolean isCollidingWithMailbox;
 	private boolean isCollidingWithHouse;
 	
+	private float angle;
+	private float angleSpeed;
+	
 	public Paper(Vector2 position, Vector2 velocity, boolean isThrownLeft) {
-		super(position, Assets.getTexture("yellowCircle.png"));
+		super(position, Assets.getTexture("paper.png"));
 		this.isThrownLeft = isThrownLeft;
 		//this.velocity = velocity;
 		
@@ -24,6 +27,9 @@ public class Paper extends BasicGameEntity {
 		playerStatsListener = new PlayerStatsListener();
 		
 		this.isCollidingWithHouse = false;
+		
+		this.angle = 0f;
+		this.angleSpeed = -200.f;
 	}
 	
 	public Paper(){
@@ -34,15 +40,26 @@ public class Paper extends BasicGameEntity {
 	public void update(float delta){
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
+		
+		angle += angleSpeed * delta;
+		if(Math.abs(angle) >= 360){
+			angle = 0;
+		}
+		
+		sprite.setRotation(angle);
 	}
 		
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Mailbox.class){
 			Mailbox mailbox = (Mailbox) convertInstanceOfObject(collidedObject, Type);
 			if(!this.isCollidingWithMailbox) {
-				if(mailbox.isSubscriber()) {
-					playerStatsListener.hitSubscriberMailbox();		
-				} 
+				if(!mailbox.isFull()){
+					
+					if(mailbox.isSubscriber()) {	
+						playerStatsListener.hitSubscriberMailbox();		
+					}
+					mailbox.setFull();
+				}	 
 			}
 			isCollidingWithMailbox = true;
 			gameworld.erase(this,Paper.class);
@@ -59,7 +76,7 @@ public class Paper extends BasicGameEntity {
 		//bei kollision paper anhalten
 		velocity.x = 0;
 		velocity.y = 0;
-		
+		angleSpeed = 0;
 	}
 
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {

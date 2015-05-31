@@ -31,7 +31,6 @@ public class LevelGenerator {
 		ObstacleSpawnLocations.put(ObstacleTypes.OB_2, new Array<Float>());
 		ObstacleSpawnLocations.get(ObstacleTypes.OB_2).addAll(new Float[]{
 				860f,
-				970f,
 				1086f,
 				1161f
 		});
