@@ -1,10 +1,14 @@
 package com.paperboyclone;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.TimeUtils;
 
 
 public class HighScoreHandler {
@@ -22,7 +26,7 @@ public class HighScoreHandler {
 		readFile();
 	}
 	
-	public static synchronized HighScoreHandler getInstance() {
+	public static HighScoreHandler getInstance() {
 		return InstanceHolder.INSTANCE;
 	}
 
@@ -42,7 +46,7 @@ public class HighScoreHandler {
 	}
 	
 	public void writeScore(int highScore) {
-		HighScore newHighScore = new HighScore("Player", System.currentTimeMillis(), highScore);
+		HighScore newHighScore = new HighScore("Player", TimeUtils.millis(), highScore);
 		this.highscoreList.add(newHighScore);
 		writeFile();
 	}
@@ -60,11 +64,11 @@ public class HighScoreHandler {
 	}
 }
 
-class HighScore {
+class HighScore implements Comparable<HighScore>{
 
-	String name;
-	long time;
-	int score;
+	private String name;
+	private long time;
+	private int score;
 	
 	public HighScore(String name, long time, int score) {
 		this.name = name;
@@ -88,5 +92,36 @@ class HighScore {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public long getTime() {
+		return this.time;
+	}
+	
+	public String getDate() {
+		Date date = new Date(this.getTime());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+		String formattedDate = sdf.format(date);
+		return formattedDate;
+	}
+	
+	public int getScore() {
+		return this.score;
+	}
+
+	@Override
+	public int compareTo(HighScore o) {
+		int compareScore = ((HighScore)o).getScore();
+		return compareScore - this.score;
+	}
+	
+	@Override
+	public String toString() {
+		return this.name + "    |    " + this.getDate() + "    |    " + String.valueOf(this.score);
 	}
 }
