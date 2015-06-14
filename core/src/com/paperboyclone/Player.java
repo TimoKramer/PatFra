@@ -13,6 +13,8 @@ public class Player extends BasicGameEntity {
 	private boolean isThrown;
 	private PlayerStatsListener playerStatsListener;
 	private AnimationManager animations;
+	private float minSpeed;
+	private float maxSpeed;
 	
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
@@ -27,6 +29,9 @@ public class Player extends BasicGameEntity {
 		
 		Rectangle r = animations.getAnimationRegion();
 		setBoundingBox(new Rectangle(0,0,r.width, r.height));
+		
+		maxSpeed = 500;
+		minSpeed = 100;
 
 	}
 
@@ -45,6 +50,10 @@ public class Player extends BasicGameEntity {
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
 		
+	}
+	
+	public void setMinSpeed(float mSpeed){
+		minSpeed = mSpeed;
 	}
 
 	public void throwLeft() {
@@ -84,13 +93,13 @@ public class Player extends BasicGameEntity {
 	}
 
 	public void moveFaster(float delta){
-		if(velocity.y < 500) {
+		if(velocity.y < maxSpeed) {
 			velocity.y += 300f * delta;
 		}
 	}
 
 	public void moveSlower(float delta) {
-		if(velocity.y > 100) {
+		if(velocity.y > minSpeed) {
 			velocity.y -= 300f * delta;
 		}
 	}

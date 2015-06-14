@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.ObjectMap;
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
 
+	private DifficultySettings difficulty;
 	BitmapFont font;
 	PlayerStats stats;
 	private Player player;
@@ -19,11 +20,12 @@ public class GameScreen extends BasicScreen{
 	private MusicPlayer musicPlayer;
 	//private long startTime;
 	private GameWorld gameworld;
-	CollisionTask<Player, Obstacle> t;
 	
 	
-	public GameScreen(PaperboyClone app) {
+	
+	public GameScreen(PaperboyClone app, DifficultySettings diff) {
 		super(app);
+		this.difficulty = diff;
 		
 		font = new BitmapFont();
 		stats = PlayerStats.getInstance();
@@ -36,6 +38,7 @@ public class GameScreen extends BasicScreen{
 				new Vector2(1000, Gdx.graphics.getHeight()),
 				Assets.getTexture("Test_Character.png")
 				);
+		player.setMinSpeed(difficulty.getPlayerMinSpeed());
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		musicPlayer = new MusicPlayer();
@@ -57,7 +60,10 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new CollisionTask<Paper, Obstacle>(Paper.class, Obstacle.class));
 		gameworld.add(new CollisionTask<Paper, House>(Paper.class, House.class));
 		gameworld.add(new CollisionTask<Paper, Mailbox>(Paper.class, Mailbox.class));
-		gameworld.add(new ObstacleSpawnTask(1000,2500,camera));
+		
+		int  ObstacleMinSpawn = Math.round((1000 * difficulty.getObstacleSpawnDelayModifier()));
+		int  ObstacleMaxSpawn = Math.round((2500 * difficulty.getObstacleSpawnDelayModifier()));
+		gameworld.add(new ObstacleSpawnTask(ObstacleMinSpawn ,ObstacleMaxSpawn,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
 		
 		//startTime = System.currentTimeMillis();
