@@ -48,15 +48,15 @@ public class DifficultySettings {
 	}
 	
 	public float getObstacleSpawnDelayModifier(){
-		return new Float(this.ObstacleSpawnDelayModifier);
+		return this.ObstacleSpawnDelayModifier;
 	}
 	
 	public float getPlayerMinSpeed(){
-		return new Float(this.PlayerMinSpeed);
+		return this.PlayerMinSpeed;
 	}
 
 	public String getCurrentMode() {
-		return currentMode;
+		return new String(currentMode);
 	}
 
 	
