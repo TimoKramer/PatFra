@@ -1,9 +1,11 @@
 package com.paperboyclone;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class  Assets {
@@ -15,13 +17,15 @@ public class  Assets {
 	private static final String SoundPath = "data/sounds/";
 	private static final String MusicPath = "data/music/";
 	private static final String SkinPath = "data/skins/";
-	
-	
+	private static final BitmapFont mainFont;
 	static{
 		//Error Files laden
 		manager.load(TexurePath+"error.jpg", Texture.class);
 		manager.load(SoundPath+"testsound1.wav", Sound.class);
 		loadAll();
+			
+		mainFont = new BitmapFont(Gdx.files.internal("data/arcade.fnt"),Gdx.files.internal("data/arcade.png"), false );
+		
 	}
 	
 	
@@ -141,5 +145,8 @@ public class  Assets {
 		
 	}
 	
+	public static BitmapFont getFont(){
+		return mainFont;
+	}
 	
 }

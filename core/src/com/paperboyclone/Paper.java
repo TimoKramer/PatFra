@@ -56,7 +56,8 @@ public class Paper extends BasicGameEntity {
 				if(!mailbox.isFull()){
 					
 					if(mailbox.isSubscriber()) {	
-						playerStatsListener.hitSubscriberMailbox();		
+						playerStatsListener.hitSubscriberMailbox();
+						gameworld.add(new ScoreDisplayTask(new Vector2(mailbox.getPosition().x, mailbox.getPosition().y + mailbox.getSprite().getHeight() + 20),"+100"));
 					}
 					mailbox.setFull();
 				}	 
@@ -68,6 +69,7 @@ public class Paper extends BasicGameEntity {
 			House house = (House) convertInstanceOfObject(collidedObject, Type);
 			if(!this.isCollidingWithHouse) {
 				if(house.isSubscriber()) {
+					gameworld.add(new ScoreDisplayTask(new Vector2(house.getPosition().x, house.getPosition().y + house.getSprite().getHeight() + 20),"+10"));
 					playerStatsListener.hitSubscriberHouse();
 				}
 			}

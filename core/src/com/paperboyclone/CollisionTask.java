@@ -1,5 +1,6 @@
 package com.paperboyclone;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
 //kollisions check zwischen zwei Objekten
@@ -15,7 +16,7 @@ public class CollisionTask<T, K> implements ITask{
 	}
 	
 	
-	public void doTask(GameWorld gameworld) {
+	public void doTask(GameWorld gameworld, float deltaTime) {
 
 		Array<IBasicGameEntity> objectsA = gameworld.getAll(a);
 		Array<IBasicGameEntity> objectsB = gameworld.getAll(b);
@@ -33,6 +34,20 @@ public class CollisionTask<T, K> implements ITask{
 				}
 			}
 		}
+	}
+
+
+	@Override
+	public void draw(SpriteBatch batch) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public boolean isAlive() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 }

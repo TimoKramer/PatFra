@@ -41,7 +41,7 @@ public abstract class SpawnTask implements ITask{
 		currentSpawnDelay = getSpawnDelay();
 	}
 	
-	public void doTask(GameWorld gameworld) {
+	public void doTask(GameWorld gameworld, float deltaTime) {
 		long currentTime = TimeUtils.millis();
 		if(this.IsAllowedToSpawn(currentTime)){
 			spawn(gameworld);

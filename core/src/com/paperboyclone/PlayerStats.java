@@ -18,7 +18,8 @@ public class PlayerStats {
 	}
 		
 	private PlayerStats(int score, int papers, int lives) {
-		HUDFont = new BitmapFont();
+		HUDFont = Assets.getFont();
+		
 		this.score = score;
 		this.papers = papers;
 		this.lives = lives;
@@ -30,10 +31,14 @@ public class PlayerStats {
 	}
 	
 	public void draw(Batch batch, Camera camera) {
-		HUDFont.setColor(new Color(Color.WHITE));
+		HUDFont.setColor(Color.BLACK);
 		HUDFont.draw(batch, "Score: " + this.score + " Papers: " + this.papers + " Lives: " + this.lives, 
-				camera.position.x - camera.viewportWidth/2, 
-				camera.position.y + camera.viewportHeight/2);
+				camera.position.x - camera.viewportWidth/2 + 23, 
+				camera.position.y + camera.viewportHeight/2 - 23);
+		HUDFont.setColor(Color.MAGENTA);
+		HUDFont.draw(batch, "Score: " + this.score + " Papers: " + this.papers + " Lives: " + this.lives, 
+				camera.position.x - camera.viewportWidth/2 + 20, 
+				camera.position.y + camera.viewportHeight/2 - 20);
 	}
 	
 	public void paperUp(int paperCount) {

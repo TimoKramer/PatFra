@@ -1,5 +1,6 @@
 package com.paperboyclone;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,7 +24,7 @@ public class GameWorld {
 		 Objects.put(Mailbox.class, new Array<IBasicGameEntity>());
 		 
 		 Tasks = new Array<ITask>();
-		 font = new BitmapFont();
+		 font = Assets.getFont();
 	}
 	
 
@@ -32,7 +33,10 @@ public class GameWorld {
 		
 		
 		for(ITask t : Tasks){
-			t.doTask(this);
+			t.doTask(this, delta);
+			if(!t.isAlive()){
+				Tasks.removeValue(t, false);
+			}
 		}
 		
 		for(Array<IBasicGameEntity> a : Objects.values()){
@@ -70,6 +74,9 @@ public class GameWorld {
 				}
 		}
 	
+		for(ITask t : Tasks){
+			t.draw(batch);
+		}
 		
 	}
 	
@@ -77,8 +84,8 @@ public class GameWorld {
 		
 		float x = camera.position.x + (float) (camera.viewportWidth * 0.8f) /2;
 		float y = camera.position.y + (float) (camera.viewportHeight * 0.95f) /2;
-		
-	
+		font.setColor(Color.WHITE);
+		font.getData().setScale(0.6f);
 		font.draw(batch, "Houses: " +Objects.get(House.class).size, x, y);
 		y-=20;
 		font.draw(batch, "Obstacles: " +Objects.get(Obstacle.class).size, x, y);
@@ -88,7 +95,9 @@ public class GameWorld {
 		font.draw(batch, "Paper Piles: " +Objects.get(PaperPile.class).size, x, y);
 		y-=20;
 		font.draw(batch, "Mailboxes: " +Objects.get(Mailbox.class).size, x, y);
-		
+		y-=20;
+		font.draw(batch, "Tasks: " +Tasks.size, x, y);
+		font.getData().setScale(1f);
 	}
 	
 	public int getRemainingHouses() {

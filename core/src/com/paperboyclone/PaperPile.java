@@ -35,6 +35,7 @@ public class PaperPile extends BasicGameEntity {
 		if(Type == Player.class){
 			if(!isCollidingWithPlayer) {
 				playerStatsListener.pickupPaperPile();
+				gameworld.add(new ScoreDisplayTask(position, "+10"));
 			}
 			this.isCollidingWithPlayer = true;
 			gameworld.erase(this, PaperPile.class);
