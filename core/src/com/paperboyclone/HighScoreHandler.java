@@ -65,8 +65,6 @@ public class HighScoreHandler {
 			if(highscoreList.get(i).getLevel().equals(level)) {
 				sortedHighscoreList.add(highscoreList.get(i));
 			}
-			else {
-			}
 		}
 		return sortedHighscoreList;
 	}
@@ -131,6 +129,6 @@ class HighScore implements Comparable<HighScore>{
 	
 	@Override
 	public String toString() {
-		return this.name + "    |    " + this.getLevel() + "    |    " + String.valueOf(this.score);
+		return this.name + ": " + String.valueOf(this.score);
 	}
 }

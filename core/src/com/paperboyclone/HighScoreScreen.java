@@ -3,10 +3,13 @@ package com.paperboyclone;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.scene.text.TextBoundsType;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.Vector2;
 
 public class HighScoreScreen extends BasicScreen{
@@ -29,7 +32,7 @@ public class HighScoreScreen extends BasicScreen{
 	    camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
 		camera.update();
 		
-		font = new BitmapFont();
+		font = Assets.getFont();
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
 		hsh = HighScoreHandler.getInstance();
@@ -52,20 +55,35 @@ public class HighScoreScreen extends BasicScreen{
 	}
 	
 	private void draw() {
-		
-		font.draw(App.batch, "You scored " + String.valueOf(highscore) + "!", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2 + 200);
-		font.draw(App.batch, "HIGHSCORES:", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2 + 140);
-		int y = Gdx.graphics.getHeight()/2 + 100;
+		String highscorelistString = "";
 		if (highscoreList.size() > 9) {
 			for (HighScore highScore : highscoreList.subList(0, 10)) {
-				font.draw(App.batch, highScore.toString(), Gdx.graphics.getWidth()/2, y -= 20);
+				highscorelistString += "    ";
+				highscorelistString += highScore.toString();
+				highscorelistString += "\n";
 			}
 		} else {
 			for (int i = 0; i < highscoreList.size(); i++) {
-				font.draw(App.batch, highscoreList.get(i).toString(), Gdx.graphics.getWidth()/2, y -= 20);	
+				highscorelistString += "    ";
+				highscorelistString += highscoreList.get(i).toString();
+				highscorelistString += "\n";
 			}
 		}
-	}
+		String completeString = "You scored " + String.valueOf(highscore) + " in level " + 
+				DifficultySettings.getInstance().getCurrentMode() + "!\n\n" +
+				"HIGHSCORES:\n\n" +
+				highscorelistString;
+		GlyphLayout layout = new GlyphLayout(font, completeString);
+		float width = layout.width;
+		float height = layout.height;
+		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight()/2 + height/2);
+/*		font.draw(App.batch,
+				"You scored " + String.valueOf(highscore) + " in level " + DifficultySettings.getInstance().getCurrentMode() + "!\n\n" +
+						"HIGHSCORES:\n\n" +
+						highscorelistString,
+				Gdx.graphics.getWidth()/2, 
+				Gdx.graphics.getHeight()/2 + 300);
+*/	}
 
 	public void dispose(){
 
