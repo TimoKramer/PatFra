@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 public class LoadingScreen extends BasicScreen{
 	
 		BitmapFont font;
-	
-	public LoadingScreen(PaperboyClone app) {
-		super(app);
+		String mode;
 		
-		font = new BitmapFont();
+	public LoadingScreen(PaperboyClone app, String Mode) {
+		super(app);
+		mode = Mode;
+		font = Assets.getFont();
 		
 		// Alle benoetigten Assets  in die Warteschlange des AssetManagers einreihen
 		Assets.addTexture("badlogic.jpg");
@@ -58,7 +59,7 @@ public class LoadingScreen extends BasicScreen{
 		}
 		else{
 			//Laden beendet -> wechsel zum Game Screen
-			App.setScreen(new GameScreen(App,"HARD"));
+			App.setScreen(new GameScreen(App,new DifficultySettings(mode)));
 			dispose();
 		}
 	
