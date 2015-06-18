@@ -1,26 +1,20 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-
-//spaeteres Hauptmenu
-//todo: Maus unterstuetzung impl
-//todo: background grafik etc.
-public class MainScreen extends BasicScreen {
+public class DifficultySelectionScreen extends BasicScreen{
 
 	BitmapFont font;
 	Menu menu;
 	
-	public MainScreen(PaperboyClone app){
+	public DifficultySelectionScreen(PaperboyClone app){
 		super(app);
 		
 		font = new BitmapFont();
 	
-		menu = MenuFactory.createStartMenu(this, app);
+		menu = MenuFactory.createDifficultySelectionMenu(this, app);
 		
 	}
 	
