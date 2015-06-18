@@ -6,9 +6,17 @@ public class DifficultySettings {
 	private float PlayerMinSpeed;
 	private String currentMode;
 	
-	public DifficultySettings(String Mode){
+	private static final class InstanceHolder {
+		static final DifficultySettings INSTANCE = new DifficultySettings();
+	}
+	
+	private DifficultySettings(){
 		
-		setMode(Mode);
+		setMode("NORMAL");
+	}
+	
+	public static DifficultySettings getInstance() {
+		return InstanceHolder.INSTANCE;
 	}
 	
 	public void setMode(String Mode){
@@ -44,7 +52,7 @@ public class DifficultySettings {
 	
 	public void setHard(){
 		ObstacleSpawnDelayModifier = 0.5f;
-		PlayerMinSpeed = 250;
+		PlayerMinSpeed = 300;
 	}
 	
 	public float getObstacleSpawnDelayModifier(){
@@ -58,6 +66,5 @@ public class DifficultySettings {
 	public String getCurrentMode() {
 		return new String(currentMode);
 	}
-
 	
 }

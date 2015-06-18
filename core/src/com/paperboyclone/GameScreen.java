@@ -13,7 +13,7 @@ public class GameScreen extends BasicScreen{
 
 	private DifficultySettings difficulty;
 	BitmapFont font;
-	PlayerStats stats;
+	private PlayerStats stats;
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
@@ -23,10 +23,10 @@ public class GameScreen extends BasicScreen{
 	
 	
 	
-	public GameScreen(PaperboyClone app, DifficultySettings diff) {
+	public GameScreen(PaperboyClone app, String diff) {
 		super(app);
-		this.difficulty = diff;
-		
+		difficulty = DifficultySettings.getInstance();
+		difficulty.setMode(diff);
 		font = new BitmapFont();
 		stats = PlayerStats.getInstance();
 		//Groesse der Kamera noch unklar
@@ -66,19 +66,15 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new ObstacleSpawnTask(ObstacleMinSpawn ,ObstacleMaxSpawn,camera));
 		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
 		
-		//startTime = System.currentTimeMillis();
 		musicPlayer.run();
 	}
 	
 	public void render(float delta) {
-	
 	    update(delta);
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
 		App.batch.begin();
 		draw();
-		//font.draw(App.batch,player.getPosition().toString(), player.getPosition().x , player.getPosition().y);
 		App.batch.end();
 	}
 	

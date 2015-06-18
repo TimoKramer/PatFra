@@ -97,7 +97,6 @@ public class Player extends BasicGameEntity {
 		else {
 			velocity.y = 300;
 		}
-		System.out.println(velocity.y);
 	}
 
 	public void moveFaster(float delta){

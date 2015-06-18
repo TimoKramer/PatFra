@@ -1,14 +1,9 @@
 package com.paperboyclone;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.TimeZone;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.TimeUtils;
 
 
 public class HighScoreHandler {
@@ -16,6 +11,7 @@ public class HighScoreHandler {
 	private FileHandle handle;
 	private Json json = new Json();
 	protected ArrayList<HighScore> highscoreList = new ArrayList<HighScore>();
+	private DifficultySettings difficulty;
 	
 	private static final class InstanceHolder {
 		static final HighScoreHandler INSTANCE = new HighScoreHandler();
@@ -46,7 +42,8 @@ public class HighScoreHandler {
 	}
 	
 	public void writeScore(int highScore) {
-		HighScore newHighScore = new HighScore("Player", TimeUtils.millis(), highScore);
+		difficulty = DifficultySettings.getInstance();
+		HighScore newHighScore = new HighScore("Player", difficulty.getCurrentMode(), highScore);
 		this.highscoreList.add(newHighScore);
 		writeFile();
 	}
@@ -67,18 +64,18 @@ public class HighScoreHandler {
 class HighScore implements Comparable<HighScore>{
 
 	private String name;
-	private long time;
+	private String level;
 	private int score;
 	
-	public HighScore(String name, long time, int score) {
+	public HighScore(String name, String level, int score) {
 		this.name = name;
-		this.time = time;
+		this.level = level;
 		this.score = score;
 	}
 	
 	public HighScore() {
 		this.name = "StandardPlayer";
-		this.time = System.currentTimeMillis();
+		this.level = DifficultySettings.getInstance().getCurrentMode();
 		this.score = 0;
 	}
 	
@@ -86,8 +83,8 @@ class HighScore implements Comparable<HighScore>{
 		this.name = name;
 	}
 
-	public void setTime(long time) {
-		this.time = time;
+	public void setTime(String level) {
+		this.level = level;
 	}
 
 	public void setScore(int score) {
@@ -98,16 +95,8 @@ class HighScore implements Comparable<HighScore>{
 		return this.name;
 	}
 	
-	public long getTime() {
-		return this.time;
-	}
-	
-	public String getDate() {
-		Date date = new Date(this.getTime());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		sdf.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
-		String formattedDate = sdf.format(date);
-		return formattedDate;
+	public String getLevel() {
+		return this.level;
 	}
 	
 	public int getScore() {
@@ -122,6 +111,6 @@ class HighScore implements Comparable<HighScore>{
 	
 	@Override
 	public String toString() {
-		return this.name + "    |    " + this.getDate() + "    |    " + String.valueOf(this.score);
+		return this.name + "    |    " + this.getLevel() + "    |    " + String.valueOf(this.score);
 	}
 }
