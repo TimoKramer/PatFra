@@ -30,7 +30,7 @@ public class GameSettingsHandler{
 		try {
 			returnthat = json.fromJson(GameSettings.class, settingsFile);
 		} catch (SerializationException e) {
-			System.out.println("settings.json has not the needed properties" + e);
+			System.out.println("settings.json has not the needed properties: " + e);
 		}
 		return returnthat;
 	}

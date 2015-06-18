@@ -1,9 +1,14 @@
 package com.paperboyclone;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.ObjectMap;
 
 
 public class HighScoreHandler {
@@ -11,7 +16,6 @@ public class HighScoreHandler {
 	private FileHandle handle;
 	private Json json = new Json();
 	protected ArrayList<HighScore> highscoreList = new ArrayList<HighScore>();
-	private DifficultySettings difficulty;
 	
 	private static final class InstanceHolder {
 		static final HighScoreHandler INSTANCE = new HighScoreHandler();
@@ -42,8 +46,7 @@ public class HighScoreHandler {
 	}
 	
 	public void writeScore(int highScore) {
-		difficulty = DifficultySettings.getInstance();
-		HighScore newHighScore = new HighScore("Player", difficulty.getCurrentMode(), highScore);
+		HighScore newHighScore = new HighScore("Player", DifficultySettings.getInstance().getCurrentMode(), highScore);
 		this.highscoreList.add(newHighScore);
 		writeFile();
 	}
@@ -55,9 +58,26 @@ public class HighScoreHandler {
 	public ArrayList<HighScore> getHighscoreList() {
 		return highscoreList;
 	}
+			
+	public ArrayList<HighScore> getHighscoreList(String level) {
+		ArrayList<HighScore> sortedHighscoreList = new ArrayList<HighScore>();
+		for(int i = 0; i < highscoreList.size(); i++) {
+			if(highscoreList.get(i).getLevel().equals(level)) {
+				sortedHighscoreList.add(highscoreList.get(i));
+			}
+			else {
+			}
+		}
+		return sortedHighscoreList;
+	}
 	
-	public String getHighScoreList() {
-		return json.prettyPrint(handle.readString());
+	public String arrayListToString(ArrayList<HighScore> hsl) {
+		String returnString = "";
+		for(int i = 0; i < hsl.size(); i++) {
+			returnString += hsl.get(i).toString() + "\n";
+		}
+		returnString.replaceAll("\n", System.getProperty("line.separator"));
+		return returnString;
 	}
 }
 

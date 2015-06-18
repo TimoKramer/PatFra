@@ -34,7 +34,7 @@ public class HighScoreScreen extends BasicScreen{
 		
 		hsh = HighScoreHandler.getInstance();
 		highscore = hsh.getHighScore();
-		highscoreList = hsh.getHighscoreList();
+		highscoreList = hsh.getHighscoreList(DifficultySettings.getInstance().getCurrentMode());
 		Collections.sort(highscoreList);
 				
 	    App.batch.setProjectionMatrix(camera.combined);
