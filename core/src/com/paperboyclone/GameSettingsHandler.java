@@ -1,9 +1,13 @@
 package com.paperboyclone;
 
+import java.io.FileNotFoundException;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.SerializationException;
 
 public class GameSettingsHandler{
 
@@ -18,9 +22,19 @@ public class GameSettingsHandler{
 	
 	public GameSettings loadSettings(){
 		System.out.println("Loading Settings...");
-		System.out.println(settingsFile.readString());
-		return json.fromJson(GameSettings.class, settingsFile);
-		
+		GameSettings returnthat = new GameSettings();
+		try {
+			String printthat = settingsFile.readString();
+			System.out.println(printthat);
+		} catch (GdxRuntimeException e) {
+			System.out.println("Problem reading settings.json in your home folder: " + e);
+		}
+		try {
+			returnthat = json.fromJson(GameSettings.class, settingsFile);
+		} catch (SerializationException e) {
+			System.out.println("settings.json has not the needed properties" + e);
+		}
+		return returnthat;
 	}
 	
 	public void saveSettings(GameSettings settings){
