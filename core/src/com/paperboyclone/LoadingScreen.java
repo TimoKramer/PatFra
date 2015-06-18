@@ -12,7 +12,7 @@ public class LoadingScreen extends BasicScreen{
 	public LoadingScreen(PaperboyClone app, String Mode) {
 		super(app);
 		mode = Mode;
-		font = new BitmapFont();
+		font = Assets.getFont();
 		
 		// Alle benoetigten Assets  in die Warteschlange des AssetManagers einreihen
 		Assets.addTexture("badlogic.jpg");

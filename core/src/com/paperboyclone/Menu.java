@@ -5,22 +5,31 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 public class Menu {
 	
 	private Array<MenuItem>MenuItems;
-	private BasicScreen screen;
+	
 	private int currentSelection;
 	private String headline;
+	private Vector2 position;
 	
-	public Menu(String Headline ,BasicScreen OnScreen){
+	private Color selectionColor;
+	private Color basicColor;
+	private Color headlineColor;
+	
+	public Menu(String Headline){
 		
 		MenuItems = new Array<MenuItem>();
 		headline = Headline;
-		screen = OnScreen;
 		currentSelection = 0;
+		position = new Vector2(Gdx.graphics.getWidth() * 0.4f, Gdx.graphics.getHeight() * 0.9f);
 		
+		selectionColor = Color.RED;
+		basicColor = Color.WHITE;
+		headlineColor = Color.BLUE;
 	}
 	
 	public void add(MenuItem mi){
@@ -31,22 +40,26 @@ public class Menu {
 	public void draw(SpriteBatch batch){
 		
 		BitmapFont f = Assets.getFont();
-		f.setColor(Color.WHITE);
-		float x = Gdx.graphics.getWidth() * 0.45f;
-		float y = Gdx.graphics.getHeight() * 0.9f;
+		f.setColor(headlineColor);
+		float x = position.x;
+		float y = position.y;
+		f.getData().setScale(1.f);
 		f.draw(batch,headline,x,y);
-		y-= 200;
 		
+		y-= 200;
 		for(int i = 0; i<MenuItems.size; i++){
 			
 			if(i == currentSelection){
-				f.setColor(Color.RED);
+				f.setColor(selectionColor);
+				f.getData().setScale(1.2f);
 			}
 			else{
-				f.setColor(Color.WHITE);
+				f.setColor(basicColor);
+				f.getData().setScale(1.f);
 			}
 			
-			f.draw(batch,MenuItems.get(i).getText(),x,y);
+			y -= MenuItems.get(i).getOffset();
+			MenuItems.get(i).draw(x, y , batch, f);
 			y-=30;
 		}
 		
@@ -83,4 +96,8 @@ public class Menu {
 		}
 	}
 	
+	public void setPosition(float x, float y){
+		position.x = x;
+		position.y = y;
+	}
 }

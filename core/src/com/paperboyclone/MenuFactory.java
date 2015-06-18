@@ -6,7 +6,7 @@ public class MenuFactory {
 	static public Menu createStartMenu(final BasicScreen OnScreen, final PaperboyClone app){
 		
 		
-		Menu menu = new Menu("Startmenu",OnScreen);
+		Menu menu = new Menu("Startmenu");
 		MenuItem m = new MenuItem("Spiel starten");
 		m.setOnSelectAction(new IMenuItemAction(){
 			public void doAction() {
@@ -23,7 +23,8 @@ public class MenuFactory {
 	static public Menu createDifficultySelectionMenu(final BasicScreen OnScreen, final PaperboyClone app){
 			
 			
-			Menu menu = new Menu("Schwiergkeitsgrad waehlen:",OnScreen);
+			Menu menu = new Menu("Schwiergkeitsgrad waehlen:");
+			
 			MenuItem m = new MenuItem("EASY");
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
@@ -52,6 +53,7 @@ public class MenuFactory {
 			menu.add(m);
 			
 			m = new MenuItem("back");
+			m.setOffset(20);
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
 					app.setScreen(new MainScreen(app));
