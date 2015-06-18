@@ -86,10 +86,18 @@ public class Player extends BasicGameEntity {
 		velocity.x = -200f;
 	}
 
-	public void moveStraight(){
+	public void moveStraight(float delta){
 		velocity.x = 0;
-		// TODO: get back to normal speed 
-		//velocity.y = 300;
+		if(velocity.y > 310) {
+			velocity.y -= delta * 200;
+		}
+		else if(velocity.y < 290) {
+			velocity.y += delta * 200;
+		}
+		else {
+			velocity.y = 300;
+		}
+		System.out.println(velocity.y);
 	}
 
 	public void moveFaster(float delta){
@@ -130,7 +138,7 @@ public class Player extends BasicGameEntity {
 		}
 		else {
 			animations.changeTo("DRIVE_STRAIGHT");
-			moveStraight();
+			moveStraight(delta);
 			isThrown = false;
 		}
 	}

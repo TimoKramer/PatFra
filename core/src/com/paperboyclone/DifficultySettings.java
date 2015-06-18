@@ -44,7 +44,7 @@ public class DifficultySettings {
 	
 	public void setHard(){
 		ObstacleSpawnDelayModifier = 0.5f;
-		PlayerMinSpeed = 300;
+		PlayerMinSpeed = 250;
 	}
 	
 	public float getObstacleSpawnDelayModifier(){
