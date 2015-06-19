@@ -29,6 +29,7 @@ public class GameScreen extends BasicScreen{
 		difficulty.setMode(diff);
 		font = new BitmapFont();
 		stats = PlayerStats.getInstance();
+		stats.set(0, 30, 5);
 		//Groesse der Kamera noch unklar
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.position.set(1000, Gdx.graphics.getHeight(),0);

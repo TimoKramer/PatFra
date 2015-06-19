@@ -46,7 +46,7 @@ public class Menu {
 		f.getData().setScale(1.f);
 		f.draw(batch,headline,x,y);
 		
-		y-= 200;
+		y-= 75;
 		for(int i = 0; i<MenuItems.size; i++){
 			
 			if(i == currentSelection){
@@ -63,6 +63,8 @@ public class Menu {
 			y-=30;
 		}
 		
+		f.setColor(Color.WHITE);
+		f.getData().setScale(1.f);
 	}
 	
 	public void handleInput(int keycode){

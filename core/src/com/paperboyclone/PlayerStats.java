@@ -19,15 +19,18 @@ public class PlayerStats {
 		
 	private PlayerStats(int score, int papers, int lives) {
 		HUDFont = Assets.getFont();
-		
-		this.score = score;
-		this.papers = papers;
-		this.lives = lives;
-		this.isPaperAvailable = true;
+		set(score,papers,lives);
 	}
 
 	public static synchronized PlayerStats getInstance() {
 		return InstanceHolder.INSTANCE;
+	}
+	
+	public void set(int score, int papers, int lives){
+		this.score = score;
+		this.papers = papers;
+		this.lives = lives;
+		this.isPaperAvailable = true;
 	}
 	
 	public void draw(Batch batch, Camera camera) {

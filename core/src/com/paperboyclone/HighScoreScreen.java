@@ -3,9 +3,11 @@ package com.paperboyclone;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javafx.scene.text.TextBoundsType;
+//import javafx.scene.text.TextBoundsType;
+
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -20,6 +22,7 @@ public class HighScoreScreen extends BasicScreen{
 	private OrthographicCamera camera;
 	private BackgroundManager background;
 	HighScoreHandler hsh;
+	Menu menu;
 	
 	public HighScoreScreen(PaperboyClone app) {
 		
@@ -41,6 +44,9 @@ public class HighScoreScreen extends BasicScreen{
 		Collections.sort(highscoreList);
 				
 	    App.batch.setProjectionMatrix(camera.combined);
+	    
+	    menu = MenuFactory.createHighscoreScreenMenu(this, App);
+	    menu.setPosition(20, Gdx.graphics.getHeight() - 200);
 	}
 		
 	public void render(float delta) {
@@ -48,7 +54,8 @@ public class HighScoreScreen extends BasicScreen{
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		App.batch.begin();
 		
-	    background.update(camera);		
+	    background.update(camera);	
+	    
 		draw();
 
 		App.batch.end();
@@ -76,14 +83,29 @@ public class HighScoreScreen extends BasicScreen{
 		GlyphLayout layout = new GlyphLayout(font, completeString);
 		float width = layout.width;
 		float height = layout.height;
-		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight()/2 + height/2);
-/*		font.draw(App.batch,
+		
+		//font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight()/2 + height/2);
+		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
+		/*		
+		/*		font.draw(App.batch,
 				"You scored " + String.valueOf(highscore) + " in level " + DifficultySettings.getInstance().getCurrentMode() + "!\n\n" +
 						"HIGHSCORES:\n\n" +
 						highscorelistString,
 				Gdx.graphics.getWidth()/2, 
 				Gdx.graphics.getHeight()/2 + 300);
-*/	}
+				
+		
+*/	
+		menu.draw(App.batch);
+		font.setColor(Color.MAGENTA);
+	}
+	
+	public boolean keyDown(int keycode) {
+		
+		menu.handleInput(keycode);
+		
+		return false;
+	}
 
 	public void dispose(){
 
