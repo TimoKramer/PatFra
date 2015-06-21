@@ -1,26 +1,19 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+public class OptionScreen extends BasicScreen{
 
-//spaeteres Hauptmenu
-public class MainScreen extends BasicScreen {
-
-	BitmapFont font;
-	Menu menu;
 	
-	public MainScreen(PaperboyClone app){
+	private Menu menu;
+	
+	public OptionScreen(PaperboyClone app) {
 		super(app);
-		
-		font = new BitmapFont();
-	
-		menu = MenuFactory.createStartMenu(this, app);
+		menu = MenuFactory.createOptionScreenMenu(this, app);
 		
 	}
+	
 	
 	public boolean keyDown(int keycode) {
 		
@@ -46,5 +39,6 @@ public class MainScreen extends BasicScreen {
 		
 		
 	}
+	
 
 }

@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class Menu {
 	
-	private Array<MenuItem>MenuItems;
+	private Array<IMenuItem>MenuItems;
 	
 	private int currentSelection;
 	private String headline;
@@ -25,22 +25,27 @@ public class Menu {
 	
 	public Menu(String Headline){
 		
-		MenuItems = new Array<MenuItem>();
+		MenuItems = new Array<IMenuItem>();
 		headline = Headline;
 		currentSelection = 0;
 		font = Assets.getFont();
-		GlyphLayout layout = new GlyphLayout(font, headline);
-		float width = layout.width;
-		position = new Vector2(Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
 		
+		center();
 		selectionColor = Color.RED;
 		basicColor = Color.WHITE;
 		headlineColor = Color.BLUE;
 	}
 	
-	public void add(MenuItem mi){
-		mi.setMenu(this);
-		MenuItems.add(mi);
+	public void center(){
+		GlyphLayout layout = new GlyphLayout(font, headline);
+		float width = layout.width;
+		position = new Vector2(Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
+		
+	}
+	
+	public void add(IMenuItem m){
+		m.setMenu(this);
+		MenuItems.add(m);
 	}
 	
 	public void draw(SpriteBatch batch){
@@ -97,6 +102,23 @@ public class Menu {
 		
 		case Keys.ENTER:
 			MenuItems.get(currentSelection).onSelect();
+			break;
+			
+		case Keys.LEFT:
+			IMenuItem m = MenuItems.get(currentSelection);
+			if(m.getClass() == SelectionMenuItem.class){
+				SelectionMenuItem smi = (SelectionMenuItem) m;
+				smi.onSelectionChange(false);
+			}
+			break;
+			
+		case Keys.RIGHT:
+			IMenuItem m1 = MenuItems.get(currentSelection);
+			
+			if(m1.getClass() == SelectionMenuItem.class){
+				SelectionMenuItem smi = (SelectionMenuItem) m1;
+				smi.onSelectionChange(true);
+			}
 			break;
 			
 		default:

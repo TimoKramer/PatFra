@@ -3,7 +3,7 @@ package com.paperboyclone;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MenuItem {
+public class MenuItem implements IMenuItem{
 	
 	private IMenuItemAction onSelectAction;
 	private String Text;

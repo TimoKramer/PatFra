@@ -3,15 +3,25 @@ package com.paperboyclone;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 
 public abstract class BasicScreen implements Screen, InputProcessor {
 
 	protected  PaperboyClone App;
+	protected OrthographicCamera cam;
 	
 	protected BasicScreen( PaperboyClone app){
 		App = app;
 		Gdx.input.setInputProcessor(this);
+		setDefaultCamera();
+	}
+	
+	public void setDefaultCamera(){
+		cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	    cam.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
+		cam.update();
+		App.batch.setProjectionMatrix(cam.combined);
 	}
 	
 	@Override
