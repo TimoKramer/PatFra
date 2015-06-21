@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -20,12 +21,17 @@ public class Menu {
 	private Color basicColor;
 	private Color headlineColor;
 	
+	private BitmapFont font;
+	
 	public Menu(String Headline){
 		
 		MenuItems = new Array<MenuItem>();
 		headline = Headline;
 		currentSelection = 0;
-		position = new Vector2(Gdx.graphics.getWidth() * 0.4f, Gdx.graphics.getHeight() * 0.9f);
+		font = Assets.getFont();
+		GlyphLayout layout = new GlyphLayout(font, headline);
+		float width = layout.width;
+		position = new Vector2(Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
 		
 		selectionColor = Color.RED;
 		basicColor = Color.WHITE;
@@ -40,22 +46,22 @@ public class Menu {
 	public void draw(SpriteBatch batch){
 		
 		BitmapFont f = Assets.getFont();
-		f.setColor(headlineColor);
+		font.setColor(headlineColor);
 		float x = position.x;
 		float y = position.y;
-		f.getData().setScale(1.f);
-		f.draw(batch,headline,x,y);
+		font.getData().setScale(1.f);
+		font.draw(batch,headline,x,y);
 		
 		y-= 75;
 		for(int i = 0; i<MenuItems.size; i++){
 			
 			if(i == currentSelection){
-				f.setColor(selectionColor);
-				f.getData().setScale(1.2f);
+				font.setColor(selectionColor);
+				font.getData().setScale(1.2f);
 			}
 			else{
-				f.setColor(basicColor);
-				f.getData().setScale(1.f);
+				font.setColor(basicColor);
+				font.getData().setScale(1.f);
 			}
 			
 			y -= MenuItems.get(i).getOffset();
@@ -63,8 +69,8 @@ public class Menu {
 			y-=30;
 		}
 		
-		f.setColor(Color.WHITE);
-		f.getData().setScale(1.f);
+		font.setColor(Color.WHITE);
+		font.getData().setScale(1.f);
 	}
 	
 	public void handleInput(int keycode){
@@ -101,5 +107,9 @@ public class Menu {
 	public void setPosition(float x, float y){
 		position.x = x;
 		position.y = y;
+	}
+	
+	public Vector2 getPosition(){
+		return position;
 	}
 }
