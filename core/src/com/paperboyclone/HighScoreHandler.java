@@ -45,8 +45,14 @@ public class HighScoreHandler {
 		json.toJson(highscoreList, handle);
 	}
 	
-	public void writeScore(int highScore) {
-		HighScore newHighScore = new HighScore("Player", DifficultySettings.getInstance().getCurrentMode(), highScore);
+	public void writeScore(int score) {
+		HighScore newHighScore = new HighScore("Player", DifficultySettings.getInstance().getCurrentMode(), score);
+		this.highscoreList.add(newHighScore);
+		writeFile();
+	}
+	
+	public void writeScore(String name, String level, int score) {
+		HighScore newHighScore = new HighScore(name, level, score);
 		this.highscoreList.add(newHighScore);
 		writeFile();
 	}

@@ -3,9 +3,6 @@ package com.paperboyclone;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//import javafx.scene.text.TextBoundsType;
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;

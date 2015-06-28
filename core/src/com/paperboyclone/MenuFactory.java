@@ -106,6 +106,22 @@ public class MenuFactory {
 		
 	}
 	
+	static public Menu createEnterNameMenu(final BasicScreen OnScreen, final PaperboyClone app){
+		
+		Menu menu = new Menu("Enter Name");
+		MenuItem m = new MenuItem("OK");
+		m.setOnSelectAction(new IMenuItemAction(){
+			public void doAction() {
+				System.out.println("Hier!!");
+				((EnterNameScreen) OnScreen).saveHighScore("Player");
+				app.setScreen(new HighScoreScreen(app));
+				OnScreen.dispose();
+			}
+		});
+		menu.add(m);
+		return menu;
+	}
+	
 	static public Menu createOptionScreenMenu(final BasicScreen OnScreen, final PaperboyClone app){
 		
 		final Menu menu = new Menu("Option");
