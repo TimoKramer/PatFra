@@ -12,6 +12,7 @@ public class MainScreen extends BasicScreen {
 
 	BitmapFont font;
 	Menu menu;
+	AnimatedBackground background;
 	
 	public MainScreen(PaperboyClone app){
 		super(app);
@@ -19,7 +20,7 @@ public class MainScreen extends BasicScreen {
 		font = new BitmapFont();
 	
 		menu = MenuFactory.createStartMenu(this, app);
-		
+		background = new AnimatedBackground(Assets.getTexture("backgroundPattern.png"));
 	}
 	
 	public boolean keyDown(int keycode) {
@@ -32,10 +33,13 @@ public class MainScreen extends BasicScreen {
 
 	public void render(float delta) {
 	
+		
+		background.update(delta, cam);
+		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		App.batch.begin();
-
+		background.draw(App.batch);
 		menu.draw(App.batch);
 		
 		App.batch.end();

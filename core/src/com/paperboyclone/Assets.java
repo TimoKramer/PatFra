@@ -22,6 +22,7 @@ public class  Assets {
 		//Error Files laden
 		manager.load(TexurePath+"error.jpg", Texture.class);
 		manager.load(SoundPath+"testsound1.wav", Sound.class);
+		manager.load(TexurePath+"backgroundPattern.png", Texture.class);
 		loadAll();
 			
 		mainFont = new BitmapFont(Gdx.files.internal("data/arcade.fnt"),Gdx.files.internal("data/arcade.png"), false );
