@@ -5,8 +5,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 //Hier beginnt das Spiel
 public class GameScreen extends BasicScreen{
@@ -20,7 +26,7 @@ public class GameScreen extends BasicScreen{
 	private MusicPlayer musicPlayer;
 	//private long startTime;
 	private GameWorld gameworld;
-	
+	private Viewport viewport;
 	
 	
 	public GameScreen(PaperboyClone app, String diff) {
@@ -31,9 +37,19 @@ public class GameScreen extends BasicScreen{
 		stats = PlayerStats.getInstance();
 		stats.set(0, 30, 5);
 		//Groesse der Kamera noch unklar
-		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera = new OrthographicCamera();
 		camera.position.set(1000, Gdx.graphics.getHeight(),0);
 		camera.update();
+		
+		float r1 = 4/3;
+			
+		if(r1 == (float)Gdx.graphics.getWidth()/Gdx.graphics.getHeight()){
+			viewport = new FitViewport(1280,1024,camera);
+		}
+		else{
+			viewport = new FitViewport(1280,720,camera);
+		}
+		viewport.apply();
 		
 		player = new Player(
 				new Vector2(1000, Gdx.graphics.getHeight()),
@@ -70,9 +86,13 @@ public class GameScreen extends BasicScreen{
 		musicPlayer.run();
 	}
 	
+	public void resize(int width, int height){
+		viewport.update(width, height);
+	}
+	
 	public void render(float delta) {
 	    update(delta);
-		Gdx.gl.glClearColor(0, 0, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		App.batch.begin();
 		draw();
