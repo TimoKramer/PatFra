@@ -35,6 +35,10 @@ public class LoadingScreen extends BasicScreen{
 		Assets.addTexture("paperPile.png");
 		Assets.addTexture("paper.png");
 		Assets.addTexture("Test_Character.png");
+		Assets.addTexture("parked_car1.png");
+		Assets.addTexture("parked_car2.png");
+		Assets.addTexture("parked_car3.png");
+		Assets.addTexture("parked_car4.png");
 		Assets.addMusic("8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3");
 		//hier weitere Assets die im Spiel gebraucht werden hinzufuegen
 		

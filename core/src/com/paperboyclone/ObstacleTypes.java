@@ -6,7 +6,7 @@ public enum ObstacleTypes {
 	//Todo: passende Namen hinzufuegen
 		OB_1, 
 		OB_2,
-		OB_3;
+		PARKED_CAR;
 	
 		public static ObstacleTypes getRandomType(){	
 			Array<ObstacleTypes> d = new Array<ObstacleTypes>(ObstacleTypes.values());
