@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 public class LevelGenerator {
 	
-	private static final int MaxHouses = 10;
+	private static final int MaxHouses = 30;
 	private static final int HouseMinSpace = 150;
 	private static final int HouseMaxSpace = 600;
 	private static final float SubscriberRate = 0.66f;

@@ -77,4 +77,8 @@ public class PlayerStats {
 	public int getHighScore() {
 		return score;
 	}
+	
+	public int getLives(){
+		return lives;
+	}
 }

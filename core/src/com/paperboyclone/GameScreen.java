@@ -5,13 +5,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
+
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 //Hier beginnt das Spiel
@@ -111,7 +108,7 @@ public class GameScreen extends BasicScreen{
 	    musicPlayer.checkMusicButton();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
-	    if (gameworld.getRemainingHouses() == 0) {
+	    if (gameworld.getRemainingHouses() == 0 || PlayerStats.getInstance().getLives() == 0) {
 	    	System.out.println(String.valueOf(PlayerStats.getInstance().getScore()));
 	    	//HighScoreHandler.getInstance().writeScore(PlayerStats.getInstance().getScore());
 	    	//App.setScreen(new HighScoreScreen(App));
