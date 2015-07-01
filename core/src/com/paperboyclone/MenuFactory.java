@@ -33,7 +33,15 @@ public class MenuFactory {
 		
 		menu.add(m);
 		
-		menu.add(new MenuItem("Quit"));
+		m = new MenuItem("Quit");
+		m.setOnSelectAction(new IMenuItemAction(){
+			public void doAction() {
+				OnScreen.dispose();
+				Gdx.app.exit();
+			}
+		});
+		
+		menu.add(m);
 		return menu;
 	}
 	
