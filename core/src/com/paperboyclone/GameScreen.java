@@ -78,7 +78,7 @@ public class GameScreen extends BasicScreen{
 		int  ObstacleMinSpawn = Math.round((1000 * difficulty.getObstacleSpawnDelayModifier()));
 		int  ObstacleMaxSpawn = Math.round((2500 * difficulty.getObstacleSpawnDelayModifier()));
 		gameworld.add(new ObstacleSpawnTask(ObstacleMinSpawn ,ObstacleMaxSpawn,camera));
-		gameworld.add(new PaperPileSpawnTask(10000, 20000, camera));
+		gameworld.add(new PaperPileSpawnTask(7000, 12000, camera));
 		
 		musicPlayer.run();
 	}
