@@ -1,6 +1,7 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -46,18 +48,27 @@ public class EnterNameScreen extends BasicScreen{
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 		text = new Text("Enter Name");
-		text.setPosition(Gdx.graphics.getWidth()/2 - text.getWidth()/2, Gdx.graphics.getHeight()*2/3);
 		text.setSize(300, 60);
+		text.setPosition(Gdx.graphics.getWidth()/2 - text.getWidth()/2, Gdx.graphics.getHeight()*2/3);
 		stage.addActor(text);
 		
 		textinput = new TextField("", skin);
-		textinput.setPosition(Gdx.graphics.getWidth()/2 - textinput.getWidth()/2, Gdx.graphics.getHeight()/2);
 		textinput.setSize(300, 60);
+		textinput.setPosition(Gdx.graphics.getWidth()/2 - textinput.getWidth()/2, Gdx.graphics.getHeight()/2);
+		textinput.addListener(new InputListener() {
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				if(keycode == Keys.ENTER) {
+					onOK();
+				}
+				return super.keyDown(event, keycode);
+			}
+		});
 		stage.addActor(textinput);
 		
 		TextButton okButton = new TextButton("OK", skin);
-		okButton.setPosition(Gdx.graphics.getWidth()/2 - okButton.getWidth()/2, Gdx.graphics.getHeight()/3);
 		okButton.setSize(300,  60);
+		okButton.setPosition(Gdx.graphics.getWidth()/2 - okButton.getWidth()/2, Gdx.graphics.getHeight()/3);
 		okButton.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
@@ -90,24 +101,33 @@ public class EnterNameScreen extends BasicScreen{
 		App.batch.end();
 	}
 	
+	public boolean keyDown(int keycode) {
+		System.out.println(keycode);
+		if(keycode == Keys.ENTER) {
+			onOK();
+		}
+		return true;
+	}
+	
 }
 
 class Text extends Actor {
-	BitmapFont font;
-	String string;
+	private BitmapFont font;
+	private GlyphLayout layout;
+	private float width;
 	private Color headlineColor = Color.BLUE;
 	
 	public Text(String string) {
-		this.string = string; 
-		System.out.println("Text erstellt!!!!!!!!!"+ string);
 		font = Assets.getFont();
 		font.setColor(headlineColor);
 		font.getData().setScale(1.f);
+		layout = new GlyphLayout(font, string);
+		width = layout.width;
 	}
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-         font.draw(batch, string, getX(), getY());
+        font.draw(batch, layout, getX() + width/2, getY());
     }
 
     @Override

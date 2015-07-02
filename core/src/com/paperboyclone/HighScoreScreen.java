@@ -81,18 +81,7 @@ public class HighScoreScreen extends BasicScreen{
 		float width = layout.width;
 		float height = layout.height;
 		
-		//font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight()/2 + height/2);
 		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
-		/*		
-		/*		font.draw(App.batch,
-				"You scored " + String.valueOf(highscore) + " in level " + DifficultySettings.getInstance().getCurrentMode() + "!\n\n" +
-						"HIGHSCORES:\n\n" +
-						highscorelistString,
-				Gdx.graphics.getWidth()/2, 
-				Gdx.graphics.getHeight()/2 + 300);
-				
-		
-*/	
 		menu.draw(App.batch);
 		font.setColor(Color.MAGENTA);
 	}
