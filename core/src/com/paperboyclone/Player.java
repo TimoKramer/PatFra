@@ -64,6 +64,7 @@ public class Player extends BasicGameEntity {
 				this.velocity,
 				true));
 			playerStatsListener.throwPaper();
+			AudioPlayer.getInstance().playThrowLeftSound();
 		}
 	}
 
@@ -75,6 +76,7 @@ public class Player extends BasicGameEntity {
 					this.velocity,
 					false));
 			playerStatsListener.throwPaper();
+			AudioPlayer.getInstance().playThrowRightSound();
 		}
 	}
 

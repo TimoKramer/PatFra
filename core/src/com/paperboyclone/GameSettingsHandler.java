@@ -47,7 +47,7 @@ public class GameSettingsHandler{
 		json.toJson(settings, settingsFile);
 	}
 	
-	public int getSoundVolume() {
+	public int getVolume() {
 		return loadSettings().SoundVolume;
 	}
 	

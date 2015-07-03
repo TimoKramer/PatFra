@@ -49,10 +49,18 @@ public class AudioPlayer implements Runnable {
 		playSound(Assets.getSound("hit.wav"), 1, 1, 0);
 	}
 	
-	public void playSound(Sound sound, float volume, float pitch, float pan) {
-		sound.play(GameSettingsHandler.getInstance().getSoundVolume() * volume, pitch, pan);
+	public void playThrowLeftSound() {
+		playSound(Assets.getSound("throwleft.mp3"), 1, 1, 0);
 	}
 	
+	public void playThrowRightSound() {
+		playSound(Assets.getSound("throwright.mp3"), 1, 1, 0);
+	}
+	
+	public void playSound(Sound sound, float volume, float pitch, float pan) {
+		sound.play(GameSettingsHandler.getInstance().getVolume() * volume, pitch, pan);
+	}
+		
 	public void checkMusicButton() {
 		
 		if(Gdx.input.isKeyPressed(Keys.S) && isPlaying) {
