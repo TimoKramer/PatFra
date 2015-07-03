@@ -52,6 +52,7 @@ public class EnterNameScreen extends BasicScreen{
 		textinput = new TextField("", skin);
 		textinput.setSize(300, 60);
 		textinput.setPosition(Gdx.graphics.getWidth()/2 - textinput.getWidth()/2, Gdx.graphics.getHeight()/2);
+		textinput.setMaxLength(8);
 		textinput.addListener(new InputListener() {
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
