@@ -27,9 +27,20 @@ libgdx (http://libgdx.badlogicgames.com/) is licensed under:
         Version 2.0, January 2004
         http://www.apache.org/licenses/
                         
-The song 8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3 was downloaded from FreeMusicArchive:
-http://freemusicarchive.org/music/8-Bit_Ninjas/Party_in_Space/kzz007_-_12_-_8-bit_ninjas_-_shiny_spaceship
+The song 8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3 was downloaded from FreeMusicArchive
+(http://freemusicarchive.org/music/8-Bit_Ninjas/Party_in_Space/kzz007_-_12_-_8-bit_ninjas_-_shiny_spaceship)
 and is licensed under:
 
         Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
         https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+
+The soundeffects 
+* "Bike_Wreck.wav" from 1sticky8 (http://www.freesound.org/people/1sticky8/sounds/78483/) is licensed under Creative Commons CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/legalcode)
+* "Hitting a tin can" from ryanconway (http://www.freesound.org/people/ryanconway/sounds/240800/) is licensed under Creative Commons CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/legalcode)
+are downloaded from:
+Freesound.org (http://www.freesound.org/)
+
+The soundeffects 
+* 961-Arrow-Left-To-Right.mp3 (http://soundbible.com/961-Arrow-Left-To-Right.html)
+* 962-Arrow-Right-To-Left.mp3 (http://soundbible.com/962-Arrow-Right-To-Left.html)
+are downloaded from SoundBible.com and licensed under Creative Commons CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/legalcode)
