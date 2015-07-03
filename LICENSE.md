@@ -37,10 +37,12 @@ and is licensed under:
 The soundeffects 
 * "Bike_Wreck.wav" from 1sticky8 (http://www.freesound.org/people/1sticky8/sounds/78483/) is licensed under Creative Commons CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/legalcode)
 * "Hitting a tin can" from ryanconway (http://www.freesound.org/people/ryanconway/sounds/240800/) is licensed under Creative Commons CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/legalcode)
+
 are downloaded from:
 Freesound.org (http://www.freesound.org/)
 
 The soundeffects 
 * 961-Arrow-Left-To-Right.mp3 (http://soundbible.com/961-Arrow-Left-To-Right.html)
 * 962-Arrow-Right-To-Left.mp3 (http://soundbible.com/962-Arrow-Right-To-Left.html)
+
 are downloaded from SoundBible.com and licensed under Creative Commons CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/legalcode)
