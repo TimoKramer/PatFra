@@ -51,6 +51,7 @@ public class Paper extends BasicGameEntity {
 		
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Mailbox.class){
+			AudioPlayer.getInstance().playHitSound();
 			Mailbox mailbox = (Mailbox) convertInstanceOfObject(collidedObject, Type);
 			if(!this.isCollidingWithMailbox) {
 				if(!mailbox.isFull()){

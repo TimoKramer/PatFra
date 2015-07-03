@@ -20,7 +20,7 @@ public class GameScreen extends BasicScreen{
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
-	private MusicPlayer musicPlayer;
+	private AudioPlayer audioPlayer;
 	//private long startTime;
 	private GameWorld gameworld;
 	private Viewport viewport;
@@ -55,7 +55,7 @@ public class GameScreen extends BasicScreen{
 		player.setMinSpeed(difficulty.getPlayerMinSpeed());
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-		musicPlayer = new MusicPlayer();
+		audioPlayer = AudioPlayer.getInstance();
 		gameworld = new GameWorld();
 		
 		ObjectMap<Class<?>, Array<IBasicGameEntity>> HandM = LevelGenerator.generateHousesAndMailboxes();
@@ -80,7 +80,7 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new ObstacleSpawnTask(ObstacleMinSpawn ,ObstacleMaxSpawn,camera));
 		gameworld.add(new PaperPileSpawnTask(7000, 12000, camera));
 		
-		musicPlayer.run();
+		audioPlayer.run();
 	}
 	
 	public void resize(int width, int height){
@@ -105,7 +105,7 @@ public class GameScreen extends BasicScreen{
 		
 	    //System.out.println("cam: "+camera.position.x +" | "+ camera.position.y);
 	    camera.update();
-	    musicPlayer.checkMusicButton();
+	    audioPlayer.checkMusicButton();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
 	    if (gameworld.getRemainingHouses() == 0 || PlayerStats.getInstance().getLives() == 0) {
@@ -128,7 +128,7 @@ public class GameScreen extends BasicScreen{
 
 			
 	public void dispose(){
-		musicPlayer.stop();
+		audioPlayer.stopMusic();
 		
 	}
 }

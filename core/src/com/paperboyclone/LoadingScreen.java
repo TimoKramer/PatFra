@@ -19,6 +19,8 @@ public class LoadingScreen extends BasicScreen{
 		Assets.addTexture("background.png");
 		Assets.addTexture("error.jpg");
 		Assets.addSound("testsound1.wav");
+		Assets.addSound("hit.wav");
+		Assets.addSound("crash.wav");
 		Assets.addTexture("redCircle.png");
 		Assets.addTexture("yellowCircle.png");
 		Assets.addTexture("house_1.png");

@@ -1,47 +1,72 @@
 package com.paperboyclone;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 
+public class AudioPlayer implements Runnable {
 
-public class MusicPlayer implements Runnable {
-
-	BackgroundMusic bgmusic = new BackgroundMusic();
+	private BackgroundMusic bgmusic = new BackgroundMusic();
 	private boolean isPlaying = true;
 	private boolean isPressed;
+	
+	private static final class InstanceHolder {
+		static final AudioPlayer INSTANCE = new AudioPlayer();
+	}
+	
+	private AudioPlayer(){
+		
+	};
+	
+	public static AudioPlayer getInstance() {
+		return InstanceHolder.INSTANCE;
+	}
 
 	@Override
 	public void run() {
 		bgmusic.startPlayingMusic();
 	}
 	
-	public void start() {
+	public void startMusic() {
 		isPlaying = true;
 		bgmusic.startPlayingMusic();
 	}
 
-	public void stop() {
+	public void stopMusic() {
 		isPlaying = false;
 		bgmusic.stopPlayingMusic();
 		bgmusic.interrupt();
 	}
 	
+	public void playCrashSound(){
+		playSound(Assets.getSound("crash.wav"), 1, 1, 0);
+	}
+	
+	public void playHitSound() {
+		playSound(Assets.getSound("hit.wav"), 1, 1, 0);
+	}
+	
+	public void playSound(Sound sound, float volume, float pitch, float pan) {
+		sound.play(GameSettingsHandler.getInstance().getSoundVolume() * volume, pitch, pan);
+	}
+	
 	public void checkMusicButton() {
 		
 		if(Gdx.input.isKeyPressed(Keys.S) && isPlaying) {
-			if(!isPressed) stop();
+			if(!isPressed) stopMusic();
 			isPressed = true;
 		} else if (Gdx.input.isKeyPressed(Keys.S) && !isPlaying) {
-			if(!isPressed) start();
+			if(!isPressed) startMusic();
 			isPressed = true;
 		} else {
 			isPressed = false;
 		}
 	}
-
-
 }
+
 
 class BackgroundMusic extends Thread {
 

@@ -142,7 +142,7 @@ public class MenuFactory {
 				String[] tempres = rm.getSelectedValue().split("x");
 				app.settings.resolution = new Vector2(new Float(tempres[0]), new Float(tempres[1]));
 				app.settings.SoundVolume = new Integer(sm.getSelectedValue());
-				GameSettingsHandler gs = new GameSettingsHandler();
+				GameSettingsHandler gs = GameSettingsHandler.getInstance();
 				Gdx.graphics.setDisplayMode((int)app.settings.resolution.x,(int)app.settings.resolution.y, app.settings.fullscreen);
 				gs.saveSettings(app.settings);
 				menu.center();

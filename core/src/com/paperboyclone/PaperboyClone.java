@@ -14,7 +14,7 @@ public class PaperboyClone extends Game {
 		batch = new SpriteBatch();
 		settings = new GameSettings();
 		
-		GameSettingsHandler g = new GameSettingsHandler();
+		GameSettingsHandler g = GameSettingsHandler.getInstance();
 		settings = g.loadSettings();
 		Gdx.graphics.setDisplayMode((int)settings.resolution.x,(int)settings.resolution.y, settings.fullscreen);
 		

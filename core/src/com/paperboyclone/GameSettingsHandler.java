@@ -13,8 +13,15 @@ public class GameSettingsHandler{
 	private Json json = new Json();
 	private FileHandle settingsFile;
 
-	
-	public GameSettingsHandler(){
+	private static final class InstanceHolder {
+		static final GameSettingsHandler INSTANCE = new GameSettingsHandler();
+	}
+		
+	public static GameSettingsHandler getInstance() {
+		return InstanceHolder.INSTANCE;
+	}
+
+	private GameSettingsHandler(){
 		settingsFile = Gdx.files.external("settings.json");
 	}
 	
@@ -38,6 +45,10 @@ public class GameSettingsHandler{
 	public void saveSettings(GameSettings settings){
 		json.setUsePrototypes(false);
 		json.toJson(settings, settingsFile);
+	}
+	
+	public int getSoundVolume() {
+		return loadSettings().SoundVolume;
 	}
 	
 	
