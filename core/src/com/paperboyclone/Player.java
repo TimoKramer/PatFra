@@ -7,6 +7,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Player represents the user's Character in the game. It extends 
+ * <code>BasicGameEntity</game> and cares for the interaction with 
+ * the user and other entities.
+ * 
+ * @author Martin Freudenberg
+ * @author Timo Kramer
+ * @version 1.0
+ */
 public class Player extends BasicGameEntity {
 
 	private Vector2 velocity;
@@ -16,6 +25,13 @@ public class Player extends BasicGameEntity {
 	private float minSpeed;
 	private float maxSpeed;
 	
+	/**
+	 * The initialization of a Player sets the position, a texture, basic velocity,
+	 * a listener for the stats, animations and a BoundingBox for collisions.
+	 * 
+	 * @param position	the initial position
+	 * @param texture	the texture to draw on screen
+	 */
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
 		velocity = new Vector2(0f, 300f);
@@ -39,11 +55,13 @@ public class Player extends BasicGameEntity {
 		super();
 	}
 	
+	@Override
 	public void draw(SpriteBatch batch){
 		Rectangle r = animations.getAnimationRegion();
 		batch.draw(sprite.getTexture(), position.x, position.y, r.width, r.height, (int)r.x, (int)r.y, (int)r.width, (int)r.height, false, false);			
 	}
 	
+	@Override
 	public void update(float delta){
 		animations.updateCurrentAnimation(delta);
 		checkForMovement(delta);
@@ -56,6 +74,11 @@ public class Player extends BasicGameEntity {
 		minSpeed = mSpeed;
 	}
 
+	/**
+	 * Checks if a paper is available and if yes creates a <code>Paper</code>
+	 * with velocity relative to <code>Player</code>-movement and position same
+	 * as <code>Player</code> and adds it to the <code>Gameworld</code>.
+	 */
 	public void throwLeft() {
 		if(playerStatsListener.isPaperAvailable()) {
 			gameworld.add(new Paper(new Vector2(
@@ -68,6 +91,11 @@ public class Player extends BasicGameEntity {
 		}
 	}
 
+	/**
+	 * Checks if a paper is available and if yes creates a <code>Paper</code>
+	 * with velocity relative to <code>Player</code>-movement and position same
+	 * as <code>Player</code> and adds it to the <code>Gameworld</code>.
+	 */
 	public void throwRight() {
 		if(playerStatsListener.isPaperAvailable()) {	
 			gameworld.add(new Paper(new Vector2(
@@ -113,6 +141,12 @@ public class Player extends BasicGameEntity {
 		}
 	}
 	
+	/**
+	 * regularly called method to poll for user input on keyboard or if
+	 * no input occurs movement is set back to straight and normal speed.
+	 * 
+	 * @param delta	is the refreshment rate and is used as factor for relative changes
+	 */
 	public void checkForMovement(float delta) {
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
 			animations.changeTo("DRIVE_RIGHT");
@@ -144,6 +178,10 @@ public class Player extends BasicGameEntity {
 		}
 	}
 	
+	/**
+	 * when a collision occurs, a sound is played and the player is respawned at 
+	 * a center position on screen 
+	 */
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		AudioPlayer.getInstance().playCrashSound();
 		if(Type != PaperPile.class){

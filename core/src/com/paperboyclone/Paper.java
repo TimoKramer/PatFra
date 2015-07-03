@@ -2,6 +2,15 @@ package com.paperboyclone;
 
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Paper is the game entity for a thrown newspaper. Here the interaction
+ * with other entities is managed and the representation on the screen is
+ * handled. 
+ * 
+ * @author Martin Freudenberg
+ * @author Timo Kramer
+ * @version 1.0
+ */
 public class Paper extends BasicGameEntity {
 
 	private PlayerStatsListener playerStatsListener;
@@ -13,6 +22,14 @@ public class Paper extends BasicGameEntity {
 	private float angle;
 	private float angleSpeed;
 	
+	/**
+	 * The initialization takes place with position, velocity and direction 
+	 * provided by caller. 
+	 * 
+	 * @param position		The position on the screen where <code>Paper</code> is created
+	 * @param velocity		The velocity for the <code>Paper</code>
+	 * @param isThrownLeft	The direction for the <code>Paper</code>
+	 */
 	public Paper(Vector2 position, Vector2 velocity, boolean isThrownLeft) {
 		super(position, Assets.getTexture("paper.png"));
 		this.isThrownLeft = isThrownLeft;
@@ -40,15 +57,17 @@ public class Paper extends BasicGameEntity {
 	public void update(float delta){
 		this.position.x += velocity.x * delta;
 		this.position.y += velocity.y * delta;
-		
 		angle += angleSpeed * delta;
 		if(Math.abs(angle) >= 360){
 			angle = 0;
 		}
-		
 		sprite.setRotation(angle);
 	}
-		
+
+	/**
+	 * Is called on collision and defines actions for collisions with a <code>Mailbox</code>
+	 * or collisions with a <code>House</code>.
+	 */
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Mailbox.class){
 			AudioPlayer.getInstance().playHitSound();

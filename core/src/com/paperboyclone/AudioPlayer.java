@@ -1,12 +1,19 @@
 package com.paperboyclone;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
+/**
+ * The <code>AudioPlayer</code> is a Singleton and responsible for 
+ * playing music and sound effects while the game is running. For
+ * the music not affecting the game the Music is implemented as
+ * a <code>Thread</code>, therefore <code>AudioPlayer</code> implements <code>Runnable</code>. 
+ * 
+ * @author Timo Kramer
+ * @version 1.0
+ */
 public class AudioPlayer implements Runnable {
 
 	private BackgroundMusic bgmusic = new BackgroundMusic();
@@ -62,7 +69,6 @@ public class AudioPlayer implements Runnable {
 	}
 		
 	public void checkMusicButton() {
-		
 		if(Gdx.input.isKeyPressed(Keys.S) && isPlaying) {
 			if(!isPressed) stopMusic();
 			isPressed = true;
@@ -75,7 +81,11 @@ public class AudioPlayer implements Runnable {
 	}
 }
 
-
+/**
+ * Is the class for playing the background music as a thread
+ * 
+ * @author Timo Kramer
+ */
 class BackgroundMusic extends Thread {
 
 	Music music = Assets.getMusic("8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3");
@@ -86,7 +96,7 @@ class BackgroundMusic extends Thread {
 	}
 	
 	public void startPlayingMusic() {
-		music.setVolume(0.3f);
+		music.setVolume(0.5f);
 		music.play();
 	}
 	

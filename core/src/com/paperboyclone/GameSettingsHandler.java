@@ -7,6 +7,15 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.SerializationException;
 
+/**
+ * GameSettings is the Singleton that is responsible for handling
+ * the GameSettings and reading/writing them from/to filesystem. 
+ * 
+ * @author Timo Kramer
+ * @author Martin Freudenberg
+ * @version 1.0
+ *
+ */
 public class GameSettingsHandler{
 
 
@@ -25,6 +34,15 @@ public class GameSettingsHandler{
 		settingsFile = Gdx.files.external("settings.json");
 	}
 	
+	/**
+	 * Loads the GameSettings from the settings.json from filesystem's home-dir 
+	 * 
+	 * @return GameSettings if settings.json is successfully read from filesystem
+	 * @throws GdxRuntimeException 		If settings.json cannot be read from 
+	 * 									in home directory
+	 * @throws SerializationException 	If settings.json cannot 
+	 * 									be converted to GameSettings object 
+	 */
 	public GameSettings loadSettings(){
 		System.out.println("Loading Settings...");
 		GameSettings returnthat = new GameSettings();
@@ -50,10 +68,15 @@ public class GameSettingsHandler{
 	public int getVolume() {
 		return loadSettings().SoundVolume;
 	}
-	
-	
 }
 
+/**
+ * GameSettings holds the game settings
+ * 
+ * @author Martin Freudenberg
+ * @author Timo Kramer
+ *
+ */
 
 class GameSettings{
 	

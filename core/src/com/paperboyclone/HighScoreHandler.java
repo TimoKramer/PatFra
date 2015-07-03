@@ -10,7 +10,14 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ObjectMap;
 
-
+/**
+ * HighScoreHandler is the Singleton that handles the HighScores, reading them
+ * from the filesystem, writing them to the filesystem, sorting them and 
+ * printing them. 
+ * 
+ * @author Timo Kramer
+ * @version 1.0
+ */
 public class HighScoreHandler {
 
 	private FileHandle handle;
@@ -61,10 +68,21 @@ public class HighScoreHandler {
 		return PlayerStats.getInstance().getScore();
 	}
 	
+	/**
+	 * returns all highscores independent of the level they were achieved in
+	 * 
+	 * @return ArrayList<HighScore>
+	 */
 	public ArrayList<HighScore> getHighscoreList() {
 		return highscoreList;
 	}
-			
+
+	/**
+	 * returns all highscores for certain level
+	 * 
+	 * @param level	the level the highscores are returned for.
+	 * @return ArrayList<HighScore>
+	 */
 	public ArrayList<HighScore> getHighscoreList(String level) {
 		ArrayList<HighScore> sortedHighscoreList = new ArrayList<HighScore>();
 		for(int i = 0; i < highscoreList.size(); i++) {
@@ -74,17 +92,13 @@ public class HighScoreHandler {
 		}
 		return sortedHighscoreList;
 	}
-	
-	public String arrayListToString(ArrayList<HighScore> hsl) {
-		String returnString = "";
-		for(int i = 0; i < hsl.size(); i++) {
-			returnString += hsl.get(i).toString() + "\n";
-		}
-		returnString.replaceAll("\n", System.getProperty("line.separator"));
-		return returnString;
-	}
-}
+}	
 
+/**
+ * A Class that represents a HighScore with a Comparable-Interface to sort highscores
+ *  
+ * @author Timo Kramer
+ */
 class HighScore implements Comparable<HighScore>{
 
 	private String name;
@@ -126,7 +140,7 @@ class HighScore implements Comparable<HighScore>{
 	public int getScore() {
 		return this.score;
 	}
-
+	
 	@Override
 	public int compareTo(HighScore o) {
 		int compareScore = ((HighScore)o).getScore();
