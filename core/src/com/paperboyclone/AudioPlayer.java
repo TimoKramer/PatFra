@@ -65,7 +65,7 @@ public class AudioPlayer implements Runnable {
 	}
 	
 	public void playSound(Sound sound, float volume, float pitch, float pan) {
-		sound.play(GameSettingsHandler.getInstance().getVolume() * volume, pitch, pan);
+		sound.play(volume * GameSettingsHandler.getInstance().getVolume()/100, pitch, pan);
 	}
 		
 	public void checkMusicButton() {
@@ -91,12 +91,12 @@ class BackgroundMusic extends Thread {
 	Music music = Assets.getMusic("8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3");
 
 	public void playMusic() {
-		music.setVolume(0.5f);
+		music.setVolume(0.5f * GameSettingsHandler.getInstance().getVolume()/100);
 		music.play();
 	}
 	
 	public void startPlayingMusic() {
-		music.setVolume(0.5f);
+		music.setVolume(0.5f * GameSettingsHandler.getInstance().getVolume()/100);
 		music.play();
 	}
 	
