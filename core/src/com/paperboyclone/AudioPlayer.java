@@ -64,6 +64,14 @@ public class AudioPlayer implements Runnable {
 		playSound(Assets.getSound("throwright.mp3"), 1, 1, 0);
 	}
 	
+	public void playCollectPaperSound() {
+		playSound(Assets.getSound("pop.ogg"), 1, 1, 0);
+	}
+	
+	public void playScoreUpSound() {
+		playSound(Assets.getSound("scoreUP.ogg"), 1, 1, 0);
+	}
+	
 	public void playSound(Sound sound, float volume, float pitch, float pan) {
 		sound.play(volume * GameSettingsHandler.getInstance().getVolume()/100, pitch, pan);
 	}

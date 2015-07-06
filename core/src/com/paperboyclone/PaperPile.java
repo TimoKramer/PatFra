@@ -36,6 +36,7 @@ public class PaperPile extends BasicGameEntity {
 			if(!isCollidingWithPlayer) {
 				playerStatsListener.pickupPaperPile();
 				gameworld.add(new ScoreDisplayTask(position, "+10"));
+				AudioPlayer.getInstance().playCollectPaperSound();
 			}
 			this.isCollidingWithPlayer = true;
 			gameworld.erase(this, PaperPile.class);

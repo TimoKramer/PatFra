@@ -183,9 +183,10 @@ public class Player extends BasicGameEntity {
 	 * a center position on screen 
 	 */
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
-		AudioPlayer.getInstance().playCrashSound();
+		
 		if(Type != PaperPile.class){
 			setPosition(1000,position.y);
+			AudioPlayer.getInstance().playCrashSound();
 		}
 			
 	}

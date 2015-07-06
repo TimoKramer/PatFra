@@ -60,6 +60,7 @@ public class PlayerStats {
 	
 	public void scoreUp(int scoreCount) {
 		this.score += scoreCount;
+		AudioPlayer.getInstance().playScoreUpSound();
 	}
 	
 	public void liveDown(int liveCount) {

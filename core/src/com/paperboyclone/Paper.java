@@ -85,20 +85,27 @@ public class Paper extends BasicGameEntity {
 			isCollidingWithMailbox = true;
 			gameworld.erase(this,Paper.class);
 		}
-		if(Type == House.class) {
+		else if(Type == House.class) {
 			House house = (House) convertInstanceOfObject(collidedObject, Type);
 			if(!this.isCollidingWithHouse) {
 				if(house.isSubscriber()) {
 					gameworld.add(new ScoreDisplayTask(new Vector2(house.getPosition().x, house.getPosition().y + house.getSprite().getHeight() + 20),"+10"));
 					playerStatsListener.hitSubscriberHouse();
 				}
+				AudioPlayer.getInstance().playCrashSound();
 			}
 			isCollidingWithHouse = true;
+			
 		}
-		//bei kollision paper anhalten
-		velocity.x = 0;
-		velocity.y = 0;
-		angleSpeed = 0;
+		else if(velocity.x != 0 && Type == Obstacle.class){
+			AudioPlayer.getInstance().playCrashSound();
+		}
+			//bei kollision paper anhalten
+			velocity.x = 0;
+			velocity.y = 0;
+			angleSpeed = 0;
+			
+		
 	}
 
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {

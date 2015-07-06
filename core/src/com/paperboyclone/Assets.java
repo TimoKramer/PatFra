@@ -19,10 +19,12 @@ public class  Assets {
 	private static final String SkinPath = "data/skins/";
 	private static final BitmapFont mainFont;
 	static{
-		//Error Files laden
+		//Error Files + Menu Sounds laden
 		manager.load(TexurePath+"error.jpg", Texture.class);
 		manager.load(SoundPath+"testsound1.wav", Sound.class);
 		manager.load(TexurePath+"backgroundPattern.png", Texture.class);
+		manager.load(SoundPath+"pop.ogg", Sound.class);
+		manager.load(MusicPath+"8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3", Music.class);
 		loadAll();
 			
 		mainFont = new BitmapFont(Gdx.files.internal("data/arcade.fnt"),Gdx.files.internal("data/arcade.png"), false );

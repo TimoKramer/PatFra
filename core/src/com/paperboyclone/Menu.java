@@ -82,6 +82,7 @@ public class Menu {
 		
 		switch (keycode){
 		case Keys.DOWN:
+			AudioPlayer.getInstance().playSound(Assets.getSound("pop.ogg"), 0.2f, 1, 0);
 			if(currentSelection == MenuItems.size - 1){
 				currentSelection = 0;
 			}
@@ -90,7 +91,7 @@ public class Menu {
 			}
 			break;
 		case Keys.UP:
-			
+			AudioPlayer.getInstance().playSound(Assets.getSound("pop.ogg"), 0.2f, 1, 0);
 			if(currentSelection == 0){
 				currentSelection = MenuItems.size - 1;
 			}
