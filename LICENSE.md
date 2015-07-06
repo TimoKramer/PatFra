@@ -33,6 +33,14 @@ and is licensed under:
 
         Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
         https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+        
+The Music "MenuMusic.ogg" was downloaded from newgrounds.com 
+(http://www.newgrounds.com/audio/listen/497160)
+and is licensed under:
+        
+        Attribution-NonCommercial-ShareAlike 3.0 Unported
+        http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
+        
 
 The soundeffects 
 * "Bike_Wreck.wav" from 1sticky8 (http://www.freesound.org/people/1sticky8/sounds/78483/) is licensed under Creative Commons CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/legalcode)

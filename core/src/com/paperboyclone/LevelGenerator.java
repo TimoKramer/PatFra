@@ -32,8 +32,8 @@ public class LevelGenerator {
 				1316f
 		});
 		
-		ObstacleSpawnLocations.put(ObstacleTypes.OB_2, new Array<Float>());
-		ObstacleSpawnLocations.get(ObstacleTypes.OB_2).addAll(new Float[]{
+		ObstacleSpawnLocations.put(ObstacleTypes.ROADWORKS, new Array<Float>());
+		ObstacleSpawnLocations.get(ObstacleTypes.ROADWORKS).addAll(new Float[]{
 				860f,
 				1086f,
 				1161f
@@ -150,9 +150,9 @@ public class LevelGenerator {
 				
 				return new Obstacle(position, Assets.getTexture("obstacleT_1.png"));
 				
-			case OB_2:
+			case ROADWORKS:
 				
-				return new Obstacle(position,  Assets.getTexture("obstacleT_2.png"));
+				return new Obstacle(position,  Assets.getTexture("roadworks.png"));
 
 			case PARKED_CAR:
 				return new Obstacle(position,  Assets.getTexture("parked_car"+MathUtils.random(1,4)+".png"));
