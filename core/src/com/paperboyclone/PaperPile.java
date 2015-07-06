@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 public class PaperPile extends BasicGameEntity {
 	
 	private boolean isCollidingWithPlayer;
-	private PlayerStatsListener playerStatsListener;
+	private PlayerStatusListener playerStatsListener;
 	private float scaleProcessTime;
 
 	/**
@@ -26,7 +26,7 @@ public class PaperPile extends BasicGameEntity {
 	 */
 	public PaperPile(Vector2 position, Texture texture) {
 		super(position, texture);
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 		scaleProcessTime = 0f;
 	}
 	
@@ -37,7 +37,7 @@ public class PaperPile extends BasicGameEntity {
 	 */
 	public PaperPile(Vector2 position) {
 		super(position, Assets.getTexture("paperPile.png"));
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 	}
 	
 	public PaperPile() {

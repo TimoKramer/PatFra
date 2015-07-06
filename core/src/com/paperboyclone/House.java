@@ -8,12 +8,12 @@ public class House extends BasicGameEntity{
 	
 	private boolean subscriber;
 	private boolean isCollidingWithPlayer;
-	private PlayerStatsListener playerStatsListener;
+	private PlayerStatusListener playerStatsListener;
 	
 	public House(Vector2 position, Texture HouseTexture, Texture MailboxTexture){
 		super(position,HouseTexture);
 		subscriber = false;
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 	}
 	
 	public void draw(SpriteBatch batch){

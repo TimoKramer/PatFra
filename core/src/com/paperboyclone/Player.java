@@ -19,7 +19,7 @@ public class Player extends BasicGameEntity {
 
 	private Vector2 velocity;
 	private boolean isThrown;
-	private PlayerStatsListener playerStatsListener;
+	private PlayerStatusListener playerStatsListener;
 	private AnimationManager animations;
 	private float minSpeed;
 	private float maxSpeed;
@@ -34,7 +34,7 @@ public class Player extends BasicGameEntity {
 	public Player(Vector2 position, Texture texture){
 		super(position, texture);
 		velocity = new Vector2(0f, 300f);
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 		
 		animations = new AnimationManager();
 		animations.add("DRIVE_STRAIGHT", new SpriteSheetAnimation(new Rectangle(0,144,32,48),10f,4));

@@ -11,32 +11,32 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Mailbox extends BasicGameEntity{
 	
-	private boolean full;
+	private boolean isFull;
 	private boolean subscriber;
 	private boolean isCollidingWithPlayer;
-	private PlayerStatsListener playerStatsListener;
+	private PlayerStatusListener playerStatsListener;
 	
 	public Mailbox(Vector2 position,Texture texture){
 		super(position,texture);
-		full = false;
+		isFull = false;
 		subscriber = false;
 		setBoundingBox(new Rectangle(0,sprite.getHeight()-30,sprite.getWidth(),30));
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 	}
 	
 	public Mailbox(){
 		super();
-		full = false;
+		isFull = false;
 		subscriber = false;
 	}
 	
 	public boolean isFull(){
 		
-		return full;
+		return isFull;
 	}
 	
 	public void setFull(){
-		full = true;
+		isFull = true;
 		//todo texture aendern -> mailbox_full.png
 		if(isSubscriber()){
 			sprite = new Sprite(Assets.getTexture("mailbox_full_subscriber.png"));

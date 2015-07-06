@@ -13,7 +13,7 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Paper extends BasicGameEntity {
 
-	private PlayerStatsListener playerStatsListener;
+	private PlayerStatusListener playerStatsListener;
 	private boolean isThrownLeft;
 	private Vector2 velocity;
 	private boolean isCollidingWithMailbox;
@@ -41,7 +41,7 @@ public class Paper extends BasicGameEntity {
 		else{
 			this.velocity = new Vector2(500f, velocity.y + 200);
 		}
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 		
 		this.isCollidingWithHouse = false;
 		

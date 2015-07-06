@@ -11,11 +11,11 @@ public class Obstacle extends BasicGameEntity{
 
 	private boolean isCollidingWithPlayer;
 	private boolean isCollidingWithPaper;
-	private PlayerStatsListener playerStatsListener;
+	private PlayerStatusListener playerStatsListener;
 	
 	public Obstacle(Vector2 position, Texture texture){
 		super(position,texture);
-		playerStatsListener = new PlayerStatsListener();
+		playerStatsListener = new PlayerStatusListener();
 	}
 
 	public Obstacle() {
