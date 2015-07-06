@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 //Hier beginnt das Spiel
@@ -55,7 +54,7 @@ public class GameScreen extends BasicScreen{
 		player.setMinSpeed(difficulty.getPlayerMinSpeed());
 		
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-		audioPlayer = AudioPlayer.getInstance();
+		
 		gameworld = new GameWorld();
 		
 		ObjectMap<Class<?>, Array<IBasicGameEntity>> HandM = LevelGenerator.generateHousesAndMailboxes();
@@ -80,7 +79,9 @@ public class GameScreen extends BasicScreen{
 		gameworld.add(new ObstacleSpawnTask(ObstacleMinSpawn ,ObstacleMaxSpawn,camera));
 		gameworld.add(new PaperPileSpawnTask(7000, 12000, camera));
 		
-		audioPlayer.run();
+		audioPlayer = AudioPlayer.getInstance();
+		audioPlayer.setBackgroundMusic(new BackgroundMusic());
+		audioPlayer.startMusic();
 	}
 	
 	public void resize(int width, int height){

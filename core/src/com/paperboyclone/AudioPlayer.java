@@ -12,6 +12,7 @@ import com.badlogic.gdx.audio.Sound;
  * a <code>Thread</code>, therefore <code>AudioPlayer</code> implements <code>Runnable</code>. 
  * 
  * @author Timo Kramer
+ * @author Martin Freudenberg
  * @version 1.0
  */
 public class AudioPlayer implements Runnable {
@@ -46,6 +47,11 @@ public class AudioPlayer implements Runnable {
 		isPlaying = false;
 		bgmusic.stopPlayingMusic();
 		bgmusic.interrupt();
+	}
+	
+	public void setBackgroundMusic(BackgroundMusic m){
+		bgmusic.stopPlayingMusic();
+		bgmusic = m;
 	}
 	
 	public void playCrashSound(){
@@ -93,13 +99,23 @@ public class AudioPlayer implements Runnable {
  * Is the class for playing the background music as a thread
  * 
  * @author Timo Kramer
+ * @author Martin Freudenberg
  */
 class BackgroundMusic extends Thread {
 
-	Music music = Assets.getMusic("8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3");
-
+	Music music;
+	
+	public BackgroundMusic(){
+		music = Assets.getMusic("8-Bit_Ninjas_-_12_-_Shiny_Spaceship.mp3");
+	}
+	
+	public BackgroundMusic(Music m){
+		music = m;
+	}
+	
 	public void playMusic() {
 		music.setVolume(0.5f * GameSettingsHandler.getInstance().getVolume()/100);
+		music.setLooping(true);
 		music.play();
 	}
 	

@@ -21,6 +21,8 @@ public class MainScreen extends BasicScreen {
 	
 		menu = MenuFactory.createStartMenu(this, app);
 		background = new AnimatedBackground(Assets.getTexture("backgroundPattern.png"));
+		AudioPlayer.getInstance().setBackgroundMusic(new BackgroundMusic(Assets.getMusic("MenuMusic.ogg")));
+		AudioPlayer.getInstance().run();
 	}
 	
 	public boolean keyDown(int keycode) {

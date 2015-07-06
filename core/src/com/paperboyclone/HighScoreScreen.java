@@ -44,6 +44,10 @@ public class HighScoreScreen extends BasicScreen{
 	    
 	    menu = MenuFactory.createHighscoreScreenMenu(this, App);
 	    menu.setPosition(20, Gdx.graphics.getHeight() - 200);
+	    
+
+	    AudioPlayer.getInstance().setBackgroundMusic(new BackgroundMusic(Assets.getMusic("MenuMusic.ogg")));
+		AudioPlayer.getInstance().startMusic();
 	}
 		
 	public void render(float delta) {
