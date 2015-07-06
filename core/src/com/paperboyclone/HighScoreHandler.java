@@ -65,7 +65,7 @@ public class HighScoreHandler {
 	}
 	
 	public int getHighScore() {
-		return PlayerStats.getInstance().getScore();
+		return PlayerStatus.getInstance().getScore();
 	}
 	
 	/**

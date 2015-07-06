@@ -3,6 +3,10 @@ package com.paperboyclone;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class Obstacle extends BasicGameEntity{
 
 	private boolean isCollidingWithPlayer;

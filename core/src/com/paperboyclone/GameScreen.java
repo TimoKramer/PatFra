@@ -11,12 +11,18 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-//Hier beginnt das Spiel
+/**
+ * The <code>GameScreen</code> is the <code>Screen</code> that runs the actual game.
+ * 
+ * 
+ * @author Martin Freudenberg
+ * @author Timo Kramer
+ */
 public class GameScreen extends BasicScreen{
 
 	private DifficultySettings difficulty;
 	BitmapFont font;
-	private PlayerStats stats;
+	private PlayerStatus stats;
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
@@ -26,12 +32,11 @@ public class GameScreen extends BasicScreen{
 	private Viewport viewport;
 	
 	
-	public GameScreen(PaperboyClone app, String diff) {
+	public GameScreen(PaperboyClone app) {
 		super(app);
 		difficulty = DifficultySettings.getInstance();
-		difficulty.setMode(diff);
 		font = new BitmapFont();
-		stats = PlayerStats.getInstance();
+		stats = PlayerStatus.getInstance();
 		stats.set(0, 30, 5);
 		//Groesse der Kamera noch unklar
 		camera = new OrthographicCamera();
@@ -108,8 +113,8 @@ public class GameScreen extends BasicScreen{
 	    audioPlayer.checkMusicButton();
 	    App.batch.setProjectionMatrix(camera.combined);
 	    background.update(camera);
-	    if (gameworld.getRemainingHouses() == 0 || PlayerStats.getInstance().getLives() == 0) {
-	    	System.out.println(String.valueOf(PlayerStats.getInstance().getScore()));
+	    if (gameworld.getRemainingHouses() == 0 || PlayerStatus.getInstance().getLives() == 0) {
+	    	System.out.println(String.valueOf(PlayerStatus.getInstance().getScore()));
 	    	//HighScoreHandler.getInstance().writeScore(PlayerStats.getInstance().getScore());
 	    	//App.setScreen(new HighScoreScreen(App));
 	    	App.setScreen(new EnterNameScreen(App));

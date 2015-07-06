@@ -1,10 +1,10 @@
 package com.paperboyclone;
 
-import com.paperboyclone.PlayerStats;
+import com.paperboyclone.PlayerStatus;
 
 public class PlayerStatsListener {
 	
-	PlayerStats playerStats = PlayerStats.getInstance();
+	PlayerStatus playerStats = PlayerStatus.getInstance();
 
 	public void crashWithObstacle() {
 		playerStats.liveDown(1);

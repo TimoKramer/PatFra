@@ -1,5 +1,12 @@
 package com.paperboyclone;
 
+/**
+ * The Singleton <code>DifficultySettings</code> is handling the settings
+ * that the user sets, writing and reading them to filesystem.
+ * 
+ * @author Martin Freudenberg
+ * @author Timo Kramer
+ */
 public class DifficultySettings {
 
 	private float ObstacleSpawnDelayModifier;
@@ -19,8 +26,7 @@ public class DifficultySettings {
 		return InstanceHolder.INSTANCE;
 	}
 	
-	public void setMode(String Mode){
-		
+	public void setMode(String Mode){	
 		if(Mode == "EASY"){
 			currentMode = Mode;
 			setEasy();
@@ -55,14 +61,23 @@ public class DifficultySettings {
 		PlayerMinSpeed = 300;
 	}
 	
+	/**
+	 * @return	a float used as a factor for the frequency of <code>Obstacley</code>-objects 
+	 */
 	public float getObstacleSpawnDelayModifier(){
 		return this.ObstacleSpawnDelayModifier;
 	}
 	
+	/**
+	 * @return	a float used as a factor for the player's minimum speed
+	 */
 	public float getPlayerMinSpeed(){
 		return this.PlayerMinSpeed;
 	}
 
+	/**
+	 * @return	a string specifies the current level
+	 */
 	public String getCurrentMode() {
 		return new String(currentMode);
 	}

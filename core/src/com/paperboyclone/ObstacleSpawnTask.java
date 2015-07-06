@@ -3,6 +3,10 @@ package com.paperboyclone;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class ObstacleSpawnTask extends SpawnTask{
 
 		

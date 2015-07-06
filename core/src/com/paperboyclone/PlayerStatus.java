@@ -5,7 +5,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-public class PlayerStats {
+/**
+ * <code>PlayerStats</code> is a Singleton that handles the status of the <code>Player</code> 
+ * and its changes and it handles the drawing on the <code>Screen</code>.
+ *  
+ * 
+ * @author Timo Kramer
+ * @author Martin Freudenberg
+ */
+public class PlayerStatus {
 
 	private int score;
 	private int papers;
@@ -14,15 +22,15 @@ public class PlayerStats {
 	private boolean isPaperAvailable;
 	
 	private static final class InstanceHolder {
-		static final PlayerStats INSTANCE = new PlayerStats(0,  30, 5);
+		static final PlayerStatus INSTANCE = new PlayerStatus(0,  30, 5);
 	}
 		
-	private PlayerStats(int score, int papers, int lives) {
+	private PlayerStatus(int score, int papers, int lives) {
 		HUDFont = Assets.getFont();
 		set(score,papers,lives);
 	}
 
-	public static synchronized PlayerStats getInstance() {
+	public static synchronized PlayerStatus getInstance() {
 		return InstanceHolder.INSTANCE;
 	}
 	

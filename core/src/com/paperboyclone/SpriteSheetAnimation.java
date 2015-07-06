@@ -3,6 +3,11 @@ package com.paperboyclone;
 
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * Animation of the player-character.
+ * 
+ * @author Martin Freudenberg
+ */
 public class SpriteSheetAnimation {
 	
 	private Rectangle region;

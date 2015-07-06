@@ -18,6 +18,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+/**
+ * @author Timo Kramer
+ * @author Martin Freudenberg
+ *
+ */
 public class EnterNameScreen extends BasicScreen{
 	
 	private BackgroundManager background;
@@ -33,13 +38,21 @@ public class EnterNameScreen extends BasicScreen{
 		create();
 	}
 	
+	/**
+	 * Creates the Screen with a new <code>OrthographicCamera</code>, a background 
+	 * and a <code>Stage</code> on which it draws a <code>Text</code>, <code>TextInput</code> 
+	 * and a <code>TextButton</code> using a <code>Skin</code>.
+	 * 
+	 * @see		Stage
+	 * @see		Skin
+	 */
 	public void create() {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	    camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
 		camera.update();
 
 		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-				
+		
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -74,7 +87,6 @@ public class EnterNameScreen extends BasicScreen{
 			}
 		});
 		stage.addActor(okButton);
-
 	}
 	
 	public void onOK() {
@@ -84,7 +96,7 @@ public class EnterNameScreen extends BasicScreen{
 	
 	public void saveHighScore(String name) {
 		System.out.println("Saving HighScore for " + name);
-		HighScoreHandler.getInstance().writeScore(name, DifficultySettings.getInstance().getCurrentMode(), PlayerStats.getInstance().getScore());
+		HighScoreHandler.getInstance().writeScore(name, DifficultySettings.getInstance().getCurrentMode(), PlayerStatus.getInstance().getScore());
 	}
 			
 	public void render(float delta) {
@@ -92,15 +104,17 @@ public class EnterNameScreen extends BasicScreen{
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		App.batch.begin();
-		
 	    background.update(camera);
 		stage.draw();
-		
 		App.batch.end();
 	}
 	
+	/**
+	 * If Enter is pressed it calls <code>onOK()</code>
+	 * 
+	 * @return		<code>true</code> always
+	 */
 	public boolean keyDown(int keycode) {
-		System.out.println(keycode);
 		if(keycode == Keys.ENTER) {
 			onOK();
 		}
@@ -109,6 +123,11 @@ public class EnterNameScreen extends BasicScreen{
 	
 }
 
+/**
+ * An <code>Actor</code> that has the sole job of drawing a string to the <code>Stage</code>
+ * 
+ * @author Timo Kramer
+ */
 class Text extends Actor {
 	private BitmapFont font;
 	private GlyphLayout layout;

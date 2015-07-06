@@ -1,7 +1,12 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.utils.Array;
-//Typ Bezeichnung eines Hinderis
+
+/**
+ * <code>ObstacleTypes</code> is an enum that specifies the names of the different <code>Obstacles</code> 
+ * 
+ * @author Martin Freudenberg
+ */
 public enum ObstacleTypes {
 	//Todo: passende Namen hinzufuegen
 		OB_1, 

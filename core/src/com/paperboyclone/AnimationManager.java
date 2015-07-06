@@ -4,6 +4,10 @@ package com.paperboyclone;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ObjectMap;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class AnimationManager {
 	
 	private ObjectMap<String, SpriteSheetAnimation>animations;

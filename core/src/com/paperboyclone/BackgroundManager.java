@@ -10,6 +10,10 @@ import com.badlogic.gdx.math.Vector3;
 
 //Zustaendig fuer den fortlaufenden Hintergrund
 //Versetzt die Hintergrundgrafiken je nach Kamera position
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class BackgroundManager {
 	
 	

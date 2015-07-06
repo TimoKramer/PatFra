@@ -3,8 +3,12 @@ package com.paperboyclone;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
-//kuemmert sich um die regelmaessige Objekterstellung in der Spielwelt
-//spawn delay in ms
+
+/**
+ * handles the regular creation of entities in the <code>GameWorld</code>.
+ * 
+ * @author Martin Freudenberg
+ */
 public abstract class SpawnTask implements ITask{
 		
 	private long lastSpawnTime;
@@ -50,6 +54,6 @@ public abstract class SpawnTask implements ITask{
 		
 	}
 	
-	protected abstract void spawn(GameWorld gamewworld);
+	protected abstract void spawn(GameWorld gameworld);
 	
 }

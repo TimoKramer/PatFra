@@ -6,6 +6,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public abstract class BasicScreen implements Screen, InputProcessor {
 
 	protected  PaperboyClone App;

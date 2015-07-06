@@ -4,6 +4,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class SelectionMenuItem extends MenuItem{
 
 	

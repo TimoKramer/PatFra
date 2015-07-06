@@ -4,6 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class DifficultySelectionScreen extends BasicScreen{
 
 	BitmapFont font;

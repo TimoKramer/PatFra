@@ -4,6 +4,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
 //kollisions check zwischen zwei Objekten
+/**
+ * @author Martin Freudenberg
+ *
+ * @param <T>
+ * @param <K>
+ */
 public class CollisionTask<T, K> implements ITask{
 	
 	private java.lang.Class<T>a;

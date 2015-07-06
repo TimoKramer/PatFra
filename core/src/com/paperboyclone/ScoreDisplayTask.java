@@ -4,6 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class ScoreDisplayTask implements ITask{
 
 	private String points;

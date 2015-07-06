@@ -5,7 +5,10 @@ import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class MenuFactory {
 	
 	
@@ -54,7 +57,8 @@ public class MenuFactory {
 			m.setOffset(50);
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
-					app.setScreen(new LoadingScreen(app, "EASY"));
+					DifficultySettings.getInstance().setEasy();
+					app.setScreen(new LoadingScreen(app));
 					OnScreen.dispose();
 				}
 			});
@@ -63,7 +67,8 @@ public class MenuFactory {
 			m = new MenuItem("NORMAL");
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
-					app.setScreen(new LoadingScreen(app, "NORMAL"));
+					DifficultySettings.getInstance().setNormal();
+					app.setScreen(new LoadingScreen(app));
 					OnScreen.dispose();
 				}
 			});
@@ -72,7 +77,8 @@ public class MenuFactory {
 			m = new MenuItem("HARD");
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
-					app.setScreen(new LoadingScreen(app, "HARD"));
+					DifficultySettings.getInstance().setHard();
+					app.setScreen(new LoadingScreen(app));
 					OnScreen.dispose();
 				}
 			});

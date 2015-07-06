@@ -6,8 +6,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-
-//spaeteres Hauptmenu
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class MainScreen extends BasicScreen {
 
 	BitmapFont font;

@@ -3,6 +3,10 @@ package com.paperboyclone;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class OptionScreen extends BasicScreen{
 
 	

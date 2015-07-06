@@ -4,14 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class LoadingScreen extends BasicScreen{
 	
 		BitmapFont font;
 		String mode;
 		
-	public LoadingScreen(PaperboyClone app, String Mode) {
+	public LoadingScreen(PaperboyClone app) {
 		super(app);
-		mode = Mode;
+		mode = DifficultySettings.getInstance().getCurrentMode();
 		font = Assets.getFont();
 		
 		// Alle benoetigten Assets  in die Warteschlange des AssetManagers einreihen
@@ -69,7 +73,7 @@ public class LoadingScreen extends BasicScreen{
 		}
 		else{
 			//Laden beendet -> wechsel zum Game Screen
-			App.setScreen(new GameScreen(App, mode));
+			App.setScreen(new GameScreen(App));
 			dispose();
 		}
 	

@@ -6,6 +6,10 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class LevelGenerator {
 	
 	private static final int MaxHouses = 50;

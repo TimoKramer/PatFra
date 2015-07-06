@@ -5,6 +5,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * @author Martin Freudenberg
+ *
+ */
 public class Mailbox extends BasicGameEntity{
 	
 	private boolean full;
