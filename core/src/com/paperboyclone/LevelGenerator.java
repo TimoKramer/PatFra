@@ -26,8 +26,8 @@ public class LevelGenerator {
 		//Geordnet nach Typ
 		ObstacleSpawnLocations = new  ObjectMap<ObstacleTypes, Array<Float>>();
 		
-		ObstacleSpawnLocations.put(ObstacleTypes.OB_1, new Array<Float>());
-		ObstacleSpawnLocations.get(ObstacleTypes.OB_1).addAll(new Float[]{
+		ObstacleSpawnLocations.put(ObstacleTypes.BENCH, new Array<Float>());
+		ObstacleSpawnLocations.get(ObstacleTypes.BENCH).addAll(new Float[]{
 				613f,
 				1316f
 		});
@@ -146,9 +146,9 @@ public class LevelGenerator {
 		
 		switch (randomType){
 			
-			case OB_1:
+			case BENCH:
 				
-				return new Obstacle(position, Assets.getTexture("obstacleT_1.png"));
+				return new Obstacle(position, Assets.getTexture("bench.png"));
 				
 			case ROADWORKS:
 				

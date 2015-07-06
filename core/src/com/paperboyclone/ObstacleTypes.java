@@ -8,8 +8,7 @@ import com.badlogic.gdx.utils.Array;
  * @author Martin Freudenberg
  */
 public enum ObstacleTypes {
-	//Todo: passende Namen hinzufuegen
-		OB_1, 
+		BENCH, 
 		ROADWORKS,
 		PARKED_CAR;
 	
