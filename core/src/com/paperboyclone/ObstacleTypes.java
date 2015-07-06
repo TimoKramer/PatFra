@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.Array;
 public enum ObstacleTypes {
 	//Todo: passende Namen hinzufuegen
 		OB_1, 
-		OB_2,
+		ROADWORKS,
 		PARKED_CAR;
 	
 		public static ObstacleTypes getRandomType(){	
