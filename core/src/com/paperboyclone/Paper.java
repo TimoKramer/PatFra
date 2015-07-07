@@ -73,13 +73,13 @@ public class Paper extends BasicGameEntity {
 			AudioPlayer.getInstance().playHitSound();
 			Mailbox mailbox = (Mailbox) convertInstanceOfObject(collidedObject, Type);
 			if(!this.isCollidingWithMailbox) {
-				if(!mailbox.isFull()){
+				if(!mailbox.isHit()){
 					
 					if(mailbox.isSubscriber()) {	
 						playerStatsListener.hitSubscriberMailbox();
 						gameworld.add(new ScoreDisplayTask(new Vector2(mailbox.getPosition().x, mailbox.getPosition().y + mailbox.getSprite().getHeight() + 20),"+100"));
 					}
-					mailbox.setFull();
+					mailbox.setHit();
 				}	 
 			}
 			isCollidingWithMailbox = true;
@@ -88,9 +88,10 @@ public class Paper extends BasicGameEntity {
 		else if(Type == House.class) {
 			House house = (House) convertInstanceOfObject(collidedObject, Type);
 			if(!this.isCollidingWithHouse) {
-				if(house.isSubscriber()) {
+				if(house.isSubscriber() && !house.isHit()) {
 					gameworld.add(new ScoreDisplayTask(new Vector2(house.getPosition().x, house.getPosition().y + house.getSprite().getHeight() + 20),"+10"));
 					playerStatsListener.hitSubscriberHouse();
+					house.setHit();
 				}
 				AudioPlayer.getInstance().playCrashSound();
 			}

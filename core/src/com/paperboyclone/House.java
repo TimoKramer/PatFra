@@ -9,6 +9,7 @@ public class House extends BasicGameEntity{
 	private boolean subscriber;
 	private boolean isCollidingWithPlayer;
 	private PlayerStatusListener playerStatsListener;
+	private boolean isHit = false;
 	
 	public House(Vector2 position, Texture HouseTexture, Texture MailboxTexture){
 		super(position,HouseTexture);
@@ -27,6 +28,14 @@ public class House extends BasicGameEntity{
 	
 	public boolean isSubscriber(){
 		return subscriber;
+	}
+	
+	public void setHit(){
+		this.isHit = true;
+	}
+	
+	public boolean isHit(){
+		return this.isHit;
 	}
 	
 	public void flipRight(){

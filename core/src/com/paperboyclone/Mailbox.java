@@ -11,32 +11,46 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Mailbox extends BasicGameEntity{
 	
-	private boolean isFull;
+	private boolean isHit;
 	private boolean subscriber;
 	private boolean isCollidingWithPlayer;
-	private PlayerStatusListener playerStatsListener;
+	private PlayerStatusListener playerStatusListener;
+	private House house;
 	
 	public Mailbox(Vector2 position,Texture texture){
 		super(position,texture);
-		isFull = false;
+		isHit = false;
 		subscriber = false;
 		setBoundingBox(new Rectangle(0,sprite.getHeight()-30,sprite.getWidth(),30));
-		playerStatsListener = new PlayerStatusListener();
+		playerStatusListener = new PlayerStatusListener();
 	}
 	
+	public Mailbox(Vector2 position,Texture texture, House house){
+		super(position,texture);
+		isHit = false;
+		subscriber = false;
+		setBoundingBox(new Rectangle(0,sprite.getHeight()-30,sprite.getWidth(),30));
+		playerStatusListener = new PlayerStatusListener();
+		this.house = house;
+	}
+
 	public Mailbox(){
 		super();
-		isFull = false;
+		isHit = false;
 		subscriber = false;
 	}
 	
-	public boolean isFull(){
-		
-		return isFull;
+	public boolean isHit(){
+		if(this.house.isHit() || this.isHit){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
-	public void setFull(){
-		isFull = true;
+	public void setHit(){
+		this.house.setHit();
+		isHit = true;
 		//todo texture aendern -> mailbox_full.png
 		if(isSubscriber()){
 			sprite = new Sprite(Assets.getTexture("mailbox_full_subscriber.png"));
@@ -48,7 +62,7 @@ public class Mailbox extends BasicGameEntity{
 			sprite.flip(true, false);
 		}
 	}
-	
+		
 	public void subscribe(){
 		subscriber = true;
 		setTexture(Assets.getTexture("mailbox_empty_subscriber.png"));
@@ -61,7 +75,7 @@ public class Mailbox extends BasicGameEntity{
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Player.class){
 			if(!this.isCollidingWithPlayer) {
-				playerStatsListener.crashWithHouse();
+				playerStatusListener.crashWithHouse();
 			}
 			this.isCollidingWithPlayer = true;
 		}
