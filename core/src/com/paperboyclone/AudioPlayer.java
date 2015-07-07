@@ -121,6 +121,7 @@ class BackgroundMusic extends Thread {
 	
 	public void startPlayingMusic() {
 		music.setVolume(0.5f * GameSettingsHandler.getInstance().getVolume()/100);
+		music.setLooping(true);
 		music.play();
 	}
 	

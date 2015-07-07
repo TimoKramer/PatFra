@@ -55,10 +55,16 @@ public class Menu {
 	public void draw(SpriteBatch batch){
 		
 		BitmapFont f = Assets.getFont();
-		font.setColor(headlineColor);
+		
+		
 		float x = position.x;
 		float y = position.y;
+		
 		font.getData().setScale(1.f);
+		
+		font.setColor(Color.BLACK);
+		font.draw(batch,headline,x+2,y-2);
+		font.setColor(headlineColor);
 		font.draw(batch,headline,x,y);
 		
 		y-= 75;

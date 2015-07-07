@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -25,17 +24,18 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  */
 public class EnterNameScreen extends BasicScreen{
 	
-	private BackgroundManager background;
+	
 	private OrthographicCamera camera;
 	private Stage stage;
 	private Skin skin;
 	private TextField textinput;
 	private Text text;
-	
+	private AnimatedBackground background;
 
 	public EnterNameScreen(PaperboyClone app) {
 		super(app);
 		create();
+		background = new AnimatedBackground(Color.GREEN);
 	}
 	
 	/**
@@ -51,7 +51,6 @@ public class EnterNameScreen extends BasicScreen{
 	    camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
 		camera.update();
 
-		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
 		
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
@@ -102,9 +101,9 @@ public class EnterNameScreen extends BasicScreen{
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+		background.update(delta, cam);
 		App.batch.begin();
-	    background.update(camera);
+		background.draw(App.batch);
 		stage.draw();
 		App.batch.end();
 	}

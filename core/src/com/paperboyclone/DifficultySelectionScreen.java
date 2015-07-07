@@ -1,6 +1,7 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
@@ -12,6 +13,7 @@ public class DifficultySelectionScreen extends BasicScreen{
 
 	BitmapFont font;
 	Menu menu;
+	AnimatedBackground background;
 	
 	public DifficultySelectionScreen(PaperboyClone app){
 		super(app);
@@ -19,7 +21,7 @@ public class DifficultySelectionScreen extends BasicScreen{
 		font = new BitmapFont();
 	
 		menu = MenuFactory.createDifficultySelectionMenu(this, app);
-		
+		background = new AnimatedBackground(Color.GREEN);
 	}
 	
 	public boolean keyDown(int keycode) {
@@ -31,11 +33,12 @@ public class DifficultySelectionScreen extends BasicScreen{
 	
 
 	public void render(float delta) {
-	
+		
+		background.update(delta, cam);
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		App.batch.begin();
-
+		background.draw(App.batch);
 		menu.draw(App.batch);
 		
 		App.batch.end();

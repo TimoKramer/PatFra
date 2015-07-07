@@ -1,6 +1,7 @@
 package com.paperboyclone;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
@@ -20,7 +21,7 @@ public class MainScreen extends BasicScreen {
 		font = new BitmapFont();
 	
 		menu = MenuFactory.createStartMenu(this, app);
-		background = new AnimatedBackground(Assets.getTexture("backgroundPattern.png"));
+		background = new AnimatedBackground(Color.GREEN);
 		AudioPlayer.getInstance().setBackgroundMusic(new BackgroundMusic(Assets.getMusic("MenuMusic.ogg")));
 		AudioPlayer.getInstance().run();
 	}

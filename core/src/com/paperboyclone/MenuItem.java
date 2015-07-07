@@ -1,5 +1,6 @@
 package com.paperboyclone;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -45,6 +46,10 @@ public class MenuItem implements IMenuItem{
 	}
 	
 	public void draw(float x, float y, SpriteBatch batch, BitmapFont font){
+		Color c = new Color(font.getColor());
+		font.setColor(Color.BLACK);
+		font.draw(batch, Text, x+2, y-2);
+		font.setColor(c);
 		font.draw(batch, Text, x, y);
 	}
 

@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.math.Vector2;
 
 public class HighScoreScreen extends BasicScreen{
 	
@@ -17,9 +16,10 @@ public class HighScoreScreen extends BasicScreen{
 	private int highscore;
 	private ArrayList<HighScore> highscoreList;
 	private OrthographicCamera camera;
-	private BackgroundManager background;
+	
 	HighScoreHandler hsh;
-	Menu menu;
+	private Menu menu;
+	private AnimatedBackground background;
 	
 	public HighScoreScreen(PaperboyClone app) {
 		
@@ -33,8 +33,7 @@ public class HighScoreScreen extends BasicScreen{
 		camera.update();
 		
 		font = Assets.getFont();
-		background = new BackgroundManager(new Vector2(0,0), Assets.getTexture("background.png"));
-		
+		background = new AnimatedBackground(Color.GREEN);
 		hsh = HighScoreHandler.getInstance();
 		highscore = hsh.getHighScore();
 		highscoreList = hsh.getHighscoreList(DifficultySettings.getInstance().getCurrentMode());
@@ -53,10 +52,11 @@ public class HighScoreScreen extends BasicScreen{
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		App.batch.begin();
 		
-	    background.update(camera);	
-	    
+		background.update(delta,camera);
+		
+		App.batch.begin();	
+	    background.draw(App.batch);
 		draw();
 
 		App.batch.end();
@@ -85,9 +85,16 @@ public class HighScoreScreen extends BasicScreen{
 		float width = layout.width;
 		float height = layout.height;
 		
-		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
+		
 		menu.draw(App.batch);
+		//zeichnet font in schwarz nicht
+		/*font.setColor(Color.BLACK);
+		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2 + 2, Gdx.graphics.getHeight() * 0.9f - 2);
+		*/
 		font.setColor(Color.MAGENTA);
+		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
+	
+		
 	}
 	
 	public boolean keyDown(int keycode) {
