@@ -54,7 +54,7 @@ public class GameScreen extends BasicScreen{
 		
 		player = new Player(
 				new Vector2(1000, Gdx.graphics.getHeight()),
-				Assets.getTexture("Test_Character.png")
+				Assets.getTexture("character.png")
 				);
 		player.setMinSpeed(difficulty.getPlayerMinSpeed());
 		

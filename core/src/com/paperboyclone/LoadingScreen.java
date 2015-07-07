@@ -42,6 +42,8 @@ public class LoadingScreen extends BasicScreen{
 		Assets.addTexture("paperPile.png");
 		Assets.addTexture("paper.png");
 		Assets.addTexture("Test_Character.png");
+		Assets.addTexture("character.png");
+		Assets.addTexture("character_big.png");
 		Assets.addTexture("parked_car1.png");
 		Assets.addTexture("parked_car2.png");
 		Assets.addTexture("parked_car3.png");

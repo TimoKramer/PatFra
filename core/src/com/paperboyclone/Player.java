@@ -37,9 +37,10 @@ public class Player extends BasicGameEntity {
 		playerStatsListener = new PlayerStatusListener();
 		
 		animations = new AnimationManager();
-		animations.add("DRIVE_STRAIGHT", new SpriteSheetAnimation(new Rectangle(0,144,32,48),10f,4));
-		animations.add("DRIVE_LEFT", new SpriteSheetAnimation(new Rectangle(0,48,32,48),10f,4));
-		animations.add("DRIVE_RIGHT", new SpriteSheetAnimation(new Rectangle(0,94,32,48),10f,4));
+		
+		animations.add("DRIVE_STRAIGHT", new SpriteSheetAnimation(new Rectangle(0,0,21,36),10f,2));
+		animations.add("DRIVE_LEFT", new SpriteSheetAnimation(new Rectangle(0,79,21,36),10f,2));
+		animations.add("DRIVE_RIGHT",  new SpriteSheetAnimation(new Rectangle(0,38,21,36),10f,2));
 		animations.changeTo("DRIVE_STRAIGHT");
 		
 		Rectangle r = animations.getAnimationRegion();
