@@ -1,14 +1,10 @@
 package com.paperboyclone;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.ObjectMap;
+
 
 /**
  * HighScoreHandler is the Singleton that handles the HighScores, reading them
