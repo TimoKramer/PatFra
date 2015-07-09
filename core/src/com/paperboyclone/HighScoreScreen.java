@@ -92,7 +92,7 @@ public class HighScoreScreen extends BasicScreen{
 		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2 + 2, Gdx.graphics.getHeight() * 0.9f - 2);
 		*/
 		font.setColor(Color.MAGENTA);
-		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
+		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2 + 50, Gdx.graphics.getHeight() * 0.9f);
 	
 		
 	}

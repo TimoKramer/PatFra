@@ -81,7 +81,7 @@ public class Menu {
 			
 			y -= MenuItems.get(i).getOffset();
 			MenuItems.get(i).draw(x, y , batch, f);
-			y-=30;
+			y-=40;
 		}
 		
 		font.setColor(Color.WHITE);

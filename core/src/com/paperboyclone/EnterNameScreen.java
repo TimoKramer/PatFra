@@ -143,7 +143,7 @@ class Text extends Actor {
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-        font.draw(batch, layout, getX() + width/2, getY());
+        font.draw(batch, layout, getX() + width/4, getY());
     }
 
     @Override

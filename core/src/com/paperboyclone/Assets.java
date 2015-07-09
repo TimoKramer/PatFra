@@ -33,7 +33,7 @@ public class  Assets {
 		manager.load(MusicPath+"MenuMusic.ogg", Music.class);
 		loadAll();
 			
-		mainFont = new BitmapFont(Gdx.files.internal("data/arcade.fnt"),Gdx.files.internal("data/arcade.png"), false );
+		mainFont = new BitmapFont(Gdx.files.internal("data/BBrick.fnt"),Gdx.files.internal("data/BBrick.png"), false );
 		
 	}
 	
