@@ -6,8 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 /**
+ * The <code>Screen</code> to choose desired level for the game.
+ * 
  * @author Martin Freudenberg
- *
  */
 public class DifficultySelectionScreen extends BasicScreen{
 

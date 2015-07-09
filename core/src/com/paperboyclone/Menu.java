@@ -10,8 +10,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 /**
+ * The base class for providing the position, drawing and
+ * input-handling for the different menus. 
+ * 
  * @author Martin Freudenberg
- *
  */
 public class Menu {
 	
@@ -44,19 +46,20 @@ public class Menu {
 		GlyphLayout layout = new GlyphLayout(font, headline);
 		float width = layout.width;
 		position = new Vector2(Gdx.graphics.getWidth()/2 - width/2, Gdx.graphics.getHeight() * 0.9f);
-		
 	}
 	
+	/**
+	 * adds an IMenuItem to the Menu.
+	 * 
+	 * @param m		the IMenuItem to be added to the <code>Menu</code>
+	 */
 	public void add(IMenuItem m){
 		m.setMenu(this);
 		MenuItems.add(m);
 	}
 	
 	public void draw(SpriteBatch batch){
-		
-		BitmapFont f = Assets.getFont();
-		
-		
+		BitmapFont f = Assets.getFont();		
 		float x = position.x;
 		float y = position.y;
 		

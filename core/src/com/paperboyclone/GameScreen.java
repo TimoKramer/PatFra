@@ -116,8 +116,6 @@ public class GameScreen extends BasicScreen{
 	    background.update(camera);
 	    if (gameworld.getRemainingHouses() == 0 || PlayerStatus.getInstance().getLives() == 0) {
 	    	System.out.println(String.valueOf(PlayerStatus.getInstance().getScore()));
-	    	//HighScoreHandler.getInstance().writeScore(PlayerStats.getInstance().getScore());
-	    	//App.setScreen(new HighScoreScreen(App));
 	    	App.setScreen(new EnterNameScreen(App));
 			dispose();
 		}

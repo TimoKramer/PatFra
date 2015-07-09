@@ -10,6 +10,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
+/**
+ * The <code>Screen</code> to show the <code>HighScore</code>s for
+ * the current level at the end of each game.
+ * 
+ * @author Timo Kramer
+ * @author Martin Freudenberg
+ */
 public class HighScoreScreen extends BasicScreen{
 	
 	BitmapFont font;
@@ -45,7 +52,6 @@ public class HighScoreScreen extends BasicScreen{
 	    menu = MenuFactory.createHighscoreScreenMenu(this, App);
 	    menu.setPosition(20, Gdx.graphics.getHeight() - 200);
 	    
-
 	    AudioPlayer.getInstance().setBackgroundMusic(new BackgroundMusic(Assets.getMusic("MenuMusic.ogg")));
 		AudioPlayer.getInstance().startMusic();
 	}
@@ -84,14 +90,8 @@ public class HighScoreScreen extends BasicScreen{
 				highscorelistString;
 		GlyphLayout layout = new GlyphLayout(font, completeString);
 		float width = layout.width;
-		float height = layout.height;
-		
 		
 		menu.draw(App.batch);
-		//zeichnet font in schwarz nicht
-		/*font.setColor(Color.BLACK);
-		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2 + 2, Gdx.graphics.getHeight() * 0.9f - 2);
-		*/
 		font.setColor(Color.MAGENTA);
 		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2 + 50, Gdx.graphics.getHeight() * 0.9f);
 	

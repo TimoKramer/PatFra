@@ -18,9 +18,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 /**
- * @author Timo Kramer
- * @author Martin Freudenberg
- *
+ * The <code>Screen</code> to enter the player's name.
+ * 
+ * @author 	Timo Kramer
+ * @author 	Martin Freudenberg
+ * @see 	BasicScreen
  */
 public class EnterNameScreen extends BasicScreen{
 	

@@ -6,8 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 /**
+ * A Factory for creating the different <code>Menu</code>s.
+ * 
  * @author Martin Freudenberg
- *
  */
 public class MenuFactory {
 	
@@ -50,51 +51,50 @@ public class MenuFactory {
 	
 	static public Menu createDifficultySelectionMenu(final BasicScreen OnScreen, final PaperboyClone app){
 			
-			
-			Menu menu = new Menu("Select difficulty:");
-			
-			MenuItem m = new MenuItem("EASY");
-			m.setOffset(50);
-			m.setOnSelectAction(new IMenuItemAction(){
-				public void doAction() {
-					DifficultySettings.getInstance().setMode("EASY");
-					app.setScreen(new LoadingScreen(app));
-					OnScreen.dispose();
-				}
-			});
-			menu.add(m);
-			
-			m = new MenuItem("NORMAL");
-			m.setOnSelectAction(new IMenuItemAction(){
-				public void doAction() {
-					DifficultySettings.getInstance().setMode("NORMAL");
-					app.setScreen(new LoadingScreen(app));
-					OnScreen.dispose();
-				}
-			});
-			menu.add(m);
-			
-			m = new MenuItem("HARD");
-			m.setOnSelectAction(new IMenuItemAction(){
-				public void doAction() {
-					DifficultySettings.getInstance().setMode("HARD");
-					app.setScreen(new LoadingScreen(app));
-					OnScreen.dispose();
-				}
-			});
-			menu.add(m);
-			
-			m = new MenuItem("back");
-			m.setOffset(20);
-			m.setOnSelectAction(new IMenuItemAction(){
-				public void doAction() {
-					app.setScreen(new MainScreen(app));
-					OnScreen.dispose();
-				}
-			});
-			menu.add(m);
-			return menu;
-		}
+		Menu menu = new Menu("Select difficulty:");
+		
+		MenuItem m = new MenuItem("EASY");
+		m.setOffset(50);
+		m.setOnSelectAction(new IMenuItemAction(){
+			public void doAction() {
+				DifficultySettings.getInstance().setMode("EASY");
+				app.setScreen(new LoadingScreen(app));
+				OnScreen.dispose();
+			}
+		});
+		menu.add(m);
+		
+		m = new MenuItem("NORMAL");
+		m.setOnSelectAction(new IMenuItemAction(){
+			public void doAction() {
+				DifficultySettings.getInstance().setMode("NORMAL");
+				app.setScreen(new LoadingScreen(app));
+				OnScreen.dispose();
+			}
+		});
+		menu.add(m);
+		
+		m = new MenuItem("HARD");
+		m.setOnSelectAction(new IMenuItemAction(){
+			public void doAction() {
+				DifficultySettings.getInstance().setMode("HARD");
+				app.setScreen(new LoadingScreen(app));
+				OnScreen.dispose();
+			}
+		});
+		menu.add(m);
+		
+		m = new MenuItem("back");
+		m.setOffset(20);
+		m.setOnSelectAction(new IMenuItemAction(){
+			public void doAction() {
+				app.setScreen(new MainScreen(app));
+				OnScreen.dispose();
+			}
+		});
+		menu.add(m);
+		return menu;
+	}
 	
 	static public Menu createHighscoreScreenMenu(final BasicScreen OnScreen, final PaperboyClone app){
 		
