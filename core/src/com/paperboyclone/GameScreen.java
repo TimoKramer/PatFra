@@ -21,7 +21,7 @@ public class GameScreen extends BasicScreen{
 
 	private DifficultySettings difficulty;
 	BitmapFont font;
-	private PlayerStatus stats;
+	private PlayerStatus status;
 	private Player player;
 	private OrthographicCamera camera;
 	private BackgroundManager background;
@@ -35,8 +35,8 @@ public class GameScreen extends BasicScreen{
 		super(app);
 		difficulty = DifficultySettings.getInstance();
 		font = new BitmapFont();
-		stats = PlayerStatus.getInstance();
-		stats.set(0, 30, 5);
+		status = PlayerStatus.getInstance();
+		status.set(0, 30, 5);
 		//Groesse der Kamera noch unklar
 		camera = new OrthographicCamera();
 		camera.position.set(1000, Gdx.graphics.getHeight(),0);
@@ -129,7 +129,7 @@ public class GameScreen extends BasicScreen{
 		background.draw(App.batch);
 		gameworld.draw(App.batch, camera);
 		gameworld.drawWorldInfos(App.batch, camera);
-		stats.draw(App.batch, camera);
+		status.draw(App.batch, camera);
 	}
 
 			

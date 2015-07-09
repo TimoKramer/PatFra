@@ -94,8 +94,10 @@ public class EnterNameScreen extends BasicScreen{
 	}
 	
 	public void saveHighScore(String name) {
-		System.out.println("Saving HighScore for " + name);
-		HighScoreHandler.getInstance().writeScore(name, DifficultySettings.getInstance().getCurrentMode(), PlayerStatus.getInstance().getScore());
+		String currentLevel = DifficultySettings.getInstance().getCurrentMode();
+		int currentScore = PlayerStatus.getInstance().getScore();
+		System.out.println("Saving HighScore for " + name + " in level " + currentLevel + " with score " + currentScore);
+		HighScoreHandler.getInstance().writeScore(name, currentLevel, currentScore);
 	}
 			
 	public void render(float delta) {

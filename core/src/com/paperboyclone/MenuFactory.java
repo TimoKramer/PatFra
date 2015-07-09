@@ -57,7 +57,7 @@ public class MenuFactory {
 			m.setOffset(50);
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
-					DifficultySettings.getInstance().setEasy();
+					DifficultySettings.getInstance().setMode("EASY");
 					app.setScreen(new LoadingScreen(app));
 					OnScreen.dispose();
 				}
@@ -67,7 +67,7 @@ public class MenuFactory {
 			m = new MenuItem("NORMAL");
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
-					DifficultySettings.getInstance().setNormal();
+					DifficultySettings.getInstance().setMode("NORMAL");
 					app.setScreen(new LoadingScreen(app));
 					OnScreen.dispose();
 				}
@@ -77,7 +77,7 @@ public class MenuFactory {
 			m = new MenuItem("HARD");
 			m.setOnSelectAction(new IMenuItemAction(){
 				public void doAction() {
-					DifficultySettings.getInstance().setHard();
+					DifficultySettings.getInstance().setMode("HARD");
 					app.setScreen(new LoadingScreen(app));
 					OnScreen.dispose();
 				}
