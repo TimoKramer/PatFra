@@ -59,3 +59,8 @@ are downloaded from SoundBible.com and licensed under Creative Commons CC BY 3.0
 Font:
 
 The font "banana brick" (bbrick.fnt, bbrick.png) is downloaded from (http://openfontlibrary.org/en/font/banana-brick) and is licensed under OFL (SIL Open Font License) (http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+
+Graphics:
+
+The graphics "house_1.png", "house_2.png", "house_3.png", "house_4.png" are downloaded from (http://www.deviantart.com/art/Pallet-town-tiles-157214973)
+and are licensed under Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
