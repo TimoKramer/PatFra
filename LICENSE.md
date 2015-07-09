@@ -55,3 +55,7 @@ The soundeffects
 * 962-Arrow-Right-To-Left.mp3 (http://soundbible.com/962-Arrow-Right-To-Left.html)
 
 are downloaded from SoundBible.com and licensed under Creative Commons CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/legalcode)
+
+Font:
+
+The font "banana brick" (bbrick.fnt, bbrick.png) is downloaded from (http://openfontlibrary.org/en/font/banana-brick) and is licensed under OFL (SIL Open Font License) (http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
