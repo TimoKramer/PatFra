@@ -62,5 +62,8 @@ The font "banana brick" (bbrick.fnt, bbrick.png) is downloaded from (http://open
 
 Graphics:
 
-The graphics "house_1.png", "house_2.png", "house_3.png", "house_4.png" are downloaded from (http://www.deviantart.com/art/Pallet-town-tiles-157214973)
+The graphics "house_1.png", "house_2.png", "house_3.png", "house_4.png" from "Alucus" are downloaded from (http://www.deviantart.com/art/Pallet-town-tiles-157214973)
 and are licensed under Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
+
+"parked_car1.png" from "dravenx" is downloaded from (http://opengameart.org/content/basic-topdown-view-car) and is licensed under Creative Commons  Attribution-ShareAlike 3.0 Unported (http://creativecommons.org/licenses/by-sa/3.0/)
+"parked_car2.png", "parked_car3.png", "parked_car4.png" are recolored versions of "parked_car1.png"
