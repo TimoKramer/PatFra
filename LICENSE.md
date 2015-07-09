@@ -67,3 +67,6 @@ and are licensed under Creative Commons Attribution-NonCommercial-NoDerivs 3.0 U
 
 "parked_car1.png" from "dravenx" is downloaded from (http://opengameart.org/content/basic-topdown-view-car) and is licensed under Creative Commons  Attribution-ShareAlike 3.0 Unported (http://creativecommons.org/licenses/by-sa/3.0/)
 "parked_car2.png", "parked_car3.png", "parked_car4.png" are recolored versions of "parked_car1.png"
+
+"backgroundPattern.png" from Dax Kieran is downloaded from (http://subtlepatterns.com/triangular/) and is licensed under Creative Commons Attribution-ShareAlike 3.0 Unported (http://creativecommons.org/licenses/by-sa/3.0/)
+
