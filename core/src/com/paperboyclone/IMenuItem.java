@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
+
 /**
  * Interface for all MenuItems 
  * used to handle all MenuItems the same way in the <code>Menu</code> Class
@@ -12,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * @see <code>SelectionMenuItem</code>
  * @author Martin Freudenberg
  */
+
 
 public interface IMenuItem {
 	public void setOnSelectAction(IMenuItemAction iaction);

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
  * Starts loading after it and goes on to the <code>GameScreen</code> when done.
  * 
  * @see <code>Assets</code>
+
  * @author Martin Freudenberg
  *	
  */
@@ -67,7 +68,7 @@ public class LoadingScreen extends BasicScreen{
 	/**
 	 * Repeatedly loading parts of the Assets in the loading queue.
 	 * When not finished showing loading message.
-	 * When finished skip to <code>GameScreen</code>
+	 * When finished skips to <code>GameScreen</code>
 	 * 
 	 * @param delta time between frames
 	 */

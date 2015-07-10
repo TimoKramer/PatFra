@@ -7,13 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 
 /**
+*
+ * The <code>BasicScreen</code> is the foundation of all the other screens. It provides methods
+ * for input processing and rendering.
  * 
- *	Base Class of all Screens.
- *	Holds a reference to the applications start class
- *	and a default camera which is centered on the screen.
- *	It implements the Libgdx Interfaces Screen and InputProcessor.
- *  Handles input via the event system.
- *  
  * @author Martin Freudenberg
  */
 public abstract class BasicScreen implements Screen, InputProcessor {

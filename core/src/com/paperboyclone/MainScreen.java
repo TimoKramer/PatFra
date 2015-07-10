@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 /**
+ * The <code>MainScreen</code> is the first <code>Screen</code> with the startmenu. 
+ * 
  * @author Martin Freudenberg
  *
  */

@@ -12,11 +12,13 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 /**
+ *
  * <code>AnimatedBackground</code> is responsible for showing a background pattern
  * and handling animation of <code>Paper</code> objects on the menu screens.
+ *
  * 
  * @author Martin Freudenberg
- * @version 1.0
+ * 
  */
 public class AnimatedBackground {
 	

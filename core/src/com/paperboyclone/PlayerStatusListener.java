@@ -2,6 +2,12 @@ package com.paperboyclone;
 
 import com.paperboyclone.PlayerStatus;
 
+/**
+ * A listener for events that affect the player's status.
+ * 
+ * @author Timo Kramer
+ *
+ */
 public class PlayerStatusListener {
 	
 	PlayerStatus playerStatus = PlayerStatus.getInstance();

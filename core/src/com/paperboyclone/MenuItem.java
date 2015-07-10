@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
+ * <code>MenuItem</code> represents the menuitems in the different menus. It 
+ * provides eventhandling- and drawing-methods.
+ * 
  * @author Martin Freudenberg
  *
  */

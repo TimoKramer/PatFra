@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
 /**
+ * <code>Obstacle</code> represents obstacles in the game and provides collision detection.
+ * 
  * @author Martin Freudenberg
  *
  */
@@ -22,6 +24,13 @@ public class Obstacle extends BasicGameEntity{
 		super();
 	}
 	
+	/**
+	 * the method that is called on collision with another entity in the game. It triggers 
+	 * if Type is a <code>Player</code> or a <code>Paper</code>.
+	 * 
+	 * @param collidedObject	the object that collides with the obstacle
+	 * @param Type				the type of the object that colliedes with the obstacle
+	 */
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Player.class){
 			if(!isCollidingWithPlayer) {
@@ -36,6 +45,13 @@ public class Obstacle extends BasicGameEntity{
 		}
 	}
 
+	/**
+	 * the method that is called to as long there is no collision with another entity in the game. It triggers 
+	 * if Type is a <code>Player</code> or a <code>Paper</code>.
+	 * 
+	 * @param collidedObject	the object that collides with the house
+	 * @param Type				the type of the object that colliedes with the obstacle
+	 */
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Player.class) {
 			this.isCollidingWithPlayer = false;

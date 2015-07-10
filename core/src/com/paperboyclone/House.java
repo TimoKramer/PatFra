@@ -6,10 +6,12 @@ import com.badlogic.gdx.math.Vector2;
 
 
 /**
- * Class of the <code>House</code> entity
- * can be a subscriber house
+ * The <code>House</code> represents the houses in the game. It can be a subscriber or not and 
+ * can only be hit once.
  * 
  * @author Martin Freudenberg
+ * @author Timo Kramer
+
  */
 public class House extends BasicGameEntity{
 	
@@ -30,7 +32,6 @@ public class House extends BasicGameEntity{
 	
 	public void subscribe(){
 		subscriber = true;
-	
 	}
 	
 	public boolean isSubscriber(){
@@ -48,12 +49,15 @@ public class House extends BasicGameEntity{
 	 * flip the texture horizontally, used when the house gets placed on the left side of the road 
 	 */
 	public void flipRight(){
-		
 		sprite.flip(true,false);
-		
 	}
+	
 	/**
-	 * onCollision with player, players live decreased 
+	 * the method that is called on collision with another entity in the game. 
+	 * 
+	 * @param collidedObject	the object that collides with the house
+	 * @param Type				the type of the object that colliedes with the house
+
 	 */
 	public <T> void onCollision(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Player.class){
@@ -63,7 +67,13 @@ public class House extends BasicGameEntity{
 			this.isCollidingWithPlayer = true;
 		}
 	}
-
+	
+	/**
+	 * the method that is called to as long there is no collision with another entity in the game.
+	 * 
+	 * @param collidedObject	the object that collides with the house
+	 * @param Type				the type of the object that colliedes with the house
+	 */
 	public <T> void notColliding(IBasicGameEntity collidedObject, Class<T> Type) {
 		if(Type == Player.class) {
 			this.isCollidingWithPlayer = false;
