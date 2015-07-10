@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 /**
+ * The <code>LoadingScreen</code> only shows a message that it is loading and
+ * loads all the <code>Assets</code> that are needed in the game. 
+ * 
  * @author Martin Freudenberg
  *
  */

@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
+ * <code>ObstacleSpawnTask</code> takes a obstacle from the <code>LevelGenerator</code> and 
+ * spawns it in the <code>GameWorld</code>.
+ * 
  * @author Martin Freudenberg
  *
  */

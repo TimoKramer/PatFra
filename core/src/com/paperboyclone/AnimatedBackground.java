@@ -12,6 +12,9 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 /**
+ * The <code>AnimatedBackground</code> implements an animation to the menus' 
+ * backgrounds.
+ * 
  * @author Martin Freudenberg
  *
  */

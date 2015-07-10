@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 
 /**
+ * <code>OptionScreen</code> is the <code>Screen</code> where the player can choose
+ * the solution and volume. 
+ * 
  * @author Martin Freudenberg
  *
  */
