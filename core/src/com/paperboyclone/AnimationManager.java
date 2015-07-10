@@ -5,8 +5,13 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ObjectMap;
 
 /**
+ * 
+ * the <code>AnimationManager</code> is responsible for holding multiple <code>SpriteSheetAnimation</code>s
+ * the <code>SpriteSheetAnimation</code>s are mapped to a unique name to identify each animation
+ * holds a reference to the currently selected <code>SpriteSheetAnimation</code>
+ * 
  * @author Martin Freudenberg
- *
+ * @version 1.0
  */
 public class AnimationManager {
 	
@@ -18,7 +23,15 @@ public class AnimationManager {
 		currentAnimation = null;
 	}
 	
-	
+	/**
+	 * adds a new <code>SpriteSheetAnimation</code> to the manager
+	 * checks if the animation is already added
+	 * 
+	 *@param UniqueName a string to identify the <code>SpriteSheetAnimation</code>
+	 *@param the <code>SpriteSheetAnimation</code> to be added
+	 *@return a flag whether the animation could successfully added or not
+	 * 
+	 */
 	public boolean add(String UniqueName, SpriteSheetAnimation a){
 		
 		if(animations.containsKey(UniqueName)){
@@ -34,31 +47,49 @@ public class AnimationManager {
 		
 	}
 	
+	/**
+	 * starts playing the current <code>SpriteSheetAnimation</code>
+	 *
+	 */
 	public void play(){
 		if(currentAnimation != null){
 			currentAnimation.play();
 		}
 	}
 	
+	/**
+	 * stops playing the current <code>SpriteSheetAnimation</code>
+	 *
+	 */
 	public void stop(){
 		if(currentAnimation != null){
 			currentAnimation.stop();
 		}
 	}
-	
+	/**
+	 * continue playing the current <code>SpriteSheetAnimation</code>
+	 * 
+	 */
 	public void resume(){
 		if(currentAnimation != null){
 			currentAnimation.resume();
 		}
 	}
 	
+	/**
+	 * sets the current <code>SpriteSheetAnimation</code> to frame 0
+	 *
+	 */
 	public void reset(){
 		if(currentAnimation != null){
 			currentAnimation.reset();
 		}
 	}
 	
-	
+	/**
+	 * changes the current <code>SpriteSheetAnimation</code> to the <code>SpriteSheetAnimation</code> with the given identifier
+	 *@param AnimationName name of the animation which should now be played
+	 */
 	public void changeTo(String AnimationName){
 		
 		if(animations.containsKey(AnimationName)){
@@ -73,12 +104,20 @@ public class AnimationManager {
 		}
 	}
 	
+	/**
+	 * plays the current <code>SpriteSheetAnimation</code> 
+	 *@param delta time between frames
+	 */
 	public void updateCurrentAnimation(float delta){
 		if(currentAnimation != null){
 			currentAnimation.update(delta);
 		}
 	}
 	
+	/**
+	 *Returns the current Texture region of the current <code>SpriteSheetAnimation</code> 
+	 *@return a rectangle with the location of the current Frame on the Sprite Sheet
+	 */
 	public Rectangle getAnimationRegion(){
 		if(currentAnimation != null){
 			return currentAnimation.getAnimationRegion();

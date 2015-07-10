@@ -7,8 +7,13 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 
 /**
+ * 
+ *	
+ * Has multiple static methods to create the Level
+ * Stores locations for obstacles based on their type
+ * Stores how many houses will be created and how many of them are subscribers
+ * 
  * @author Martin Freudenberg
- *
  */
 public class LevelGenerator {
 	
@@ -51,7 +56,13 @@ public class LevelGenerator {
 		});
 		
 	}
-	
+	/**
+	 * Generates Houses and Mailboxes on the left and right side of the road
+	 * Sets <code>House</code> and <code>Mailbox</code> to subscriber
+	 * Chooses a random house texture and 
+	 * 
+	 * @return a <code>ObjectMap</code> with House and Mailbox class type as key and the entities in it
+	 */
 	static public ObjectMap<Class<?>, Array<IBasicGameEntity>> generateHousesAndMailboxes(){
 		
 		float nextHouseY = 800;
@@ -138,7 +149,14 @@ public class LevelGenerator {
 		return objectMapper;
 	}
 	
-	
+	/**
+	 * Creates a random <code>Obstacle</code> on a predefined location (X-Location). 
+	 * The Y-Position is based on the Position of the camera used in the <code>GameScreen</code> Class
+	 * The X-Position gets randomly chosen from the Array with spawn locations
+	 * 
+	 * @param positionY where the <code>Obstacle</code> should be created on the vertical axis
+	 * @return the new created <code>Obstacle</code>
+	 */
 	public static Obstacle createRandomObstacle(float positionY){
 		
 		
@@ -164,7 +182,15 @@ public class LevelGenerator {
 		
 		}	
 	}
-	
+	/**
+	 * 
+	 * Creates a random <code>PaperPile</code> on a predefined location (X-Location). 
+	 * The Y-Position is based on the Position of the camera used in the <code>GameScreen</code> Class
+	 * The X-Position gets randomly chosen from the Array with spawn locations
+	 *   
+	 * @param positionY where the <code>PaperPile</code> should be created on the vertical axis
+	 * @return the new created <code>PaperPile</code> 
+	 */
 	public static PaperPile createRandomPaperPile(float positionY) {
 		
 		Vector2 position = new Vector2(PaperPileSpawnLocations.random(), positionY);

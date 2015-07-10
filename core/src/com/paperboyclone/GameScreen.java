@@ -26,7 +26,6 @@ public class GameScreen extends BasicScreen{
 	private OrthographicCamera camera;
 	private BackgroundManager background;
 	private AudioPlayer audioPlayer;
-	//private long startTime;
 	private GameWorld gameworld;
 	private Viewport viewport;
 	
@@ -37,7 +36,6 @@ public class GameScreen extends BasicScreen{
 		font = new BitmapFont();
 		status = PlayerStatus.getInstance();
 		status.set(0, 30, 5);
-		//Groesse der Kamera noch unklar
 		camera = new OrthographicCamera();
 		camera.position.set(1000, Gdx.graphics.getHeight(),0);
 		camera.update();
@@ -102,7 +100,10 @@ public class GameScreen extends BasicScreen{
 		App.batch.end();
 	}
 	
-	//alles was aktualisiert werden muss, input -> aenderung der werte, kollisions checks etc.
+	/**
+	 * Updates all entities, changes camera position based on player position, checks for user input
+	 * @param delta time between frames
+	 */
 	private void update(float delta){
 		
 	    gameworld.update(delta, camera);
@@ -120,8 +121,9 @@ public class GameScreen extends BasicScreen{
 			dispose();
 		}
 	}
-	
-	//alles was angezeigt werden muss
+	/**
+	 * draws all entities, the background, the player status and debug informations
+	 */
 	private void draw(){
 		
 		background.draw(App.batch);

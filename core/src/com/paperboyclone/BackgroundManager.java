@@ -8,11 +8,14 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 
-//Zustaendig fuer den fortlaufenden Hintergrund
-//Versetzt die Hintergrundgrafiken je nach Kamera position
+
 /**
+ * Handles the background texture of the Game
+ * Holds two references to the background texture as a <code>Sprite</code>
+ * Makes the background textures loop infinitely based on the camera position 
+ * 
  * @author Martin Freudenberg
- *
+ * 
  */
 public class BackgroundManager {
 	
@@ -40,7 +43,15 @@ public class BackgroundManager {
 		background2.draw(batch);
 	}
 
-	
+	/**
+	 *Updates the positions of the background textures based on the camera position.
+	 * 
+	 * If background1 is out of the screen it gets set to the top of background2
+	 * and vice versa.
+	 * 
+	 * 
+	 * @param camera used camera on the <code>GameScreen</code>
+	 */
 	public void update(OrthographicCamera camera){
 		
 		Vector3 camPosition = camera.position;

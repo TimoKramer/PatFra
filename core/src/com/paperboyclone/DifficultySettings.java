@@ -2,7 +2,8 @@ package com.paperboyclone;
 
 /**
  * The Singleton <code>DifficultySettings</code> is handling the settings
- * that the user sets, writing and reading them to filesystem.
+ * that the user chooses from the <code>DifficultySelectionScreen</code>
+ * 
  * 
  * @author Martin Freudenberg
  * @author Timo Kramer
@@ -62,7 +63,7 @@ public class DifficultySettings {
 	}
 	
 	/**
-	 * @return	a float used as a factor for the frequency of <code>Obstacley</code>-objects 
+	 * @return	a float used as a factor for the frequency of <code>Obstacle</code>-objects 
 	 */
 	public float getObstacleSpawnDelayModifier(){
 		return this.ObstacleSpawnDelayModifier;

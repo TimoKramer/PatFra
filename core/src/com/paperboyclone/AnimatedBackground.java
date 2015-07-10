@@ -12,8 +12,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 /**
+ * <code>AnimatedBackground</code> is responsible for showing a background pattern
+ * and handling animation of <code>Paper</code> objects on the menu screens.
+ * 
  * @author Martin Freudenberg
- *
+ * @version 1.0
  */
 public class AnimatedBackground {
 	
@@ -34,10 +37,25 @@ public class AnimatedBackground {
 			setBackgroundTint(backgroundTint);
 		}
 		
+		
+		/**
+		 * Set the color of the background.
+		 * 
+		 * @param backgroundTint color of the background
+		 *
+		 */
 		public void setBackgroundTint(Color backgroundTint){
 			backgroundPattern.setColor(backgroundTint);
 		}
 		
+		
+		/**
+		 * Draws every background pattern on the pre-calculated positions
+		 * also draws the <code>Paper</code>.
+		 * 
+		 * @param batch to draw on
+		 *
+		 */
 		public void draw(SpriteBatch batch){
 			
 			for(Vector2 j : positions){
@@ -50,6 +68,19 @@ public class AnimatedBackground {
 			}
 		}
 		
+		/**
+		 * Updates the positions of <code>Paper</code>.
+		 * Decreases the alpha value of the <code>Paper</code> color.
+		 * If the <code>Paper</code> alpha is at zero it deletes the Paper 
+		 * from the <code>Array</code>.
+		 * 
+		 * It also checks whether a new <code>Paper</code> should be 
+		 * created based on the spawnDelay timer.
+		 * 
+		 * @param delta time between frames
+		 * @param cam camera used on the <code>Screen</code>
+		 *
+		 */
 		public void update(float delta, OrthographicCamera cam){
 						
 			//changeColor(delta);
@@ -73,7 +104,18 @@ public class AnimatedBackground {
 			}
 		
 		}
-			
+		
+		
+		/**
+		 * Initialises the <code>Array</code> of the pre-calculated background pattern positions
+		 * based on the screen size and the size of the background pattern.
+		 * 
+		 * It creates two <code>Paper</code> and sets the next Spawn time where a new <code>Paper</code>will be created.
+		 * 
+		 * @param backgroundPatternTexture texture of the background pattern
+		 * 
+		 *
+		 */
 		private void init(Texture backgroundPatternTexture){
 			
 			
@@ -112,6 +154,15 @@ public class AnimatedBackground {
 		
 		}
 		
+		/**
+		 * Initialises a new <code>Paper</code> Object.
+		 * It randomly chooses on which side of the screen the <code>Paper</code> will appear.
+		 * Based on the side it sets the flag for the throw direction.
+		 * The <code>Paper</code> will always be thrown to the vertical center of the screen.
+		 * 
+		 * @return returns the new created <code>Paper</code>
+		 *
+		 */
 		private Paper createNewPaper(){
 			
 			float[] px = {0,Gdx.graphics.getWidth()};

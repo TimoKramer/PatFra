@@ -7,7 +7,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
-
+/**
+ * <code>GameWorld<code> stores all entities and tasks
+ * as interfaces <code>ITask</code> and <code>IBasicGameEntity</code>
+ * The entities are mapped on its type.
+ * 
+ * The handling of all entities and tasks is implemented as a strategy pattern. 
+ * The behavior is determined by the implementation of the interfaces in the entity and task classes
+ *
+ * @see <code>SpawnTask</code>
+ * @see <code>CollisionTask</code>
+ * @see <code>BasicGameEntity</code>
+ *
+ * @author Martin Freudenberg
+ *	
+ *
+ */
 public class GameWorld {
 
 	private ObjectMap<Class<?>, Array<IBasicGameEntity>> Objects;
@@ -28,7 +43,14 @@ public class GameWorld {
 	}
 	
 
-	
+	/**
+	 * Updates all entities and tasks.
+	 * Removes Tasks if they aren't alive anymore.
+	 * Removes Entities which are out of the screen
+	 * 
+	 * @param delta time between frames
+	 * @camera camera used in the <code>GameScreen</code>
+	 */
 	public void update(float delta, OrthographicCamera camera){
 		
 		
@@ -49,6 +71,9 @@ public class GameWorld {
 		cleanUp(camera);
 	}
 	
+	/**
+	* Removes Entities which are out of the screen based on the camera position.
+	*/
 	private void cleanUp(OrthographicCamera camera){
 		//falls Objekt aus Bild raus (Auswertung ueber obere Kante des Objekts und untere Kante der Kamera) -> Objekt loeschen 
 		float camY = camera.position.y - camera.viewportHeight/2;
@@ -62,7 +87,9 @@ public class GameWorld {
 			}
 		}
 	}
-	
+	/**
+	* Draws all entities and some tasks that implemented the draw Method.
+	*/
 	public void draw(SpriteBatch batch, OrthographicCamera camera){
 		
 
@@ -79,6 +106,9 @@ public class GameWorld {
 		
 	}
 	
+	/**
+	* Draws some debug informations
+	*/
 	public void drawWorldInfos(SpriteBatch batch, OrthographicCamera camera){
 		
 		float x = camera.position.x + (float) (camera.viewportWidth * 0.8f) /2;
