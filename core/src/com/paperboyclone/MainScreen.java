@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
 /**
  * The <code>MainScreen</code> is the first <code>Screen</code> with the startmenu. 
@@ -46,7 +47,7 @@ public class MainScreen extends BasicScreen {
 		App.batch.begin();
 		background.draw(App.batch);
 		menu.draw(App.batch);
-		
+		drawKeySettings();
 		App.batch.end();
 		
 	}
@@ -54,6 +55,19 @@ public class MainScreen extends BasicScreen {
 	public void dispose(){
 		
 		
+	}
+	
+	public void drawKeySettings() {
+		String manual = "ArrowLeft = drive left; ArrowRight = drive right;"
+					+ "ArrowUp = accelerate; ArrowDown = brake;"
+					+ "Y = throw left; X = throw right; S = toggle sound";
+		
+		GlyphLayout layout = new GlyphLayout(font, manual);
+		float width = layout.width;
+		float height = layout.height;
+		font.setColor(Color.BLACK);
+		font.draw(App.batch, layout, Gdx.graphics.getWidth()/2 - width/2 + 50, height + 5);
+
 	}
 
 }
