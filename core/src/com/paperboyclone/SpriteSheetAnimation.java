@@ -5,7 +5,8 @@ import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Animation of the player-character.
- * 
+ * Holds a rectangle witch represents the location of the current frame on the sprite sheet.
+ * Moves this rectangle based on the animation speed to the next frame of the animation.
  * @author Martin Freudenberg
  */
 public class SpriteSheetAnimation {
