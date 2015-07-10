@@ -4,7 +4,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
- * @author Martin Freudenberg
+ * <code>PaperPileSpawnTask</code> takes a <code>PaperPile</code> from the <code>LevelGenerator</code> and 
+ * spawns it in the <code>GameWorld</code>.
+ *
+ * @author Timo Kramer
  *
  */
 public class PaperPileSpawnTask extends SpawnTask{

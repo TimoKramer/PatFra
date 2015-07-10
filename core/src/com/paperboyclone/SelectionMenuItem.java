@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
 /**
+ * 
+ * <code>SelectionMenuItem</code> is responsible for holding multiple selection values and the navigation between them
+ * via event handling implemented with the command pattern.
  * @author Martin Freudenberg
  *
  */

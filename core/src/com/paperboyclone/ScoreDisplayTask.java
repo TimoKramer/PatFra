@@ -29,7 +29,11 @@ public class ScoreDisplayTask implements ITask{
 		color = new Color(Color.BLUE);
 	}
 	
-	
+	/**
+	 * Animates the score popup by scaling an changing the color.
+	 * ends the task as soon as the opacity is zero.
+	 * 
+	 */
 	public void doTask(GameWorld gameworld, float deltaTime) {
 		// TODO Auto-generated method stub
 		position.y += 100 * deltaTime;

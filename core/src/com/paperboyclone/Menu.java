@@ -90,7 +90,13 @@ public class Menu {
 		font.setColor(Color.WHITE);
 		font.getData().setScale(1.f);
 	}
-	
+	/**
+	 * checks input for navigation through the menu.
+	 * plays a sound an navigation.
+	 * changes selected value if a <code>SelectionMenuItem</code> is selected.
+	 * 
+	 * @param keycode key which was pressed
+	 */
 	public void handleInput(int keycode){
 		
 		switch (keycode){
