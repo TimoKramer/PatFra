@@ -3,6 +3,12 @@ package com.paperboyclone;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * The interface for the basic game entities.
+ * 
+ * @author Martin Freudenberg
+ * @see BasicGameEntity
+ */
 public interface IBasicGameEntity {
 		
 	

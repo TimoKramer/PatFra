@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.Vector2;
  * 
  * @author Martin Freudenberg
  * @author Timo Kramer
- * @version 1.0
  */
 public class Paper extends BasicGameEntity {
 

@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 /**
+ * <code>ScoreDisplayTask</code> draws the score, position, scale and opacity on the 
+ * screen. 
+ * 
  * @author Martin Freudenberg
  *
  */
