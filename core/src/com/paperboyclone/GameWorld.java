@@ -49,7 +49,7 @@ public class GameWorld {
 	 * Removes Entities which are out of the screen
 	 * 
 	 * @param delta time between frames
-	 * @camera camera used in the <code>GameScreen</code>
+	 * @param camera used in the <code>GameScreen</code>
 	 */
 	public void update(float delta, OrthographicCamera camera){
 		

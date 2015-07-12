@@ -28,7 +28,7 @@ public class AnimationManager {
 	 * checks if the animation is already added
 	 * 
 	 *@param UniqueName a string to identify the <code>SpriteSheetAnimation</code>
-	 *@param the <code>SpriteSheetAnimation</code> to be added
+	 *@param a			the <code>SpriteSheetAnimation</code> to be added
 	 *@return a flag whether the animation could successfully added or not
 	 * 
 	 */

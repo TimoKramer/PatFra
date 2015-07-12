@@ -15,6 +15,7 @@ public class MenuItem implements IMenuItem{
 	
 	private IMenuItemAction onSelectAction;
 	private String Text;
+	@SuppressWarnings("unused")
 	private Menu menu;
 	private float offset;
 	
